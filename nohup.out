@@ -1,0 +1,24 @@
+2025-11-03 14:41:02,743 [   1124]   WARN - org.apache.lucene.internal.vectorization.VectorizationProvider - Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+2025-11-03 14:41:03,471 [   1852]   WARN - #com.android.studio.ml.enterprise.login.StudioModelsOnboardingController$Companion - Auth state changed from AuthState.Initializing(isAuthorized=false) to AuthState.LoggedOut(isAuthorized=false)
+2025-11-03 14:41:08,976 [   7357]   WARN - #c.i.u.j.JBCefApp - JCefAppConfig.class is not from a JBR module, url: jar:file:/opt/android-studio/lib/lib.jar!/com/jetbrains/cef/JCefAppConfig.class (Use JBR bundled with the IDE)
+2025-11-03 14:41:09,324 [   7705]   WARN - #com.android.tools.ndk.HotfixForOCInitialTablesBuildingActivity - Overriding OCInitialTablesBuildingActivity with HotfixForOCInitialTablesBuildingActivity
+2025-11-03 14:41:35,589 [  33970]   WARN - #com.android.tools.ndk.HotfixForOCInitialTablesBuildingActivity - Overriding OCInitialTablesBuildingActivity with HotfixForOCInitialTablesBuildingActivity
+2025-11-03 14:41:35,754 [  34135]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-11-03 14:43:06,577 [ 124958]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.annotation:annotation-jvm:1.9.1'
+2025-11-03 14:43:06,577 [ 124958]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-stdlib:2.2.20'
+2025-11-03 14:43:06,578 [ 124959]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains:annotations:23.0.0'
+2025-11-03 14:43:06,581 [ 124962]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.arch.core:core-common:2.2.0'
+2025-11-03 14:43:06,581 [ 124962]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.lifecycle:lifecycle-common-jvm:2.9.4'
+2025-11-03 14:43:06,581 [ 124962]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jspecify:jspecify:1.0.0'
+2025-11-03 14:43:06,582 [ 124963]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.7.3'
+2025-11-03 14:43:06,582 [ 124963]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-test-junit:2.2.20'
+2025-11-03 14:43:06,582 [ 124963]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-test:2.2.20'
+2025-11-03 14:43:06,582 [ 124963]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: junit:junit:4.13.2'
+2025-11-03 14:43:06,582 [ 124963]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.hamcrest:hamcrest-core:1.3'
+2025-11-03 14:46:36,066 [ 334447]   WARN - #c.i.u.i.p.ProjectIndexableFilesFilterHealthCheck - Following files are indexable but they were NOT found in filter. Errors count: 42. Examples:
+file id=667743 path=/home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/frontend/.idea
+file id=667747 path=/home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/frontend/gradle
+file id=667752 path=/home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/frontend/iosApp
+file id=667756 path=/home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/frontend/gradle/wrapper
+file id=667758 path=/home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/frontend/gradle/wrapper/gradle-wrapper.properties
+...
