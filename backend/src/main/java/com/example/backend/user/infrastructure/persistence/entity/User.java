@@ -33,7 +33,5 @@ public class User {
     // pero un usuario puede tener muchas ventas.
     @OneToMany(mappedBy = "user")
     private Set<Sale> ventas = new HashSet<>();
-
-    // Faltarían los campos de Roles (ej. "ROLE_USER")
-    // para una implementación completa de Spring Security.
+    
 }
