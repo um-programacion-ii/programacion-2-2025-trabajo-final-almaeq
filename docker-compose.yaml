@@ -1,0 +1,137 @@
+version: '3.8'
+
+services:
+  # ======== BASES DE DATOS Y CACHÉ LOCAL ========
+  mysql_local:
+    image: mysql:8.4
+    container_name: tf_mysql_local
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: tf_backend_db
+      MYSQL_USER: tf_user
+      MYSQL_PASSWORD: tf_pass
+      TZ: America/Argentina/Mendoza
+    ports:
+      - "3306:3306" # host:container
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - trabajo_final_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 --protocol=TCP -u root -p$${MYSQL_ROOT_PASSWORD} --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  redis_local:
+    image: redis:7.2-alpine
+    container_name: tf_redis_local
+    environment:
+      REDIS_PASSWORD: tf_redis_pass
+      TZ: America/Argentina/Mendoza
+    command: redis-server --requirepass tf_redis_pass
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - trabajo_final_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a tf_redis_pass ping | grep PONG"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  # ======== SERVICIOS DEL ALUMNO ========
+  backend:
+    build:
+      context: ./backend # Asume que tu Dockerfile está en la carpeta 'backend'
+    container_name: tf_backend
+    depends_on:
+      mysql_local:
+        condition: service_healthy
+      redis_local:
+        condition: service_healthy
+    environment:
+      TZ: America/Argentina/Mendoza
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-dev}
+
+      # Conexión a MySQL (para persistencia)
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql_local:3306/tf_backend_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Argentina/Mendoza
+      SPRING_DATASOURCE_USERNAME: tf_user
+      SPRING_DATASOURCE_PASSWORD: tf_pass
+
+      # Conexión a Redis (para sesiones)
+      SPRING_REDIS_HOST: redis_local
+      SPRING_REDIS_PORT: 6379
+      SPRING_REDIS_PASSWORD: tf_redis_pass
+
+      # URL del Proxy (para consultar asientos)
+      PROXY_SERVICE_URL: http://proxy:8081
+
+      # Actuator para Healthcheck
+      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: health,info
+      MANAGEMENT_ENDPOINT_HEALTH_PROBES_ENABLED: "true"
+    ports:
+      - "8080:8080" # Puerto principal para el cliente móvil
+    networks:
+      - trabajo_final_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8080/actuator/health | grep -q '\"status\":\"UP\"'"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 25s
+
+  proxy:
+    build:
+      context: ./proxy # Asume que tu Dockerfile está en la carpeta 'proxy'
+    container_name: tf_proxy
+    depends_on:
+      backend:
+        condition: service_healthy # Espera al backend para poder notificarle
+    environment:
+      TZ: America/Argentina/Mendoza
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-dev}
+
+      # URL del Backend (para notificaciones Kafka)
+      BACKEND_SERVICE_URL: http://backend:8080
+
+      # Credenciales de Cátedra (¡Usar un .env file!)
+      CATEDRA_KAFKA_BROKER: ${CATEDRA_KAFKA_BROKER}
+      CATEDRA_REDIS_HOST: ${CATEDRA_REDIS_HOST}
+      CATEDRA_REDIS_PASSWORD: ${CATEDRA_REDIS_PASSWORD}
+
+      # Actuator para Healthcheck
+      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: health,info
+      MANAGEMENT_ENDPOINT_HEALTH_PROBES_ENABLED: "true"
+    ports:
+      - "8081:8081"
+    networks:
+      - trabajo_final_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8081/actuator/health | grep -q '\"status\":\"UP\"'"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 25s
+
+# =======================================================
+# Volúmenes para persistencia de datos
+# =======================================================
+volumes:
+  mysql_data:
+  redis_data:
+
+# =======================================================
+# Red interna para que los servicios se comuniquen
+# =======================================================
+networks:
+  trabajo_final_network:
+    driver: bridge
