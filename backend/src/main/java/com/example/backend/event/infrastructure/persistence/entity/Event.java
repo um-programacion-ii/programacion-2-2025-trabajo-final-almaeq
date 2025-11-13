@@ -2,11 +2,19 @@ package com.example.backend.event.infrastructure.persistence.entity;
 
 import com.example.backend.sale.infrastructure.persistence.entity.Sale;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "eventos")
 public class Event {

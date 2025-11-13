@@ -2,7 +2,15 @@ package com.example.backend.seatSold.infrastructure.persistence.entity;
 
 import com.example.backend.sale.infrastructure.persistence.entity.Sale;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "asientos_vendidos")
 public class SeatSold {
