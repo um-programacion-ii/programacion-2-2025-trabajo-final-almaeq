@@ -4,11 +4,19 @@ import com.example.backend.event.infrastructure.persistence.entity.Event;
 import com.example.backend.seatSold.infrastructure.persistence.entity.SeatSold;
 import com.example.backend.user.infrastructure.persistence.entity.User;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "ventas")
 public class Sale {
