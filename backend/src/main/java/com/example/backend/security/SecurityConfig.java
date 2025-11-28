@@ -48,22 +48,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                // Deshabilitar CSRF (común en APIs REST sin estado)
                 .csrf(csrf -> csrf.disable())
-
-                // Configurar la política de sesión como STATELESS (sin estado)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-
-                // Configurar las reglas de autorización
                 .authorizeHttpRequests(authz -> authz
-                        // Permitir el acceso público a los endpoints de registro y login
+                        // Permitir acceso público a endpoints de monitoreo (Healthchecks)
+                        .requestMatchers("/actuator/**").permitAll() // <--- ¡AGREGA ESTA LÍNEA!
+
+                        // Permitir login y registro
                         .requestMatchers("/api/register", "/api/authenticate").permitAll()
-                        // Cualquier otra solicitud debe estar autenticada
+
+                        // El resto requiere autenticación
                         .anyRequest().authenticated()
                 );
 
-        // AÑADIR EL FILTRO JWT ANTES DEL FILTRO BÁSICO
-        // Esto le dice a Spring Security que use nuestro filtro primero.
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
