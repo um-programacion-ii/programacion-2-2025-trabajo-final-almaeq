@@ -1,8 +1,8 @@
 package com.example.backend.security;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SignatureException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -13,13 +13,15 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
-    // Inyecta la clave secreta desde application.properties
     @Value("${app.jwt-secret}")
     private String jwtSecret;
 
-    // Inyecta el tiempo de expiración desde application.properties
     @Value("${app.jwt-expiration-ms}")
     private long jwtExpirationMs;
+
+    private SecretKey getSigningKey() {
+        return Keys.hmacShaKeyFor(jwtSecret.getBytes());
+    }
 
     // Genera un token JWT para un usuario
     public String generateToken(Authentication authentication) {
@@ -27,16 +29,41 @@ public class JwtTokenProvider {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + jwtExpirationMs);
 
-        // Clave secreta (debe ser lo suficientemente larga y segura)
-        SecretKey key = Keys.hmacShaKeyFor(jwtSecret.getBytes());
-
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
-                .signWith(key, SignatureAlgorithm.HS512)
+                .signWith(getSigningKey(), SignatureAlgorithm.HS512)
                 .compact();
     }
 
-    // NOTA: Aquí faltarían los métodos para *validar* el token y obtener el usuario desde el token, que se usarían en el filtro JWT.
+    // OBTIENE EL USUARIO DEL TOKEN (Este faltaba)
+    public String getUsernameFromToken(String token) {
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(getSigningKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+
+        return claims.getSubject();
+    }
+
+    // VALIDA EL TOKEN (Este faltaba)
+    public boolean validateToken(String authToken) {
+        try {
+            Jwts.parserBuilder().setSigningKey(getSigningKey()).build().parseClaimsJws(authToken);
+            return true;
+        } catch (SignatureException ex) {
+            System.out.println("Firma JWT inválida");
+        } catch (MalformedJwtException ex) {
+            System.out.println("Token JWT inválido");
+        } catch (ExpiredJwtException ex) {
+            System.out.println("Token JWT expirado");
+        } catch (UnsupportedJwtException ex) {
+            System.out.println("Token JWT no soportado");
+        } catch (IllegalArgumentException ex) {
+            System.out.println("La cadena claims JWT está vacía");
+        }
+        return false;
+    }
 }

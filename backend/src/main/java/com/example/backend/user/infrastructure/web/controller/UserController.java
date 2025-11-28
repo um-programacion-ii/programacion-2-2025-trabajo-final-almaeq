@@ -1,20 +1,20 @@
 package com.example.backend.user.infrastructure.web.controller;
 
-import com.example.backend.user.application.service.UserService;
 import com.example.backend.security.JwtTokenProvider;
+import com.example.backend.user.application.service.UserService;
 import com.example.backend.user.infrastructure.web.dto.LoginRequestDto;
 import com.example.backend.user.infrastructure.web.dto.LoginResponseDto;
 import com.example.backend.user.infrastructure.web.dto.RegisterRequestDto;
+import org.springframework.data.redis.core.StringRedisTemplate; // IMPORTANTE
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.Duration; // IMPORTANTE
 
 @RestController
 @RequestMapping("/api")
@@ -23,23 +23,22 @@ public class UserController {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider tokenProvider;
     private final UserService userService;
+    private final StringRedisTemplate redisTemplate; // Inyectamos Redis
 
     public UserController(AuthenticationManager authenticationManager,
                           JwtTokenProvider tokenProvider,
-                          UserService userService) {
+                          UserService userService,
+                          StringRedisTemplate redisTemplate) { // Agregamos al constructor
         this.authenticationManager = authenticationManager;
         this.tokenProvider = tokenProvider;
         this.userService = userService;
+        this.redisTemplate = redisTemplate;
     }
 
-    /**
-     * Endpoint para la autenticación de usuarios (login).
-     * El cliente móvil llamará a este endpoint.
-     */
-    @PostMapping("/authenticate")
+    @PostMapping("/authenticate") // Este es tu endpoint de login
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequestDto loginRequest) {
 
-        // Autenticar al usuario con Spring Security
+        // 1. Autenticar (Verifica usuario y contraseña en DB)
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginRequest.getUsername(),
@@ -47,34 +46,32 @@ public class UserController {
                 )
         );
 
-        // Establecer la autenticación en el contexto de seguridad
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // Generar el token JWT
+        // 2. Generar Token JWT
         String jwt = tokenProvider.generateToken(authentication);
 
-        // 1. Crear el DTO de respuesta vacío
+        // 3. CREAR SESIÓN EN REDIS (Requisito del Issue #8)
+        // Guardamos una clave simple "session:{username}" con valor "active"
+        // Expira en 30 minutos (Duration.ofMinutes(30))
+        String username = authentication.getName();
+        String redisKey = "session:" + username;
+        redisTemplate.opsForValue().set(redisKey, "active", Duration.ofMinutes(30));
+
+        // 4. Devolver respuesta
         LoginResponseDto loginResponse = new LoginResponseDto();
-        // 2. Usar el setter para asignar el token
         loginResponse.setToken(jwt);
 
-        // Devolver el token en la respuesta
         return ResponseEntity.ok(loginResponse);
     }
-    /**
-     * Endpoint para el registro de nuevos usuarios.
-     * Como dice el enunciado, esto podría ser usado desde la web de JHipster,
-     * pero si no usas JHipster, necesitas un endpoint para crear usuarios.
-     */
+
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegisterRequestDto registerRequest) {
         try {
             userService.registerUser(registerRequest);
             return ResponseEntity.ok("¡Usuario registrado exitosamente!");
         } catch (RuntimeException e) {
-            return ResponseEntity
-                    .status(HttpStatus.BAD_REQUEST)
-                    .body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 }
