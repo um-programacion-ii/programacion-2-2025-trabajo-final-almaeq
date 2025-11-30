@@ -12,7 +12,7 @@ services:
       MYSQL_PASSWORD: tf_pass
       TZ: America/Argentina/Mendoza
     ports:
-      - "3306:3306" # host:container
+      - "3307:3306" # host:container
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
@@ -66,9 +66,9 @@ services:
       SPRING_DATASOURCE_PASSWORD: tf_pass
 
       # Conexión a Redis (para sesiones)
-      SPRING_REDIS_HOST: redis_local
-      SPRING_REDIS_PORT: 6379
-      SPRING_REDIS_PASSWORD: tf_redis_pass
+      SPRING_DATA_REDIS_HOST: redis_local
+      SPRING_DATA_REDIS_PORT: 6379
+      SPRING_DATA_REDIS_PASSWORD: tf_redis_pass
 
       # URL del Proxy (para consultar asientos)
       PROXY_SERVICE_URL: http://proxy:8081
