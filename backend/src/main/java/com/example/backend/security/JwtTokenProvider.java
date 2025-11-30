@@ -23,7 +23,6 @@ public class JwtTokenProvider {
         return Keys.hmacShaKeyFor(jwtSecret.getBytes());
     }
 
-    // Genera un token JWT para un usuario
     public String generateToken(Authentication authentication) {
         String username = authentication.getName();
         Date now = new Date();
@@ -37,32 +36,21 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    // OBTIENE EL USUARIO DEL TOKEN (Este faltaba)
     public String getUsernameFromToken(String token) {
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
-
         return claims.getSubject();
     }
 
-    // VALIDA EL TOKEN (Este faltaba)
     public boolean validateToken(String authToken) {
         try {
             Jwts.parserBuilder().setSigningKey(getSigningKey()).build().parseClaimsJws(authToken);
             return true;
-        } catch (SignatureException ex) {
-            System.out.println("Firma JWT inválida");
-        } catch (MalformedJwtException ex) {
-            System.out.println("Token JWT inválido");
-        } catch (ExpiredJwtException ex) {
-            System.out.println("Token JWT expirado");
-        } catch (UnsupportedJwtException ex) {
-            System.out.println("Token JWT no soportado");
-        } catch (IllegalArgumentException ex) {
-            System.out.println("La cadena claims JWT está vacía");
+        } catch (Exception ex) {
+            System.out.println("Token JWT inválido: " + ex.getMessage());
         }
         return false;
     }
