@@ -4,12 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BlockRequestDto {
-    private Long eventoId;
-    private List<SimpleSeatDto> asientos; // Ej: ["F1-A1", "F1-A2"]
+public class SimpleSeatDto {
+    private int fila;
+    private int columna;
 }
