@@ -5,7 +5,8 @@ import com.example.backend.user.application.service.UserService;
 import com.example.backend.user.infrastructure.web.dto.LoginRequestDto;
 import com.example.backend.user.infrastructure.web.dto.LoginResponseDto;
 import com.example.backend.user.infrastructure.web.dto.RegisterRequestDto;
-import org.springframework.data.redis.core.StringRedisTemplate; // IMPORTANTE
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,8 +15,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Duration; // IMPORTANTE
-
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -23,22 +22,18 @@ public class UserController {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider tokenProvider;
     private final UserService userService;
-    private final StringRedisTemplate redisTemplate; // Inyectamos Redis
 
     public UserController(AuthenticationManager authenticationManager,
                           JwtTokenProvider tokenProvider,
-                          UserService userService,
-                          StringRedisTemplate redisTemplate) { // Agregamos al constructor
+                          UserService userService) {
         this.authenticationManager = authenticationManager;
         this.tokenProvider = tokenProvider;
         this.userService = userService;
-        this.redisTemplate = redisTemplate;
     }
 
-    @PostMapping("/authenticate") // Este es tu endpoint de login
-    public ResponseEntity<?> authenticateUser(@RequestBody LoginRequestDto loginRequest) {
+    @PostMapping("/authenticate")
+    public ResponseEntity<?> authenticateUser(@RequestBody LoginRequestDto loginRequest, HttpServletRequest request) {
 
-        // 1. Autenticar (Verifica usuario y contraseña en DB)
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginRequest.getUsername(),
@@ -48,17 +43,14 @@ public class UserController {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // 2. Generar Token JWT
+        // Generar Token JWT
         String jwt = tokenProvider.generateToken(authentication);
 
-        // 3. CREAR SESIÓN EN REDIS (Requisito del Issue #8)
-        // Guardamos una clave simple "session:{username}" con valor "active"
-        // Expira en 30 minutos (Duration.ofMinutes(30))
-        String username = authentication.getName();
-        String redisKey = "session:" + username;
-        redisTemplate.opsForValue().set(redisKey, "active", Duration.ofMinutes(30));
+        // CREAR SESIÓN SPRING SESSION
+        // Esto disparará la creación de la clave en Redis automáticamente
+        HttpSession session = request.getSession(true);
+        session.setAttribute("usuario", authentication.getName());
 
-        // 4. Devolver respuesta
         LoginResponseDto loginResponse = new LoginResponseDto();
         loginResponse.setToken(jwt);
 
