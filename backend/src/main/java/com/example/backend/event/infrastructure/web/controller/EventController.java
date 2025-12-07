@@ -28,23 +28,7 @@ public class EventController {
     public ResponseEntity<List<Event>> getAllEvents() {
         return ResponseEntity.ok(eventService.getAllEvents());
     }
-
-
-    /**
-     * Endpoint interno: El Proxy llama aquí cuando recibe algo de Kafka.
-     * El mensaje suele ser un JSON con el ID del evento y el tipo de cambio.
-     */
-    @PostMapping("/notification")
-    public ResponseEntity<Void> receiveNotification(@RequestBody String message) {
-        System.out.println("Notificación recibida desde el Proxy: " + message);
-
-        // AQUÍ LA LÓGICA DE SINCRONIZACIÓN
-        // Según el PDF[cite: 483, 484], cuando hay cambios debes sincronizar.
-        // Opción simple: Forzar una resincronización completa.
-        eventService.syncEvents();
-
-        return ResponseEntity.ok().build();
-    }
+    
 
     @GetMapping("/{id}")
     public ResponseEntity<EventDetailDto> getEventDetail(@PathVariable Long id) {
