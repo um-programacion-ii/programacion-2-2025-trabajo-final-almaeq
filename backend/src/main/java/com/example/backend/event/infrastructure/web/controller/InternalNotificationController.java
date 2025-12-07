@@ -1,7 +1,7 @@
 package com.example.backend.event.infrastructure.web.controller;
 
-import com.example.backend.event.application.service.EventService;
-import com.example.backend.event.infrastructure.web.dto.EventNotificationDto; // Asegurate de importar tu DTO
+import com.example.backend.event.application.service.SincronizacionService; // <--- Importamos el nuevo servicio
+import com.example.backend.event.infrastructure.web.dto.EventNotificationDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,20 +11,22 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/internal/notificacion")
 public class InternalNotificationController {
 
-    private final EventService eventService;
+    // CORRECCIÓN: Usamos SincronizacionService en lugar de EventService
+    private final SincronizacionService sincronizacionService;
 
     // Inyectamos el secreto desde application.properties
     @Value("${internal.api.secret}")
     private String internalSecret;
 
-    public InternalNotificationController(EventService eventService) {
-        this.eventService = eventService;
+    // Inyección del servicio en el constructor
+    public InternalNotificationController(SincronizacionService sincronizacionService) {
+        this.sincronizacionService = sincronizacionService;
     }
 
     @PostMapping("/evento")
     public ResponseEntity<Void> recibirNotificacionEvento(
             @RequestHeader(value = "X-Internal-Secret", required = false) String requestSecret,
-            @RequestBody EventNotificationDto notificationDto // Ahora esperamos el DTO estructurado
+            @RequestBody EventNotificationDto notificationDto
     ) {
         // 1. SEGURIDAD: Verificar el Token Interno
         if (requestSecret == null || !requestSecret.equals(internalSecret)) {
@@ -32,21 +34,12 @@ public class InternalNotificationController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
 
-        // 2. LOGICA: Usar la información del Body
+        // 2. LOGICA: Delegar al servicio especializado
         System.out.println("🔔 Notificación interna recibida para Evento ID: " + notificationDto.getEventoId());
-        System.out.println("   Tipo de cambio: " + notificationDto.getTipoDeCambio());
 
-        try {
-            // Aquí podrías optimizar y sincronizar SOLO ese evento si quisieras:
-            // eventService.syncEvent(notificationDto.getEventoId());
+        // Le pasamos el mensaje/tipo de cambio al servicio para que decida qué hacer
+        sincronizacionService.procesarNotificacion(notificationDto.getTipoDeCambio());
 
-            // Por ahora mantenemos la sincronización completa que ya funciona:
-            eventService.syncEvents();
-
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            System.err.println("Error en la sincronización: " + e.getMessage());
-            return ResponseEntity.internalServerError().build();
-        }
+        return ResponseEntity.ok().build();
     }
 }
