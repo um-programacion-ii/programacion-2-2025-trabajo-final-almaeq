@@ -110,6 +110,10 @@ services:
       # Actuator para Healthcheck
       MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: health,info
       MANAGEMENT_ENDPOINT_HEALTH_PROBES_ENABLED: "true"
+
+    extra_hosts:
+      - "kafka:192.168.194.250"
+      # ------------------------
     ports:
       - "8081:8081"
     networks:

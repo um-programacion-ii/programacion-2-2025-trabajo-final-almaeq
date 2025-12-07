@@ -57,6 +57,9 @@ public class SecurityConfig {
                         // Permitir login y registro
                         .requestMatchers("/api/register", "/api/authenticate").permitAll()
 
+                        // Permitir acceso al endpoint interno (comunicación con Proxy)
+                        .requestMatchers("/api/internal/**").permitAll()
+
                         // El resto requiere autenticación
                         .anyRequest().authenticated()
                 );

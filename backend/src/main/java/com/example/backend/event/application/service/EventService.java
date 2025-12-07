@@ -77,4 +77,9 @@ public class EventService {
         // Luego devolvemos lo que hay en la base local
         return eventRepository.findAllByOrderByFechaHoraAsc();
     }
+
+    public Event getEventById(Long id) {
+        // Busca en la DB local o lanza null/excepción si no existe
+        return eventRepository.findById(id).orElse(null);
+    }
 }

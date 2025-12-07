@@ -25,23 +25,21 @@ public class ProxyClientService {
      * Consulta al Proxy el estado de los asientos de un evento.
      * Retorna un Mapa donde: Clave = Asiento (ej: "A1"), Valor = Estado (ej: "Libre", "Ocupado")
      */
-    public Map<String, String> getSeatsStatus(Long eventId) {
+    public Map<String, Object> getSeatsStatus(Long eventId) {
         try {
-            // Construimos la URL: http://proxy:8081/api/proxy/seats/{eventId}
             String url = UriComponentsBuilder.fromHttpUrl(proxyUrl)
-                    .path("/api/proxy/seats/{eventId}")
+                    .path("/api/proxy/seats/{eventId}") // Asegúrate que esta URL coincida con la del Proxy
                     .buildAndExpand(eventId)
                     .toUriString();
 
             System.out.println("Consultando al Proxy: " + url);
 
-            // Hacemos la petición GET
+            // CAMBIO: Map.class devolverá Map<String, Object> automáticamente
             ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
 
-            return (Map<String, String>) response.getBody();
+            return response.getBody();
         } catch (Exception e) {
             System.err.println("Error comunicándose con el Proxy: " + e.getMessage());
-            // En caso de error, devolvemos un mapa vacío para no romper la app
             return Map.of();
         }
     }
