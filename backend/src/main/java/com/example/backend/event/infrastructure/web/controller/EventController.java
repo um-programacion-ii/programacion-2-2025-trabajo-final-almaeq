@@ -28,37 +28,43 @@ public class EventController {
     public ResponseEntity<List<Event>> getAllEvents() {
         return ResponseEntity.ok(eventService.getAllEvents());
     }
-    
+
 
     @GetMapping("/{id}")
     public ResponseEntity<EventDetailDto> getEventDetail(@PathVariable Long id) {
-        // 1. Obtener datos básicos del evento (MySQL local)
+        // 1. Buscar evento en DB local
         Event event = eventService.getEventById(id);
         if (event == null) {
             return ResponseEntity.notFound().build();
         }
 
-        // 2. Obtener estado de asientos (Redis Cátedra via Proxy)
+        // 2. Consultar al Proxy
         Map<String, Object> proxyResponse = proxyClientService.getSeatsStatus(id);
 
-        // 3. Convertir la respuesta del Proxy a tu lista de SeatDto
+        // 3. Procesar asientos
         List<SeatDto> asientosDto = new ArrayList<>();
 
+        // Verificamos que la respuesta no sea nula y contenga la lista "asientos"
         if (proxyResponse != null && proxyResponse.containsKey("asientos")) {
-            // El JSON viene como List<Map>, hay que convertirlo
-            List<Map<String, Object>> listaAsientos = (List<Map<String, Object>>) proxyResponse.get("asientos");
+            Object asientosObj = proxyResponse.get("asientos");
 
-            for (Map<String, Object> asientoMap : listaAsientos) {
-                SeatDto s = new SeatDto();
-                // Ojo: los números pueden venir como Integer, convertimos a String seguro
-                s.setFila(String.valueOf(asientoMap.get("fila")));
-                s.setColumna(String.valueOf(asientoMap.get("columna")));
-                s.setEstado((String) asientoMap.get("estado"));
-                asientosDto.add(s);
+            if (asientosObj instanceof List) {
+                List<Map<String, Object>> listaAsientos = (List<Map<String, Object>>) asientosObj;
+
+                for (Map<String, Object> asientoMap : listaAsientos) {
+                    SeatDto s = new SeatDto();
+
+                    // Usamos el método seguro para leer tanto "1" como 1
+                    s.setFila(parseIntSafely(asientoMap.get("fila")));
+                    s.setColumna(parseIntSafely(asientoMap.get("columna")));
+                    s.setEstado((String) asientoMap.get("estado"));
+
+                    asientosDto.add(s);
+                }
             }
         }
 
-        // 4. Armar el objeto final que verá el celular
+        // 4. Retornar respuesta
         EventDetailDto response = new EventDetailDto(
                 event.getId(),
                 event.getTitulo(),
@@ -69,5 +75,21 @@ public class EventController {
         );
 
         return ResponseEntity.ok(response);
+    }
+
+    // Método auxiliar de seguridad (cópialo dentro de la clase EventController)
+    private Integer parseIntSafely(Object value) {
+        if (value == null) return 0;
+        if (value instanceof Number) {
+            return ((Number) value).intValue();
+        }
+        if (value instanceof String) {
+            try {
+                return Integer.parseInt((String) value);
+            } catch (NumberFormatException e) {
+                return 0;
+            }
+        }
+        return 0;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.backend.sale.infrastructure.client;
 
 import com.example.backend.sale.infrastructure.web.dto.BlockRequestDto;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -26,28 +27,65 @@ public class CatedraApiClient {
         this.restTemplate = restTemplate;
     }
 
-    public boolean bloquearAsientos(BlockRequestDto request) {
+    // CAMBIAR: De boolean a Map<String, Object>
+    public Map<String, Object> bloquearAsientos(BlockRequestDto request) {
         try {
             String url = catedraUrl + "/api/endpoints/v1/bloquear-asientos";
 
-            // Headers con el Token de la Cátedra
             HttpHeaders headers = new HttpHeaders();
             headers.set("Authorization", "Bearer " + catedraToken);
             headers.set("Content-Type", "application/json");
 
-            // El cuerpo es el mismo DTO que recibimos del móvil
             HttpEntity<BlockRequestDto> entity = new HttpEntity<>(request, headers);
 
-            // Hacemos el POST
             ResponseEntity<Map> response = restTemplate.exchange(
                     url, HttpMethod.POST, entity, Map.class);
 
-            // Si devuelve 200 OK, el bloqueo fue exitoso
-            return response.getStatusCode().is2xxSuccessful();
+            // Devolvemos el cuerpo entero de la respuesta (Payload 6 completo)
+            return response.getBody();
 
         } catch (Exception e) {
             System.err.println("Error al bloquear asientos en Cátedra: " + e.getMessage());
-            return false;
+            // En caso de error de conexión, devolvemos un mapa indicando fallo
+            return Map.of("resultado", false, "descripcion", "Error de comunicación: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Envía la solicitud de venta a la Cátedra.
+     * Recibe un Map con la estructura exacta que pide la cátedra (Payload 7).
+     */
+    public Map<String, Object> realizarVenta(Map<String, Object> requestBody) {
+        try {
+            String url = catedraUrl + "/api/endpoints/v1/realizar-venta";
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Authorization", "Bearer " + catedraToken);
+            headers.set("Content-Type", "application/json");
+
+            HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
+
+            ResponseEntity<Map> response = restTemplate.exchange(
+                    url, HttpMethod.POST, entity, Map.class);
+
+            return response.getBody();
+
+        } catch (HttpClientErrorException e) {
+            // ¡AQUÍ ESTÁ LA CLAVE!
+            // Si la cátedra devuelve 400 o 500, capturamos su respuesta JSON real.
+            System.err.println("Error HTTP de Cátedra: " + e.getResponseBodyAsString());
+
+            try {
+                // Intentamos convertir el error JSON de la cátedra a un Mapa para devolverlo
+                return e.getResponseBodyAs(Map.class);
+            } catch (Exception conversionEx) {
+                // Si no es JSON, devolvemos el error genérico
+                return Map.of("resultado", false, "descripcion", "Error HTTP: " + e.getStatusCode());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace(); // Imprime el error completo en la consola
+            return Map.of("resultado", false, "descripcion", "Error de comunicación con Cátedra: " + e.getMessage());
         }
     }
 }

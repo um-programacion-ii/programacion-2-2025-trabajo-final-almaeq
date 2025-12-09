@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SeatDto {
-    private String fila;
-    private String columna;
-    private String estado; // Ej: "Libre", "Ocupado", "Bloqueado"
+    private Integer fila;
+    private Integer columna;
+    private String estado;// Ej: "Libre", "Ocupado", "Bloqueado"
 }
