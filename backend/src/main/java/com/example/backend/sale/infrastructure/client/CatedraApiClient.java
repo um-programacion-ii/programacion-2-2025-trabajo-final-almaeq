@@ -1,6 +1,7 @@
 package com.example.backend.sale.infrastructure.client;
 
 import com.example.backend.sale.infrastructure.web.dto.BlockRequestDto;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -64,15 +65,27 @@ public class CatedraApiClient {
 
             HttpEntity<Map<String, Object>> entity = new HttpEntity<>(requestBody, headers);
 
-            // POST a la cátedra
             ResponseEntity<Map> response = restTemplate.exchange(
                     url, HttpMethod.POST, entity, Map.class);
 
             return response.getBody();
+
+        } catch (HttpClientErrorException e) {
+            // ¡AQUÍ ESTÁ LA CLAVE!
+            // Si la cátedra devuelve 400 o 500, capturamos su respuesta JSON real.
+            System.err.println("Error HTTP de Cátedra: " + e.getResponseBodyAsString());
+
+            try {
+                // Intentamos convertir el error JSON de la cátedra a un Mapa para devolverlo
+                return e.getResponseBodyAs(Map.class);
+            } catch (Exception conversionEx) {
+                // Si no es JSON, devolvemos el error genérico
+                return Map.of("resultado", false, "descripcion", "Error HTTP: " + e.getStatusCode());
+            }
+
         } catch (Exception e) {
-            System.err.println("Error realizando venta en Cátedra: " + e.getMessage());
-            // Retornamos un mapa indicando fallo si hay excepción
-            return Map.of("resultado", false, "descripcion", "Error de comunicación con Cátedra");
+            e.printStackTrace(); // Imprime el error completo en la consola
+            return Map.of("resultado", false, "descripcion", "Error de comunicación con Cátedra: " + e.getMessage());
         }
     }
 }

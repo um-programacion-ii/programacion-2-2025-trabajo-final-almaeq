@@ -37,4 +37,31 @@ public class ProcesoVentaController {
             return ResponseEntity.badRequest().body(respuestaCatedra);
         }
     }
+
+    @PostMapping("/confirmar")
+    public ResponseEntity<Map<String, Object>> confirmarVenta(@RequestBody SaleRequestDto request) {
+
+        // 1. Obtener el usuario real del Token JWT
+        // Spring Security ya validó el token en el filtro y guardó al usuario aquí.
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        try {
+            // 2. Pasar ese username real al servicio
+            Map<String, Object> respuesta = procesoVentaService.confirmarVenta(request, username);
+
+            boolean exito = (boolean) respuesta.getOrDefault("resultado", false);
+
+            if (exito) {
+                return ResponseEntity.ok(respuesta);
+            } else {
+                return ResponseEntity.badRequest().body(respuesta);
+            }
+        } catch (Exception e) {
+            // Si el usuario del token no está en la BD, saltará aquí (Usuario no encontrado)
+            return ResponseEntity.internalServerError().body(Map.of(
+                    "resultado", false,
+                    "descripcion", "Error interno: " + e.getMessage()
+            ));
+        }
+    }
 }

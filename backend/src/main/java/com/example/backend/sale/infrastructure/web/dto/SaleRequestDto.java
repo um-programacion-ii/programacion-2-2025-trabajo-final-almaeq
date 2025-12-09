@@ -12,5 +12,5 @@ import java.util.List;
 public class SaleRequestDto {
     private Long eventoId;
     private List<PersonDto> personas;
-    private List<String> asientos; // Ej: ["F1-A1", "F1-A2"]
+    private List<SimpleSeatDto> asientos;
 }
