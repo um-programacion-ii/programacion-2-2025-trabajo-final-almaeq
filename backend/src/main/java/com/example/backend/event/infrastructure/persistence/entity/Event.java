@@ -19,25 +19,35 @@ import java.util.Set;
 @Table(name = "eventos")
 public class Event {
     @Id
-    // Este ID debe ser el mismo que el del servicio de la Cátedra.
     private Long id;
 
     @Column(nullable = false)
     private String titulo;
 
+    @Column(length = 1000) // Aumentamos tamaño por si la descripción es larga
     private String descripcion;
+
+    @Column(length = 500) // Nuevo: Resumen corto
+    private String resumen;
 
     @Column(nullable = false)
     private LocalDateTime fechaHora;
 
-    private String organizador;
+    private String organizador; // Guardaremos aquí los integrantes concatenados
 
-    private LocalDateTime ultimaActualizacion; // Para saber cuándo lo sincronizaste
+    private String direccion;   // Nuevo
 
-    // --- Relaciones ---
+    @Column(length = 1000)
+    private String imagenUrl;   // Nuevo: URL de la imagen
 
-    // Una venta es para un solo evento,
-    // pero un evento puede tener muchas ventas.
+    private LocalDateTime ultimaActualizacion;
+
+    private Double precio;
+
+    // Capacidad del lugar (opcional, pero viene en el JSON)
+    private Integer filas;
+    private Integer columnas;
+
     @OneToMany(mappedBy = "evento")
     private Set<Sale> ventas = new HashSet<>();
 }

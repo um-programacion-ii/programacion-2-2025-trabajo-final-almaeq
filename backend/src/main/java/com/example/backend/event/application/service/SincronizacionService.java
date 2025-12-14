@@ -13,15 +13,22 @@ public class SincronizacionService {
 
     /**
      * Recibe la notificación y ejecuta la lógica de actualización.
-     * Actualmente usamos la estrategia "Trigger" (Sincronización completa).
+     * Si viene un ID, actualiza solo ese evento. Si no, actualiza todo.
      */
-    public void procesarNotificacion(String mensaje) {
+    public void procesarNotificacion(Long eventoId, String mensaje) {
         System.out.println("🔄 Disparando proceso de sincronización...");
         System.out.println("   Motivo: " + mensaje);
 
         try {
-            // Llamamos a la lógica que ya tenías para bajar todo de la cátedra
-            eventService.syncEvents();
+            if (eventoId != null) {
+                // ESTRATEGIA OPTIMIZADA: Solo bajamos el evento que cambió
+                System.out.println("   Objetivo: Actualizar Evento ID " + eventoId);
+                eventService.syncEventById(eventoId);
+            } else {
+                // ESTRATEGIA COMPLETA: Bajamos todo (fallback)
+                System.out.println("   Objetivo: Sincronización completa");
+                eventService.syncEvents();
+            }
             System.out.println("✅ Sincronización finalizada.");
         } catch (Exception e) {
             System.err.println("❌ Error en la sincronización: " + e.getMessage());

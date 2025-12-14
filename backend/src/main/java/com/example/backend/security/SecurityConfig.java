@@ -16,10 +16,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
 
-    // AÑADIR LA INYECCIÓN DEL FILTRO
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    // AÑADIR EL FILTRO AL CONSTRUCTOR
     public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }
@@ -44,7 +42,6 @@ public class SecurityConfig {
     /**
      * Configuración principal de Spring Security.
      */
-    // ESTA ANOTACIÓN ES LA MÁS IMPORTANTE
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http

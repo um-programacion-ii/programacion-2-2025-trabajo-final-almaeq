@@ -13,8 +13,15 @@ import java.util.List;
 public class EventDetailDto {
     private Long id;
     private String titulo;
+
+    // CAMPOS NUEVOS QUE TRAEMOS DEL PAYLOAD 5
+    private String resumen;
     private String descripcion;
+    private String imagenUrl;
+    private String direccion;
+
     private LocalDateTime fechaHora;
     private String organizador;
-    private List<SeatDto> asientos; // Lista de asientos con su estado
+
+    private List<SeatDto> asientos;
 }

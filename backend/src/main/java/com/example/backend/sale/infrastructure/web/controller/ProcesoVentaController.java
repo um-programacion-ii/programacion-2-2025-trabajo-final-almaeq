@@ -2,12 +2,15 @@ package com.example.backend.sale.infrastructure.web.controller;
 
 import com.example.backend.sale.application.service.ProcesoVentaService;
 import com.example.backend.sale.infrastructure.web.dto.BlockRequestDto;
+import com.example.backend.sale.infrastructure.web.dto.CatedraSaleDetailDto;
+import com.example.backend.sale.infrastructure.web.dto.CatedraSaleDto;
 import com.example.backend.sale.infrastructure.web.dto.SaleRequestDto; // Importar
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication; // Importar
 import org.springframework.security.core.context.SecurityContextHolder; // Importar
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -63,5 +66,20 @@ public class ProcesoVentaController {
                     "descripcion", "Error interno: " + e.getMessage()
             ));
         }
+    }
+
+    @GetMapping("/historial")
+    public ResponseEntity<List<CatedraSaleDto>> getHistorialVentas() {
+        return ResponseEntity.ok(procesoVentaService.obtenerHistorialVentas());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CatedraSaleDetailDto> getVentaPorId(@PathVariable Long id) {
+        CatedraSaleDetailDto detalle = procesoVentaService.obtenerVentaPorId(id);
+
+        if (detalle == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(detalle);
     }
 }

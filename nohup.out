@@ -435,3 +435,271 @@ java.util.NoSuchElementException: Sequence is empty.
 	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
 	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
 2025-12-09 09:49:40,393 [90781037]   WARN - #o.j.c.f.l.l.s.c.FullLineCompletionInputBuilder - Suppressed a frequent exception logged for the 2nd time: Sequence is empty.
+2025-12-11 17:12:13,825 [    683]   WARN - #c.i.o.v.n.p.FSRecords - Records storage [/home/alma/.cache/Google/AndroidStudio2025.1.4/caches/records.dat] was in use by process [OwnershipInfo{owner pid: 15867, acquired at: 1762191662271}] which is not exist now (wasn't closed properly/crashed?) -> re-acquiring forcibly
+2025-12-11 17:12:13,882 [    740]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: VFS wasn't safely shut down: records.wasClosedProperly is false
+2025-12-11 17:12:14,307 [   1165]   WARN - org.apache.lucene.internal.vectorization.VectorizationProvider - Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+2025-12-11 17:12:15,014 [   1872]   WARN - #com.android.studio.ml.enterprise.login.StudioModelsOnboardingController$Companion - Auth state changed from AuthState.Initializing(isAuthorized=false) to AuthState.LoggedOut(isAuthorized=false)
+2025-12-11 17:12:19,207 [   6065]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: NOT_CLOSED_PROPERLY recovered, no problems remain
+2025-12-11 17:12:22,314 [   9172]   WARN - #c.i.u.j.JBCefApp - JCefAppConfig.class is not from a JBR module, url: jar:file:/opt/android-studio/lib/lib.jar!/com/jetbrains/cef/JCefAppConfig.class (Use JBR bundled with the IDE)
+2025-12-11 17:12:23,060 [   9918]   WARN - #com.android.tools.ndk.HotfixForOCInitialTablesBuildingActivity - Overriding OCInitialTablesBuildingActivity with HotfixForOCInitialTablesBuildingActivity
+2025-12-11 17:12:23,741 [  10599]   WARN - #c.i.c.navigation - Failed to move /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index to /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index
+java.nio.file.NoSuchFileException: /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index
+	at java.base/sun.nio.fs.UnixException.translateToIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystem.move(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.move(Unknown Source)
+	at java.base/java.nio.file.Files.move(Unknown Source)
+	at com.intellij.vcs.log.util.StorageId.cleanupAllStorageFiles(PersistentUtil.kt:58)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.lambda$createStorageAndIndexBackend$4(VcsLogStorageImpl.java:341)
+	at com.intellij.util.io.IOUtil.openCleanOrResetBroken(IOUtil.java:310)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.createStorageAndIndexBackend(VcsLogStorageImpl.java:324)
+	at com.intellij.vcs.log.data.VcsLogData.createStorageAndIndex(VcsLogData.java:149)
+	at com.intellij.vcs.log.data.VcsLogData.<init>(VcsLogData.java:92)
+	at com.intellij.vcs.log.impl.VcsLogManager.<init>(VcsLogManager.java:81)
+	at com.intellij.vcs.log.impl.VcsProjectLogManager.<init>(VcsProjectLogManager.kt:17)
+	at com.intellij.vcs.log.impl.VcsProjectLog.getOrCreateLogManager(VcsProjectLog.kt:222)
+	at com.intellij.vcs.log.impl.VcsProjectLog.access$getOrCreateLogManager(VcsProjectLog.kt:59)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invokeSuspend(VcsProjectLog.kt:210)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invoke(VcsProjectLog.kt)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invoke(VcsProjectLog.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invokeSuspend(PlatformActivityTrackerService.kt:72)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:62)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService.trackConfigurationActivity(PlatformActivityTrackerService.kt:71)
+	at com.intellij.platform.backend.observation.TrackingUtil.trackActivity(util.kt:23)
+	at com.intellij.vcs.log.impl.VcsProjectLog.createLogInternal(VcsProjectLog.kt:209)
+	at com.intellij.vcs.log.impl.VcsProjectLog.access$createLogInternal(VcsProjectLog.kt:59)
+	at com.intellij.vcs.log.impl.VcsProjectLog$launchRecreateLog$1.invokeSuspend(VcsProjectLog.kt:190)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:608)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:873)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:763)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:750)
+2025-12-11 17:33:34,583 [1281441]   WARN - #c.i.o.p.i.j.JdkAuto - Multiple SdkType candidates kotlin.sequences.TransformingSequence@6006878d. Proceeding with a first candidate: JavaSDK
+2025-12-11 17:33:38,414 [1285272]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.annotation:annotation-jvm:1.9.1'
+2025-12-11 17:33:38,414 [1285272]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-stdlib:2.2.20'
+2025-12-11 17:33:38,414 [1285272]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains:annotations:23.0.0'
+2025-12-11 17:33:38,414 [1285272]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.arch.core:core-common:2.2.0'
+2025-12-11 17:33:38,414 [1285272]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.lifecycle:lifecycle-common-jvm:2.9.4'
+2025-12-11 17:33:38,414 [1285272]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jspecify:jspecify:1.0.0'
+2025-12-11 17:33:38,414 [1285272]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.7.3'
+2025-12-11 17:33:38,415 [1285273]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-test-junit:2.2.20'
+2025-12-11 17:33:38,415 [1285273]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-test:2.2.20'
+2025-12-11 17:33:38,415 [1285273]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: junit:junit:4.13.2'
+2025-12-11 17:33:38,415 [1285273]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.hamcrest:hamcrest-core:1.3'
+2025-12-11 17:36:33,949 [1460807]   WARN - #c.i.u.a.JBAnimator - Animator is already disposed
+2025-12-11 17:38:55,838 [1602696]   WARN - #c.i.o.p.i.j.JdkAuto - Multiple SdkType candidates kotlin.sequences.TransformingSequence@242f6195. Proceeding with a first candidate: JavaSDK
+2025-12-11 17:38:58,059 [1604917]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.annotation:annotation-jvm:1.9.1'
+2025-12-11 17:38:58,059 [1604917]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-stdlib:2.2.20'
+2025-12-11 17:38:58,059 [1604917]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains:annotations:23.0.0'
+2025-12-11 17:38:58,061 [1604919]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.arch.core:core-common:2.2.0'
+2025-12-11 17:38:58,061 [1604919]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.lifecycle:lifecycle-common-jvm:2.9.4'
+2025-12-11 17:38:58,061 [1604919]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jspecify:jspecify:1.0.0'
+2025-12-11 17:38:58,061 [1604919]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.7.3'
+2025-12-11 17:38:58,063 [1604921]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.slf4j:slf4j-api:2.0.16'
+2025-12-11 17:38:58,063 [1604921]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-core-jvm:3.0.1'
+2025-12-11 17:38:58,063 [1604921]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-http-jvm:3.0.1'
+2025-12-11 17:38:58,063 [1604921]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-utils-jvm:3.0.1'
+2025-12-11 17:38:58,063 [1604921]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-io-jvm:3.0.1'
+2025-12-11 17:38:58,064 [1604922]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-io-core-jvm:0.5.4'
+2025-12-11 17:38:58,064 [1604922]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-io-bytestring-jvm:0.5.4'
+2025-12-11 17:38:58,064 [1604922]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-events-jvm:3.0.1'
+2025-12-11 17:38:58,064 [1604922]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-websocket-serialization-jvm:3.0.1'
+2025-12-11 17:38:58,064 [1604922]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-serialization-jvm:3.0.1'
+2025-12-11 17:38:58,064 [1604922]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-websockets-jvm:3.0.1'
+2025-12-11 17:38:58,064 [1604922]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-sse-jvm:3.0.1'
+2025-12-11 17:38:58,079 [1604937]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-content-negotiation-jvm:3.0.1'
+2025-12-11 17:38:58,080 [1604938]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-serialization-kotlinx-json-jvm:3.0.1'
+2025-12-11 17:38:58,080 [1604938]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-serialization-kotlinx-jvm:3.0.1'
+2025-12-11 17:38:58,080 [1604938]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.7.3'
+2025-12-11 17:38:58,080 [1604938]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-io-jvm:1.7.3'
+2025-12-11 17:38:58,080 [1604938]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-auth-jvm:3.0.1'
+2025-12-11 17:38:58,080 [1604938]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-logging-jvm:3.0.1'
+2025-12-11 17:38:58,081 [1604939]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-test-junit:2.2.20'
+2025-12-11 17:38:58,081 [1604939]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-test:2.2.20'
+2025-12-11 17:38:58,081 [1604939]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: junit:junit:4.13.2'
+2025-12-11 17:38:58,081 [1604939]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.hamcrest:hamcrest-core:1.3'
+2025-12-11 17:39:00,320 [1607178]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-11 17:39:39,808 [1646666]   WARN - #c.i.o.p.i.j.JdkAuto - Multiple SdkType candidates kotlin.sequences.TransformingSequence@53e92815. Proceeding with a first candidate: JavaSDK
+2025-12-11 17:39:40,720 [1647578]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.annotation:annotation-jvm:1.9.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-stdlib:2.2.20'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains:annotations:23.0.0'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.arch.core:core-common:2.2.0'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.lifecycle:lifecycle-common-jvm:2.9.4'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jspecify:jspecify:1.0.0'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.7.3'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.slf4j:slf4j-api:2.0.16'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-core-jvm:3.0.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-http-jvm:3.0.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-utils-jvm:3.0.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-io-jvm:3.0.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-io-core-jvm:0.5.4'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-io-bytestring-jvm:0.5.4'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-events-jvm:3.0.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-websocket-serialization-jvm:3.0.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-serialization-jvm:3.0.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-websockets-jvm:3.0.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-sse-jvm:3.0.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-content-negotiation-jvm:3.0.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-serialization-kotlinx-json-jvm:3.0.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-serialization-kotlinx-jvm:3.0.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.7.3'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-io-jvm:1.7.3'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-auth-jvm:3.0.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-logging-jvm:3.0.1'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-test-junit:2.2.20'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-test:2.2.20'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: junit:junit:4.13.2'
+2025-12-11 17:39:40,721 [1647579]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.hamcrest:hamcrest-core:1.3'
+2025-12-11 17:39:42,607 [1649465]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-11 17:39:42,618 [1649476]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-11 17:40:59,197 [1726055]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-11 17:41:15,242 [1742100]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-11 17:41:19,291 [1746149]   WARN - org.apache.velocity.deprecation - configuration key 'resource.loader' has been deprecated in favor of 'resource.loaders'
+2025-12-11 17:41:19,292 [1746150]   WARN - org.apache.velocity.deprecation - configuration key 'includes.resource.loader.instance' has been deprecated in favor of 'resource.loader.includes.instance'
+2025-12-11 17:41:57,073 [1783931]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-11 17:49:56,997 [2263855]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-11 17:53:15,165 [2462023]   WARN - #c.i.o.p.i.j.JdkAuto - Multiple SdkType candidates kotlin.sequences.TransformingSequence@34f92300. Proceeding with a first candidate: JavaSDK
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.annotation:annotation-jvm:1.9.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-stdlib:2.2.20'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains:annotations:23.0.0'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.arch.core:core-common:2.2.0'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.lifecycle:lifecycle-common-jvm:2.9.4'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jspecify:jspecify:1.0.0'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.7.3'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.slf4j:slf4j-api:2.0.16'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-core-jvm:3.0.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-http-jvm:3.0.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-utils-jvm:3.0.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-io-jvm:3.0.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-io-core-jvm:0.5.4'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-io-bytestring-jvm:0.5.4'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-events-jvm:3.0.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-websocket-serialization-jvm:3.0.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-serialization-jvm:3.0.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-websockets-jvm:3.0.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-sse-jvm:3.0.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-auth-jvm:3.0.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-content-negotiation-jvm:3.0.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-serialization-kotlinx-json-jvm:3.0.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-serialization-kotlinx-jvm:3.0.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.7.3'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-io-jvm:1.7.3'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-logging-jvm:3.0.1'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-test-junit:2.2.20'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-test:2.2.20'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: junit:junit:4.13.2'
+2025-12-11 17:53:15,568 [2462426]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.hamcrest:hamcrest-core:1.3'
+2025-12-11 17:53:16,314 [2463172]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-11 17:53:16,316 [2463174]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-11 17:53:16,316 [2463174]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-11 17:53:16,317 [2463175]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-11 18:29:06,595 [4613453]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-11 18:32:21,618 [4808476]   WARN - Emulator: Pixel 8 Pro - Your GPU drivers may have a bug. Switching to software rendering.
+2025-12-11 18:32:21,880 [4808738]   WARN - Emulator: Pixel 8 Pro - Setting read-only feature 'GLAsyncSwap' to '0'
+2025-12-11 18:32:22,036 [4808894]   WARN - Emulator: Pixel 8 Pro - *** Basic token auth should only be used by android-studio ***
+2025-12-11 18:32:22,204 [4809062]   WARN - Emulator: Pixel 8 Pro - Error -1 from the snapshot callback
+2025-12-11 18:32:22,204 [4809062]   WARN - Emulator: Pixel 8 Pro - Failed to load snapshot 'default_boot'
+2025-12-11 18:32:36,477 [4823335]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-11 18:32:36,485 [4823343]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-11 18:32:36,485 [4823343]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-11 18:32:36,485 [4823343]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-11 18:32:36,485 [4823343]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-11 18:32:52,648 [4839506]   WARN - #com.android.ddmlib - Failed to start Emulator console for 5554
+2025-12-11 18:32:54,130 [4840988]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:32:55,393 [4842251]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:32:56,595 [4843453]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:32:58,037 [4844895]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:32:59,669 [4846527]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:01,325 [4848183]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:02,878 [4849736]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:04,092 [4850950]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:05,671 [4852529]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:06,937 [4853795]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:08,922 [4855780]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:10,924 [4857782]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:12,301 [4859159]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:13,743 [4860601]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:15,094 [4861952]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:16,575 [4863433]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:18,582 [4865440]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:20,439 [4867297]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:21,802 [4868660]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:23,178 [4870036]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:24,390 [4871248]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:26,266 [4873124]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:28,057 [4874915]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:29,584 [4876442]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:30,972 [4877830]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:32,267 [4879125]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:33,683 [4880541]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:35,314 [4882172]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:37,318 [4884176]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:39,276 [4886134]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:40,575 [4887433]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:41,844 [4888702]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:43,184 [4890042]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:44,470 [4891328]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:46,473 [4893331]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:48,476 [4895334]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:50,480 [4897338]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:51,764 [4898622]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:53,267 [4900125]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:54,588 [4901446]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:56,241 [4903099]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:57,699 [4904557]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:33:59,162 [4906020]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:00,608 [4907466]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:01,804 [4908662]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:03,149 [4910007]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:05,151 [4912009]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:06,606 [4913464]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:07,950 [4914808]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:09,183 [4916041]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:10,347 [4917205]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:11,739 [4918597]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:12,985 [4919843]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:14,818 [4921676]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:16,819 [4923677]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:18,255 [4925113]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:19,749 [4926607]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:21,235 [4928093]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:22,469 [4929327]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:24,049 [4930907]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:25,618 [4932476]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:27,035 [4933893]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:28,378 [4935236]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:29,639 [4936497]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:30,949 [4937807]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:32,157 [4939015]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:33,394 [4940252]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:34,709 [4941567]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:35,862 [4942720]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:37,501 [4944359]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:38,864 [4945722]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:40,164 [4947022]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:41,365 [4948223]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:42,713 [4949571]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:44,335 [4951193]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:46,024 [4952882]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:47,354 [4954212]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:48,945 [4955803]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:50,214 [4957072]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:51,657 [4958515]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:53,236 [4960094]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:54,580 [4961438]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:55,816 [4962674]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:57,029 [4963887]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:58,236 [4965094]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:34:59,425 [4966283]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:35:00,728 [4967586]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:35:01,887 [4968745]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:35:02,965 [4969823]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:35:04,202 [4971060]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:35:05,752 [4972610]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-11 18:35:57,090 [5023948]   WARN - #c.i.o.v.i.l.NativeFileWatcherImpl - Watcher terminated with exit code 143

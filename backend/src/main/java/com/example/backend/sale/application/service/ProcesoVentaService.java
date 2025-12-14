@@ -5,11 +5,8 @@ import com.example.backend.event.infrastructure.persistence.repository.EventRepo
 import com.example.backend.sale.infrastructure.client.CatedraApiClient;
 import com.example.backend.sale.infrastructure.persistence.entity.Sale;
 import com.example.backend.sale.infrastructure.persistence.repository.SaleRepository;
-import com.example.backend.sale.infrastructure.web.dto.BlockRequestDto;
+import com.example.backend.sale.infrastructure.web.dto.*;
 import com.example.backend.proxy.application.service.ProxyClientService;
-import com.example.backend.sale.infrastructure.web.dto.PersonDto;
-import com.example.backend.sale.infrastructure.web.dto.SaleRequestDto;
-import com.example.backend.sale.infrastructure.web.dto.SimpleSeatDto;
 import com.example.backend.seatSold.infrastructure.persistence.entity.SeatSold;
 import com.example.backend.seatSold.infrastructure.persistence.repository.SeatSoldRepository;
 import com.example.backend.user.infrastructure.persistence.entity.User;
@@ -71,11 +68,16 @@ public class ProcesoVentaService {
         User usuario = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-        // 2. Preparar Payload para Cátedra
+        // CALCULAR PRECIO TOTAL
+        // Si el precio es null (por datos viejos), usamos 0.0 para evitar error
+        double precioUnitario = (evento.getPrecio() != null) ? evento.getPrecio() : 0.0;
+        double precioTotal = precioUnitario * request.getAsientos().size();
+
+        // 2. Preparar Payload
         Map<String, Object> payloadCatedra = new HashMap<>();
         payloadCatedra.put("eventoId", evento.getId());
         payloadCatedra.put("fecha", Instant.now().toString());
-        payloadCatedra.put("precioVenta", 1000.0);
+        payloadCatedra.put("precioVenta", precioTotal);
 
         List<Map<String, Object>> listaAsientosCatedra = new ArrayList<>();
 
@@ -125,4 +127,12 @@ public class ProcesoVentaService {
         return respuestaCatedra;
     }
 
+    public List<CatedraSaleDto> obtenerHistorialVentas() {
+        // Simplemente delegamos la consulta al cliente de la Cátedra
+        return catedraApiClient.listarVentasCatedra();
+    }
+
+    public CatedraSaleDetailDto obtenerVentaPorId(Long ventaId) {
+        return catedraApiClient.obtenerDetalleVenta(ventaId);
+    }
 }
