@@ -1,6 +1,7 @@
 package com.example.backend.sale.infrastructure.client;
 
 import com.example.backend.sale.infrastructure.web.dto.BlockRequestDto;
+import com.example.backend.sale.infrastructure.web.dto.CatedraSaleDetailDto;
 import com.example.backend.sale.infrastructure.web.dto.CatedraSaleDto;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.beans.factory.annotation.Value;
@@ -111,6 +112,26 @@ public class CatedraApiClient {
         } catch (Exception e) {
             System.err.println("Error obteniendo historial de ventas: " + e.getMessage());
             return Collections.emptyList();
+        }
+    }
+
+    public CatedraSaleDetailDto obtenerDetalleVenta(Long ventaId) {
+        try {
+            // Nota: Payload 9 usa "listar-venta" en singular + ID
+            String url = catedraUrl + "/api/endpoints/v1/listar-venta/" + ventaId;
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Authorization", "Bearer " + catedraToken);
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+
+            ResponseEntity<CatedraSaleDetailDto> response = restTemplate.exchange(
+                    url, HttpMethod.GET, entity, CatedraSaleDetailDto.class);
+
+            return response.getBody();
+
+        } catch (Exception e) {
+            System.err.println("Error obteniendo detalle de venta " + ventaId + ": " + e.getMessage());
+            return null;
         }
     }
 

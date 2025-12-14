@@ -131,4 +131,8 @@ public class ProcesoVentaService {
         // Simplemente delegamos la consulta al cliente de la Cátedra
         return catedraApiClient.listarVentasCatedra();
     }
+
+    public CatedraSaleDetailDto obtenerVentaPorId(Long ventaId) {
+        return catedraApiClient.obtenerDetalleVenta(ventaId);
+    }
 }
