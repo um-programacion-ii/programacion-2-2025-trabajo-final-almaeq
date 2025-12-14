@@ -1,6 +1,7 @@
 package com.example.backend.sale.infrastructure.client;
 
 import com.example.backend.sale.infrastructure.web.dto.BlockRequestDto;
+import com.example.backend.sale.infrastructure.web.dto.CatedraSaleDto;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -10,6 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 @Component
@@ -27,7 +31,6 @@ public class CatedraApiClient {
         this.restTemplate = restTemplate;
     }
 
-    // CAMBIAR: De boolean a Map<String, Object>
     public Map<String, Object> bloquearAsientos(BlockRequestDto request) {
         try {
             String url = catedraUrl + "/api/endpoints/v1/bloquear-asientos";
@@ -88,4 +91,27 @@ public class CatedraApiClient {
             return Map.of("resultado", false, "descripcion", "Error de comunicación con Cátedra: " + e.getMessage());
         }
     }
+
+    public List<CatedraSaleDto> listarVentasCatedra() {
+        try {
+            String url = catedraUrl + "/api/endpoints/v1/listar-ventas";
+
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Authorization", "Bearer " + catedraToken);
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+
+            ResponseEntity<CatedraSaleDto[]> response = restTemplate.exchange(
+                    url, HttpMethod.GET, entity, CatedraSaleDto[].class);
+
+            if (response.getBody() != null) {
+                return Arrays.asList(response.getBody());
+            }
+            return Collections.emptyList();
+
+        } catch (Exception e) {
+            System.err.println("Error obteniendo historial de ventas: " + e.getMessage());
+            return Collections.emptyList();
+        }
+    }
+
 }
