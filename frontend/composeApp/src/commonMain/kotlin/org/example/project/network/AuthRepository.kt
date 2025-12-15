@@ -12,20 +12,27 @@ data class LoginRequest(val username: String, val password: String)
 data class LoginResponse(val token: String)
 
 class AuthRepository {
-    // Esta función usa tu nuevo ApiClient
     suspend fun login(user: String, pass: String): Boolean {
         return try {
-            val response = ApiClient.client.post("/authenticate") {
+            val response = ApiClient.client.post("authenticate") {
                 setBody(LoginRequest(user, pass))
             }
-            val data = response.body<LoginResponse>()
 
-            // Si llegamos aquí, ¡funciona! Guardamos el token
-            TokenManager.jwtToken = data.token
-            println("Login Exitoso! Token guardado: ${data.token.take(10)}...")
-            true
+            // DIAGNÓSTICO: Imprimir respuesta del servidor
+            println("Status Code: ${response.status}")
+
+            if (response.status.value in 200..299) {
+                val data = response.body<LoginResponse>()
+                TokenManager.jwtToken = data.token
+                true
+            } else {
+                println("Error del servidor: ${response.status}")
+                false
+            }
         } catch (e: Exception) {
-            println("Error en Login: ${e.message}")
+            // MIRA ESTE MENSAJE EN EL LOGCAT
+            println("EXCEPCIÓN REAL: ${e}")
+            e.printStackTrace()
             false
         }
     }

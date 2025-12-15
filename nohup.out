@@ -703,3 +703,796 @@ java.nio.file.NoSuchFileException: /home/alma/.cache/Google/AndroidStudio2025.1.
 2025-12-11 18:35:04,202 [4971060]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
 2025-12-11 18:35:05,752 [4972610]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
 2025-12-11 18:35:57,090 [5023948]   WARN - #c.i.o.v.i.l.NativeFileWatcherImpl - Watcher terminated with exit code 143
+2025-12-14 23:04:47,459 [    676]   WARN - #c.i.o.v.n.p.FSRecords - Records storage [/home/alma/.cache/Google/AndroidStudio2025.1.4/caches/records.dat] was in use by process [OwnershipInfo{owner pid: 90613, acquired at: 1765483933825}] which is not exist now (wasn't closed properly/crashed?) -> re-acquiring forcibly
+2025-12-14 23:04:47,543 [    760]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: VFS wasn't safely shut down: records.wasClosedProperly is false
+2025-12-14 23:04:48,064 [   1281]   WARN - org.apache.lucene.internal.vectorization.VectorizationProvider - Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+2025-12-14 23:04:48,820 [   2037]   WARN - #com.android.studio.ml.enterprise.login.StudioModelsOnboardingController$Companion - Auth state changed from AuthState.Initializing(isAuthorized=false) to AuthState.LoggedOut(isAuthorized=false)
+2025-12-14 23:04:53,343 [   6560]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: NOT_CLOSED_PROPERLY recovered, no problems remain
+2025-12-14 23:04:55,260 [   8477]   WARN - #c.i.e.RunManager - Must be not called before project components initialized
+2025-12-14 23:05:02,048 [  15265]   WARN - #c.i.u.j.JBCefApp - JCefAppConfig.class is not from a JBR module, url: jar:file:/opt/android-studio/lib/lib.jar!/com/jetbrains/cef/JCefAppConfig.class (Use JBR bundled with the IDE)
+2025-12-14 23:05:03,650 [  16867]   WARN - #com.android.tools.ndk.HotfixForOCInitialTablesBuildingActivity - Overriding OCInitialTablesBuildingActivity with HotfixForOCInitialTablesBuildingActivity
+2025-12-14 23:05:05,121 [  18338]   WARN - #c.i.c.navigation - Failed to move /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index to /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index
+java.nio.file.NoSuchFileException: /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index
+	at java.base/sun.nio.fs.UnixException.translateToIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystem.move(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.move(Unknown Source)
+	at java.base/java.nio.file.Files.move(Unknown Source)
+	at com.intellij.vcs.log.util.StorageId.cleanupAllStorageFiles(PersistentUtil.kt:58)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.lambda$createStorageAndIndexBackend$4(VcsLogStorageImpl.java:341)
+	at com.intellij.util.io.IOUtil.openCleanOrResetBroken(IOUtil.java:310)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.createStorageAndIndexBackend(VcsLogStorageImpl.java:324)
+	at com.intellij.vcs.log.data.VcsLogData.createStorageAndIndex(VcsLogData.java:149)
+	at com.intellij.vcs.log.data.VcsLogData.<init>(VcsLogData.java:92)
+	at com.intellij.vcs.log.impl.VcsLogManager.<init>(VcsLogManager.java:81)
+	at com.intellij.vcs.log.impl.VcsProjectLogManager.<init>(VcsProjectLogManager.kt:17)
+	at com.intellij.vcs.log.impl.VcsProjectLog.getOrCreateLogManager(VcsProjectLog.kt:222)
+	at com.intellij.vcs.log.impl.VcsProjectLog.access$getOrCreateLogManager(VcsProjectLog.kt:59)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invokeSuspend(VcsProjectLog.kt:210)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invoke(VcsProjectLog.kt)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invoke(VcsProjectLog.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invokeSuspend(PlatformActivityTrackerService.kt:72)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:62)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService.trackConfigurationActivity(PlatformActivityTrackerService.kt:71)
+	at com.intellij.platform.backend.observation.TrackingUtil.trackActivity(util.kt:23)
+	at com.intellij.vcs.log.impl.VcsProjectLog.createLogInternal(VcsProjectLog.kt:209)
+	at com.intellij.vcs.log.impl.VcsProjectLog.access$createLogInternal(VcsProjectLog.kt:59)
+	at com.intellij.vcs.log.impl.VcsProjectLog$launchRecreateLog$1.invokeSuspend(VcsProjectLog.kt:190)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:608)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:873)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:763)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:750)
+2025-12-14 23:05:31,418 [  44635]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-14 23:05:40,270 [  53487]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-14 23:05:54,007 [  67224]   WARN - org.apache.velocity.deprecation - configuration key 'resource.loader' has been deprecated in favor of 'resource.loaders'
+2025-12-14 23:05:54,008 [  67225]   WARN - org.apache.velocity.deprecation - configuration key 'includes.resource.loader.instance' has been deprecated in favor of 'resource.loader.includes.instance'
+2025-12-14 23:06:35,029 [ 108246]   WARN - #o.j.a.u.LayoutLibraryLoader - SystemFonts: Loading font config from /opt/android-studio/plugins/design-tools/resources/layoutlib/data/fonts/fonts.xml
+2025-12-14 23:06:35,082 [ 108299]   WARN - #o.j.a.u.LayoutLibraryLoader - SystemFonts: Loading font config from /opt/android-studio/plugins/design-tools/resources/layoutlib/data/fonts/font_fallback.xml
+WARNING: A terminally deprecated method in java.lang.System has been called
+WARNING: System::setSecurityManager has been called by com.android.tools.rendering.security.RenderSecurityManager
+WARNING: Please consider reporting this to the maintainers of com.android.tools.rendering.security.RenderSecurityManager
+WARNING: System::setSecurityManager will be removed in a future release
+2025-12-14 23:06:36,230 [ 109447]   WARN - #o.j.a.u.LayoutLibraryLoader - FeatureFlagsImplExport: android.os.flagging.AconfigStorageReadException: ERROR_PACKAGE_NOT_FOUND: package android.xr cannot be found on the device
+2025-12-14 23:06:38,389 [ 111606]   WARN - #com.android.tools.rendering.LayoutlibCallbackExDelegate - LayoutlibCallback use after dispose
+2025-12-14 23:06:38,396 [ 111613]   WARN - #com.android.tools.rendering.LayoutlibCallbackExDelegate - LayoutlibCallback use after dispose
+2025-12-14 23:06:38,953 [ 112170]   WARN - #com.android.tools.rendering.LayoutlibCallbackExDelegate - LayoutlibCallback use after dispose
+2025-12-14 23:09:35,967 [ 289184]   WARN - Emulator: Pixel 8 Pro - Your GPU drivers may have a bug. Switching to software rendering.
+2025-12-14 23:09:36,200 [ 289417]   WARN - Emulator: Pixel 8 Pro - Setting read-only feature 'GLAsyncSwap' to '0'
+2025-12-14 23:09:36,337 [ 289554]   WARN - Emulator: Pixel 8 Pro - *** Basic token auth should only be used by android-studio ***
+2025-12-14 23:09:36,492 [ 289709]   WARN - Emulator: Pixel 8 Pro - Error -1 from the snapshot callback
+2025-12-14 23:09:36,492 [ 289709]   WARN - Emulator: Pixel 8 Pro - Failed to load snapshot 'default_boot'
+2025-12-14 23:09:56,086 [ 309303]   WARN - #com.android.ddmlib - Failed to start Emulator console for 5554
+2025-12-14 23:09:56,796 [ 310013]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:09:57,931 [ 311148]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:09:59,026 [ 312243]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:01,028 [ 314245]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:02,604 [ 315821]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:04,377 [ 317594]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:05,741 [ 318958]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:07,099 [ 320316]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:08,389 [ 321606]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:09,592 [ 322809]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:10,884 [ 324101]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:12,262 [ 325479]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:13,885 [ 327102]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:15,886 [ 329103]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:17,472 [ 330689]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:18,779 [ 331996]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:20,045 [ 333262]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:20,582 [ 333799]   WARN - #c.i.o.a.i.ActionUpdater - 2161 ms to call on BGT ForceCompileAndRefreshActionForNotification#presentation@NlRhsConfigToolbar (com.android.tools.idea.preview.actions.ForceCompileAndRefreshActionForNotification)
+2025-12-14 23:10:21,349 [ 334566]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:22,689 [ 335906]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:24,690 [ 337907]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:26,322 [ 339539]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:28,325 [ 341542]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:30,338 [ 343555]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:31,573 [ 344790]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:32,924 [ 346141]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:34,020 [ 347237]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:35,275 [ 348492]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:36,854 [ 350071]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:37,965 [ 351182]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:39,196 [ 352413]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:41,197 [ 354414]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:42,574 [ 355791]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:43,781 [ 356998]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:45,172 [ 358389]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:46,583 [ 359800]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:48,584 [ 361801]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:50,473 [ 363690]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:52,430 [ 365647]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:53,989 [ 367206]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:55,231 [ 368448]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:56,360 [ 369577]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:57,737 [ 370954]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:10:59,036 [ 372253]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:00,751 [ 373968]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:02,334 [ 375551]   WARN - #com.android.tools.rendering.RenderExecutor - Slow render action 0/3
+java.util.concurrent.TimeoutException: Slow render action 0/3
+	at java.base/sun.nio.ch.NativeThread.current0(Native Method)
+	at java.base/sun.nio.ch.NativeThread.currentNativeThread(Unknown Source)
+	at java.base/sun.nio.ch.NativeThreadSet.add(Unknown Source)
+	at java.base/sun.nio.ch.FileChannelImpl.position(Unknown Source)
+	at java.base/java.util.zip.ZipFile$Source$ChannelFileAccessor.seek(Unknown Source)
+	at java.base/java.util.zip.ZipFile$Source.readFullyAt(Unknown Source)
+	at java.base/java.util.zip.ZipFile$Source.initCEN(Unknown Source)
+	at java.base/java.util.zip.ZipFile$Source.<init>(Unknown Source)
+	at java.base/java.util.zip.ZipFile$Source.get(Unknown Source)
+	at java.base/java.util.zip.ZipFile$CleanableResource.<init>(Unknown Source)
+	at java.base/java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.base/java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.base/java.util.zip.ZipFile.<init>(Unknown Source)
+	at com.android.tools.idea.rendering.classloading.loaders.JarManagerKt.loadFileFromJarOnDisk(JarManager.kt:92)
+	at com.android.tools.idea.rendering.classloading.loaders.JarManagerKt.loadFileFromJarOnDiskOrNull(JarManager.kt:100)
+	at com.android.tools.idea.rendering.classloading.loaders.JarManagerKt.access$loadFileFromJarOnDiskOrNull(JarManager.kt:1)
+	at com.android.tools.idea.rendering.classloading.loaders.JarManager.loadFileFromJar(JarManager.kt:232)
+	at com.android.tools.idea.projectsystem.gradle.CompileRoots.findClassInJarRoots(GradleClassFileFinder.kt:102)
+	at com.android.tools.idea.projectsystem.gradle.CompileRoots.findClass$lambda$7(GradleClassFileFinder.kt:114)
+	at com.google.common.cache.LocalCache$LocalManualCache$1.load(LocalCache.java:4903)
+	at com.google.common.cache.LocalCache$LoadingValueReference.loadFuture(LocalCache.java:3574)
+	at com.google.common.cache.LocalCache$Segment.loadSync(LocalCache.java:2316)
+	at com.google.common.cache.LocalCache$Segment.lockedGetOrLoad(LocalCache.java:2190)
+	at com.google.common.cache.LocalCache$Segment.get(LocalCache.java:2080)
+	at com.google.common.cache.LocalCache.get(LocalCache.java:4017)
+	at com.google.common.cache.LocalCache$LocalManualCache.get(LocalCache.java:4898)
+	at com.android.tools.idea.projectsystem.gradle.CompileRoots.findClass(GradleClassFileFinder.kt:109)
+	at com.android.tools.idea.projectsystem.gradle.GradleClassFileFinder.findClassFile(GradleClassFileFinder.kt:250)
+	at com.android.tools.idea.rendering.StudioModuleRenderContext.createInjectableClassLoaderLoader$lambda$0(StudioModuleRenderContext.kt:35)
+	at com.android.tools.idea.rendering.classloading.loaders.ProjectSystemClassLoader.getClassContentForFqcn$lambda$3(ProjectSystemClassLoader.kt:68)
+	at com.intellij.util.SlowOperations.allowSlowOperations(SlowOperations.java:204)
+	at com.android.tools.idea.rendering.classloading.loaders.ProjectSystemClassLoader.getClassContentForFqcn(ProjectSystemClassLoader.kt:68)
+	at com.android.tools.idea.rendering.classloading.loaders.ProjectSystemClassLoader.loadClass(ProjectSystemClassLoader.kt:83)
+	at com.android.tools.idea.rendering.classloading.loaders.ListeningLoader.loadClass(ListeningLoader.kt:30)
+	at com.android.tools.rendering.classloading.loaders.AsmTransformingLoader.loadClass(AsmTransformingLoader.kt:43)
+	at com.android.tools.rendering.classloading.loaders.MultiLoader.loadClass$lambda$0(MultiLoader.kt:26)
+	at kotlin.sequences.TransformingSequence$iterator$1.next(Sequences.kt:210)
+	at kotlin.sequences.FilteringSequence$iterator$1.calcNext(Sequences.kt:170)
+	at kotlin.sequences.FilteringSequence$iterator$1.hasNext(Sequences.kt:194)
+	at kotlin.sequences.SequencesKt___SequencesKt.firstOrNull(_Sequences.kt:172)
+	at com.android.tools.rendering.classloading.loaders.MultiLoader.loadClass(MultiLoader.kt:26)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoaderWithAffinity.loadClass$lambda$1(MultiLoaderWithAffinity.kt:71)
+	at kotlin.sequences.TransformingSequence$iterator$1.next(Sequences.kt:210)
+	at kotlin.sequences.FilteringSequence$iterator$1.calcNext(Sequences.kt:170)
+	at kotlin.sequences.FilteringSequence$iterator$1.hasNext(Sequences.kt:194)
+	at kotlin.sequences.SequencesKt___SequencesKt.firstOrNull(_Sequences.kt:172)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoaderWithAffinity.loadClass(MultiLoaderWithAffinity.kt:71)
+	at org.jetbrains.android.uipreview.ModuleClassLoaderImpl.loadClass(ModuleClassLoaderUtil.kt:265)
+	at com.android.tools.rendering.classloading.loaders.DelegatingClassLoader.loadClassBytes(DelegatingClassLoader.kt:62)
+	at com.android.tools.rendering.classloading.loaders.DelegatingClassLoader.findClass(DelegatingClassLoader.kt:84)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+	at com.android.tools.rendering.classloading.loaders.DelegatingClassLoader.loadClass(DelegatingClassLoader.kt:70)
+	at androidx.compose.ui.platform.AndroidComposeView.<init>(AndroidComposeView.android.kt:256)
+	at androidx.compose.ui.platform.Wrapper_androidKt.setContent(Wrapper.android.kt:69)
+	at androidx.compose.ui.platform.AbstractComposeView.ensureCompositionCreated(ComposeView.android.kt:250)
+	at androidx.compose.ui.platform.AbstractComposeView.onAttachedToWindow(ComposeView.android.kt:280)
+	at android.view.View.dispatchAttachedToWindow(View.java:23105)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3520)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3527)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3527)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3527)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3527)
+	at android.view.AttachInfo_Accessor.setAttachInfo(AttachInfo_Accessor.java:69)
+	at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:362)
+	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:462)
+	at com.android.tools.idea.layoutlib.LayoutLibrary.createSession(LayoutLibrary.java:125)
+	at com.android.tools.rendering.RenderTask.createRenderSession(RenderTask.java:830)
+	at com.android.tools.rendering.RenderTask.lambda$inflate$7(RenderTask.java:978)
+	at com.android.tools.rendering.RenderExecutor.runAsyncActionWithTimeout$lambda$12(RenderExecutor.kt:217)
+	at com.android.tools.rendering.RenderExecutor$PriorityRunnable.run(RenderExecutor.kt:338)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2025-12-14 23:11:02,755 [ 375972]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:04,350 [ 377567]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:04,840 [ 378057]   WARN - #com.android.tools.rendering.RenderExecutor - Slow render action 1/3
+java.util.concurrent.TimeoutException: Slow render action 1/3
+	at java.base/java.lang.ClassLoader.defineClass0(Native Method)
+	at java.base/java.lang.System$2.defineClass(Unknown Source)
+	at java.base/java.lang.invoke.MethodHandles$Lookup$ClassDefiner.defineClass(Unknown Source)
+	at java.base/java.lang.invoke.InnerClassLambdaMetafactory.generateInnerClass(Unknown Source)
+	at java.base/java.lang.invoke.InnerClassLambdaMetafactory.spinInnerClass(Unknown Source)
+	at java.base/java.lang.invoke.InnerClassLambdaMetafactory.buildCallSite(Unknown Source)
+	at java.base/java.lang.invoke.LambdaMetafactory.metafactory(Unknown Source)
+	at java.base/java.lang.invoke.BootstrapMethodInvoker.invoke(Unknown Source)
+	at java.base/java.lang.invoke.CallSite.makeSite(Unknown Source)
+	at java.base/java.lang.invoke.MethodHandleNatives.linkCallSiteImpl(Unknown Source)
+	at java.base/java.lang.invoke.MethodHandleNatives.linkCallSite(Unknown Source)
+	at androidx.compose.ui.text.input.TextInputServiceAndroid_androidKt.asExecutor(TextInputServiceAndroid.android.kt:577)
+	at androidx.compose.ui.text.input.TextInputServiceAndroid.<init>(TextInputServiceAndroid.android.kt:62)
+	at androidx.compose.ui.text.input.TextInputServiceAndroid.<init>(TextInputServiceAndroid.android.kt:122)
+	at androidx.compose.ui.platform.AndroidComposeView.<init>(AndroidComposeView.android.kt:713)
+	at androidx.compose.ui.platform.Wrapper_androidKt.setContent(Wrapper.android.kt:69)
+	at androidx.compose.ui.platform.AbstractComposeView.ensureCompositionCreated(ComposeView.android.kt:250)
+	at androidx.compose.ui.platform.AbstractComposeView.onAttachedToWindow(ComposeView.android.kt:280)
+	at android.view.View.dispatchAttachedToWindow(View.java:23105)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3520)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3527)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3527)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3527)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3527)
+	at android.view.AttachInfo_Accessor.setAttachInfo(AttachInfo_Accessor.java:69)
+	at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:362)
+	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:462)
+	at com.android.tools.idea.layoutlib.LayoutLibrary.createSession(LayoutLibrary.java:125)
+	at com.android.tools.rendering.RenderTask.createRenderSession(RenderTask.java:830)
+	at com.android.tools.rendering.RenderTask.lambda$inflate$7(RenderTask.java:978)
+	at com.android.tools.rendering.RenderExecutor.runAsyncActionWithTimeout$lambda$12(RenderExecutor.kt:217)
+	at com.android.tools.rendering.RenderExecutor$PriorityRunnable.run(RenderExecutor.kt:338)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2025-12-14 23:11:06,366 [ 379583]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:07,350 [ 380567]   WARN - #com.android.tools.rendering.RenderExecutor - Slow render action 2/3
+java.util.concurrent.TimeoutException: Slow render action 2/3
+	at java.base/java.lang.ClassValue.get(Unknown Source)
+	at kotlin.reflect.jvm.internal.ClassValueCache.get(CacheByClass.kt:63)
+	at kotlin.reflect.jvm.internal.CachesKt.getOrCreateKotlinClass(caches.kt:21)
+	at kotlin.reflect.jvm.internal.ReflectionFactoryImpl.getOrCreateKotlinClass(ReflectionFactoryImpl.java:41)
+	at kotlin.jvm.internal.Reflection.getOrCreateKotlinClass(Reflection.java:60)
+	at com.android.tools.rendering.classloading.VersionClassTransform.<init>(VersionClassTransform.kt:31)
+	at org.jetbrains.android.uipreview.StudioModuleClassLoader.lambda$static$3(StudioModuleClassLoader.java:159)
+	at com.android.tools.rendering.classloading.ClassTransform.invoke$lambda$4(Util.kt:82)
+	at com.android.tools.rendering.classloading.ClassTransform.invoke(Util.kt:84)
+	at com.android.tools.rendering.classloading.ClassConverter.rewriteClass(ClassConverter.java:61)
+	at com.android.tools.rendering.classloading.loaders.AsmTransformingLoader.loadClass(AsmTransformingLoader.kt:45)
+	at com.android.tools.idea.rendering.classloading.loaders.ListeningLoader.loadClass(ListeningLoader.kt:30)
+	at com.android.tools.idea.rendering.classloading.loaders.ClassBinaryCacheLoader.loadClass(ClassBinaryCacheLoader.kt:32)
+	at com.android.tools.idea.rendering.classloading.loaders.ListeningLoader.loadClass(ListeningLoader.kt:30)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoaderWithAffinity.loadClass$lambda$1(MultiLoaderWithAffinity.kt:71)
+	at kotlin.sequences.TransformingSequence$iterator$1.next(Sequences.kt:210)
+	at kotlin.sequences.FilteringSequence$iterator$1.calcNext(Sequences.kt:170)
+	at kotlin.sequences.FilteringSequence$iterator$1.hasNext(Sequences.kt:194)
+	at kotlin.sequences.SequencesKt___SequencesKt.firstOrNull(_Sequences.kt:172)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoaderWithAffinity.loadClass(MultiLoaderWithAffinity.kt:71)
+	at org.jetbrains.android.uipreview.ModuleClassLoaderImpl.loadClass(ModuleClassLoaderUtil.kt:265)
+	at com.android.tools.rendering.classloading.loaders.DelegatingClassLoader.loadClassBytes(DelegatingClassLoader.kt:62)
+	at com.android.tools.rendering.classloading.loaders.DelegatingClassLoader.findClass(DelegatingClassLoader.kt:84)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+	at com.android.tools.rendering.classloading.loaders.DelegatingClassLoader.loadClass(DelegatingClassLoader.kt:70)
+	at androidx.compose.material3.OutlinedTextFieldKt.OutlinedTextField(OutlinedTextField.kt:396)
+	at org.example.project.login.LoginScreenKt.LoginScreen(LoginScreen.kt:39)
+	at org.example.project.ComposableSingletons$AppKt$lambda$-419397569$1.invoke(App.kt:22)
+	at org.example.project.ComposableSingletons$AppKt$lambda$-419397569$1.invoke(App.kt:17)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:121)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:51)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:390)
+	at androidx.compose.material3.TextKt.ProvideTextStyle(Text.kt:462)
+	at androidx.compose.material3.MaterialThemeKt$MaterialTheme$2.invoke(MaterialTheme.kt:107)
+	at androidx.compose.material3.MaterialThemeKt$MaterialTheme$2.invoke(MaterialTheme.kt:106)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:121)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:51)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:370)
+	at androidx.compose.material3.MaterialThemeKt.MaterialTheme(MaterialTheme.kt:99)
+	at androidx.compose.material3.MaterialThemeKt.MaterialTheme(MaterialTheme.kt:60)
+	at org.example.project.AppKt.App(App.kt:17)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at androidx.compose.ui.tooling.ComposableInvoker.invokeComposableMethod(ComposableInvoker.jvm.kt:185)
+	at androidx.compose.ui.tooling.ComposableInvoker.invokeComposable(ComposableInvoker.jvm.kt:222)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1.invoke$lambda$1$lambda$0(ComposeViewAdapter.android.kt:451)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1.invoke(ComposeViewAdapter.android.kt:492)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1.invoke(ComposeViewAdapter.android.kt:442)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:121)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:51)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:370)
+	at androidx.compose.ui.tooling.InspectableKt.Inspectable(Inspectable.android.kt:58)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$WrapPreview$1.invoke(ComposeViewAdapter.android.kt:391)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$WrapPreview$1.invoke(ComposeViewAdapter.android.kt:390)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:121)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:51)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:370)
+	at androidx.compose.ui.tooling.ComposeViewAdapter.WrapPreview(ComposeViewAdapter.android.kt:385)
+	at androidx.compose.ui.tooling.ComposeViewAdapter.access$WrapPreview(ComposeViewAdapter.android.kt:123)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3.invoke(ComposeViewAdapter.android.kt:442)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3.invoke(ComposeViewAdapter.android.kt:439)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:121)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:51)
+	at androidx.compose.ui.platform.ComposeView.Content(ComposeView.android.kt:431)
+	at androidx.compose.ui.platform.AbstractComposeView$ensureCompositionCreated$1.invoke(ComposeView.android.kt:250)
+	at androidx.compose.ui.platform.AbstractComposeView$ensureCompositionCreated$1.invoke(ComposeView.android.kt:250)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:121)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:51)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:370)
+	at androidx.compose.ui.platform.CompositionLocalsKt.ProvideCommonCompositionLocals(CompositionLocals.kt:216)
+	at androidx.compose.ui.platform.AndroidCompositionLocals_androidKt$ProvideAndroidCompositionLocals$3.invoke(AndroidCompositionLocals.android.kt:145)
+	at androidx.compose.ui.platform.AndroidCompositionLocals_androidKt$ProvideAndroidCompositionLocals$3.invoke(AndroidCompositionLocals.android.kt:144)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:121)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:51)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:370)
+	at androidx.compose.ui.platform.AndroidCompositionLocals_androidKt.ProvideAndroidCompositionLocals(AndroidCompositionLocals.android.kt:133)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1$3.invoke(Wrapper.android.kt:140)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1$3.invoke(Wrapper.android.kt:139)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:121)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:51)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:390)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1.invoke(Wrapper.android.kt:139)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1.invoke(Wrapper.android.kt:123)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:121)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.kt:51)
+	at androidx.compose.runtime.internal.Expect_jvmKt.invokeComposable(Expect.jvm.kt:24)
+	at androidx.compose.runtime.ComposerImpl.doCompose-aFTiNEg(Composer.kt:3843)
+	at androidx.compose.runtime.ComposerImpl.composeContent--ZbOJvo$runtime(Composer.kt:3747)
+	at androidx.compose.runtime.CompositionImpl.composeContent(Composition.kt:832)
+	at androidx.compose.runtime.Recomposer.composeInitial$runtime(Recomposer.kt:1233)
+	at androidx.compose.runtime.CompositionImpl.composeInitial(Composition.kt:672)
+	at androidx.compose.runtime.CompositionImpl.setContent(Composition.kt:639)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:123)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:114)
+	at androidx.compose.ui.platform.AndroidComposeView.setOnViewTreeOwnersAvailable(AndroidComposeView.android.kt:1990)
+	at androidx.compose.ui.platform.WrappedComposition.setContent(Wrapper.android.kt:114)
+	at androidx.compose.ui.platform.WrappedComposition.onStateChanged(Wrapper.android.kt:168)
+	at androidx.lifecycle.LifecycleRegistry$ObserverWithState.dispatchEvent(LifecycleRegistry.jvm.kt:313)
+	at androidx.lifecycle.LifecycleRegistry.addObserver(LifecycleRegistry.jvm.kt:191)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:121)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:114)
+	at androidx.compose.ui.platform.AndroidComposeView.onAttachedToWindow(AndroidComposeView.android.kt:2077)
+	at android.view.View.dispatchAttachedToWindow(View.java:23105)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3520)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3527)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3527)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3527)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3527)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3527)
+	at android.view.AttachInfo_Accessor.setAttachInfo(AttachInfo_Accessor.java:69)
+	at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:362)
+	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:462)
+	at com.android.tools.idea.layoutlib.LayoutLibrary.createSession(LayoutLibrary.java:125)
+	at com.android.tools.rendering.RenderTask.createRenderSession(RenderTask.java:830)
+	at com.android.tools.rendering.RenderTask.lambda$inflate$7(RenderTask.java:978)
+	at com.android.tools.rendering.RenderExecutor.runAsyncActionWithTimeout$lambda$12(RenderExecutor.kt:217)
+	at com.android.tools.rendering.RenderExecutor$PriorityRunnable.run(RenderExecutor.kt:338)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2025-12-14 23:11:07,659 [ 380876]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:09,209 [ 382426]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:10,517 [ 383734]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:11,713 [ 384930]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:13,718 [ 386935]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:15,473 [ 388690]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:17,479 [ 390696]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:18,996 [ 392213]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:20,412 [ 393629]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:21,775 [ 394992]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:23,084 [ 396301]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:24,864 [ 398081]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:26,877 [ 400094]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:28,197 [ 401414]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:30,097 [ 403314]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:31,688 [ 404905]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:32,950 [ 406167]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:34,161 [ 407378]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:35,609 [ 408826]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:37,153 [ 410370]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:38,435 [ 411652]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:39,977 [ 413194]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:41,334 [ 414551]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:42,933 [ 416150]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:44,362 [ 417579]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:45,901 [ 419118]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:47,200 [ 420417]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:48,745 [ 421962]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:49,946 [ 423163]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:51,983 [ 425200]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:53,520 [ 426737]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:54,933 [ 428150]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:56,127 [ 429344]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:57,477 [ 430694]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:58,623 [ 431840]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:11:59,919 [ 433136]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:12:01,305 [ 434522]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:12:02,836 [ 436053]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:12:04,843 [ 438060]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:12:06,536 [ 439753]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:12:07,871 [ 441088]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:12:09,061 [ 442278]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:12:10,266 [ 443483]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:12:11,540 [ 444757]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:12:12,987 [ 446204]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-14 23:12:24,294 [ 457511]   WARN - #c.i.o.a.i.ActionUpdater - 1470 ms to call on BGT ForceCompileAndRefreshActionForNotification#presentation@NlRhsConfigToolbar (com.android.tools.idea.preview.actions.ForceCompileAndRefreshActionForNotification)
+2025-12-14 23:12:24,299 [ 457516]   WARN - #c.i.o.a.i.ActionUpdater - 1519 ms to call on BGT DeviceAndSnapshotComboBoxAction#presentation@MainToolbar (com.android.tools.idea.run.deployment.selector.DeviceAndSnapshotComboBoxAction)
+2025-12-14 23:12:24,727 [ 457944]   WARN - #c.i.o.a.i.ActionUpdater - 4659 ms total to grab EDT 3 times to expand DefaultActionGroup#expandGroup@TabsMoreToolbar (DefaultActionGroup). Use `ActionUpdateThread.BGT`.
+2025-12-14 23:12:24,759 [ 457976]   WARN - #c.i.o.a.i.ActionUpdater - 3406 ms total to grab EDT 3 times to expand EditorMarkupModelImpl$StatusToolbarGroup#expandGroup@EditorInspectionsToolbar (com.intellij.openapi.editor.impl.EditorMarkupModelImpl$StatusToolbarGroup). Use `ActionUpdateThread.BGT`.
+2025-12-14 23:28:27,208 [1420425]   WARN - #com.android.tools.idea.rendering.ConfigurationMatcher - 'default' is not a best match for any device/locale combination for file:///home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/frontend/composeApp/src/androidMain/AndroidManifest.xml.
+Displaying it with
+  , , , , Left To Right, sw412dp, w412dp, h732dp, Normal Screen, Short screen aspect ratio, Not Round screen, , , Portrait Orientation, Normal, Day time, 420dpi, Finger-based touchscreen, Soft keyboard, No keyboard, Hidden navigation, No navigation, Screen resolution 1920x1080, API Level 36
+which is compatible, but will actually be displayed with another more specific version of the layout.
+2025-12-14 23:35:30,044 [1843261]   WARN - #c.i.o.v.i.l.NativeFileWatcherImpl - Watcher terminated with exit code 143
+2025-12-15 19:28:15,966 [    699]   WARN - #c.i.o.v.n.p.FSRecords - Records storage [/home/alma/.cache/Google/AndroidStudio2025.1.4/caches/records.dat] was in use by process [OwnershipInfo{owner pid: 1661878, acquired at: 1765764287458}] which is not exist now (wasn't closed properly/crashed?) -> re-acquiring forcibly
+2025-12-15 19:28:16,010 [    743]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: VFS wasn't safely shut down: records.wasClosedProperly is false
+2025-12-15 19:28:16,523 [   1256]   WARN - org.apache.lucene.internal.vectorization.VectorizationProvider - Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+2025-12-15 19:28:17,043 [   1776]   WARN - #com.android.studio.ml.enterprise.login.StudioModelsOnboardingController$Companion - Auth state changed from AuthState.Initializing(isAuthorized=false) to AuthState.LoggedOut(isAuthorized=false)
+2025-12-15 19:28:20,917 [   5650]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: NOT_CLOSED_PROPERLY recovered, no problems remain
+2025-12-15 19:28:25,325 [  10058]   WARN - #com.android.tools.ndk.HotfixForOCInitialTablesBuildingActivity - Overriding OCInitialTablesBuildingActivity with HotfixForOCInitialTablesBuildingActivity
+2025-12-15 19:28:25,731 [  10464]   WARN - #c.i.c.navigation - Failed to move /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index to /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index
+java.nio.file.NoSuchFileException: /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index
+	at java.base/sun.nio.fs.UnixException.translateToIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystem.move(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.move(Unknown Source)
+	at java.base/java.nio.file.Files.move(Unknown Source)
+	at com.intellij.vcs.log.util.StorageId.cleanupAllStorageFiles(PersistentUtil.kt:58)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.lambda$createStorageAndIndexBackend$4(VcsLogStorageImpl.java:341)
+	at com.intellij.util.io.IOUtil.openCleanOrResetBroken(IOUtil.java:310)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.createStorageAndIndexBackend(VcsLogStorageImpl.java:324)
+	at com.intellij.vcs.log.data.VcsLogData.createStorageAndIndex(VcsLogData.java:149)
+	at com.intellij.vcs.log.data.VcsLogData.<init>(VcsLogData.java:92)
+	at com.intellij.vcs.log.impl.VcsLogManager.<init>(VcsLogManager.java:81)
+	at com.intellij.vcs.log.impl.VcsProjectLogManager.<init>(VcsProjectLogManager.kt:17)
+	at com.intellij.vcs.log.impl.VcsProjectLog.getOrCreateLogManager(VcsProjectLog.kt:222)
+	at com.intellij.vcs.log.impl.VcsProjectLog.access$getOrCreateLogManager(VcsProjectLog.kt:59)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invokeSuspend(VcsProjectLog.kt:210)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invoke(VcsProjectLog.kt)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invoke(VcsProjectLog.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invokeSuspend(PlatformActivityTrackerService.kt:72)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:62)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService.trackConfigurationActivity(PlatformActivityTrackerService.kt:71)
+	at com.intellij.platform.backend.observation.TrackingUtil.trackActivity(util.kt:23)
+	at com.intellij.vcs.log.impl.VcsProjectLog.createLogInternal(VcsProjectLog.kt:209)
+	at com.intellij.vcs.log.impl.VcsProjectLog.access$createLogInternal(VcsProjectLog.kt:59)
+	at com.intellij.vcs.log.impl.VcsProjectLog$launchCreateLog$1.invokeSuspend(VcsProjectLog.kt:165)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:608)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:873)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:763)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:750)
+2025-12-15 19:28:26,083 [  10816]   WARN - #c.i.u.j.JBCefApp - JCefAppConfig.class is not from a JBR module, url: jar:file:/opt/android-studio/lib/lib.jar!/com/jetbrains/cef/JCefAppConfig.class (Use JBR bundled with the IDE)
+2025-12-15 19:28:31,876 [  16609]   WARN - #com.android.tools.idea.rendering.ConfigurationMatcher - 'default' is not a best match for any device/locale combination for file:///home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/frontend/composeApp/src/androidMain/AndroidManifest.xml.
+Displaying it with
+  , , , , Left To Right, sw412dp, w412dp, h732dp, Normal Screen, Short screen aspect ratio, Not Round screen, , , Portrait Orientation, Normal, Day time, 420dpi, Finger-based touchscreen, Soft keyboard, No keyboard, Hidden navigation, No navigation, Screen resolution 1920x1080, API Level 36
+which is compatible, but will actually be displayed with another more specific version of the layout.
+2025-12-15 19:28:36,932 [  21665]   WARN - #o.j.a.u.LayoutLibraryLoader - SystemFonts: Loading font config from /opt/android-studio/plugins/design-tools/resources/layoutlib/data/fonts/fonts.xml
+2025-12-15 19:28:36,986 [  21719]   WARN - #o.j.a.u.LayoutLibraryLoader - SystemFonts: Loading font config from /opt/android-studio/plugins/design-tools/resources/layoutlib/data/fonts/font_fallback.xml
+2025-12-15 19:28:37,820 [  22553]   WARN - #o.j.a.u.LayoutLibraryLoader - FeatureFlagsImplExport: android.os.flagging.AconfigStorageReadException: ERROR_PACKAGE_NOT_FOUND: package android.xr cannot be found on the device
+2025-12-15 19:28:52,487 [  37220]   WARN - Emulator: Pixel 8 Pro - Your GPU drivers may have a bug. Switching to software rendering.
+2025-12-15 19:28:52,710 [  37443]   WARN - Emulator: Pixel 8 Pro - Setting read-only feature 'GLAsyncSwap' to '0'
+2025-12-15 19:28:52,832 [  37565]   WARN - Emulator: Pixel 8 Pro - *** Basic token auth should only be used by android-studio ***
+2025-12-15 19:28:52,955 [  37688]   WARN - Emulator: Pixel 8 Pro - Error -1 from the snapshot callback
+2025-12-15 19:28:52,955 [  37688]   WARN - Emulator: Pixel 8 Pro - Failed to load snapshot 'default_boot'
+2025-12-15 19:29:08,371 [  53104]   WARN - #com.android.ddmlib - Failed to start Emulator console for 5554
+2025-12-15 19:29:09,157 [  53890]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:10,229 [  54962]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:11,307 [  56040]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:12,366 [  57099]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:13,484 [  58217]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:14,624 [  59357]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:15,813 [  60546]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:17,014 [  61747]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:18,146 [  62879]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:19,289 [  64022]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:20,418 [  65151]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:21,734 [  66467]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:22,927 [  67660]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:24,109 [  68842]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:25,374 [  70107]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:26,728 [  71461]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:27,839 [  72572]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:29,053 [  73786]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:30,468 [  75201]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:31,611 [  76344]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:32,858 [  77591]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:34,207 [  78940]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:35,685 [  80418]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:37,152 [  81885]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:38,501 [  83234]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:39,725 [  84458]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:40,888 [  85621]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:42,061 [  86794]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:43,326 [  88059]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:44,731 [  89464]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:45,930 [  90663]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:47,080 [  91813]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:48,193 [  92926]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:49,335 [  94068]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:50,502 [  95235]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:51,863 [  96596]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:53,134 [  97867]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:54,324 [  99057]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:55,446 [ 100179]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:56,561 [ 101294]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:57,668 [ 102401]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:29:58,780 [ 103513]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:00,011 [ 104744]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:01,155 [ 105888]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:02,361 [ 107094]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:03,482 [ 108215]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:04,586 [ 109319]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:05,888 [ 110621]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:07,130 [ 111863]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:08,469 [ 113202]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:09,669 [ 114402]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:10,767 [ 115500]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:12,011 [ 116744]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:13,152 [ 117885]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:14,352 [ 119085]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:15,521 [ 120254]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:16,787 [ 121520]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:17,913 [ 122646]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:19,181 [ 123914]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 19:30:20,332 [ 125065]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-15 20:18:25,198 [3009931]   WARN - #c.i.o.p.i.j.JdkAuto - Multiple SdkType candidates kotlin.sequences.TransformingSequence@47f4173b. Proceeding with a first candidate: JavaSDK
+2025-12-15 20:18:25,226 [3009959]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-15 20:18:25,252 [3009985]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-15 20:18:25,257 [3009990]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-15 20:18:25,258 [3009991]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-15 20:18:25,258 [3009991]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-15 20:18:25,259 [3009992]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-15 20:18:31,533 [3016266]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.annotation:annotation-jvm:1.9.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-stdlib:2.2.20'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains:annotations:23.0.0'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.arch.core:core-common:2.2.0'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: androidx.lifecycle:lifecycle-common-jvm:2.9.4'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jspecify:jspecify:1.0.0'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.7.3'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.slf4j:slf4j-api:2.0.16'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-core-jvm:3.0.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-http-jvm:3.0.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-utils-jvm:3.0.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-io-jvm:3.0.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-io-core-jvm:0.5.4'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-io-bytestring-jvm:0.5.4'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-events-jvm:3.0.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-websocket-serialization-jvm:3.0.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-serialization-jvm:3.0.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-websockets-jvm:3.0.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-sse-jvm:3.0.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-auth-jvm:3.0.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-content-negotiation-jvm:3.0.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-serialization-kotlinx-json-jvm:3.0.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-serialization-kotlinx-jvm:3.0.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.7.3'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-io-jvm:1.7.3'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: io.ktor:ktor-client-logging-jvm:3.0.1'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-test-junit:2.2.20'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.jetbrains.kotlin:kotlin-test:2.2.20'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: junit:junit:4.13.2'
+2025-12-15 20:18:31,534 [3016267]   WARN - #c.i.o.e.s.p.m.LibraryDataService - Multiple project level libraries found with the same name 'Gradle: org.hamcrest:hamcrest-core:1.3'
+2025-12-15 20:19:53,126 [3097859]   WARN - #com.android.tools.idea.gradle.structure.configurables.PsContextImpl - PSD failed to fetch Gradle models.
+java.lang.Throwable: Control-flow exceptions (e.g. this class java.util.concurrent.CancellationException) should never be logged. Instead, these should have been rethrown if caught.
+	at com.intellij.openapi.diagnostic.Logger.ensureNotControlFlow(Logger.java:503)
+	at com.intellij.idea.IdeaLogger.warn(IdeaLogger.java:124)
+	at com.android.tools.idea.gradle.structure.configurables.PsContextImpl.requestGradleModels$lambda$8(PsContextImpl.kt:145)
+	at com.android.tools.idea.gradle.structure.configurables.ui.FutureUtilsKt.handleFailureOnEdt$lambda$6(FutureUtils.kt:65)
+	at com.android.tools.idea.gradle.structure.configurables.ui.FutureUtilsKt.handleFailureOnEdt$lambda$7(FutureUtils.kt:63)
+	at com.google.common.util.concurrent.AbstractCatchingFuture$CatchingFuture.doFallback(AbstractCatchingFuture.java:243)
+	at com.google.common.util.concurrent.AbstractCatchingFuture$CatchingFuture.doFallback(AbstractCatchingFuture.java:231)
+	at com.google.common.util.concurrent.AbstractCatchingFuture.run(AbstractCatchingFuture.java:140)
+	at com.google.common.util.concurrent.DirectExecutor.execute(DirectExecutor.java:31)
+	at com.google.common.util.concurrent.ExecutionList.executeListener(ExecutionList.java:145)
+	at com.google.common.util.concurrent.ExecutionList.execute(ExecutionList.java:133)
+	at com.google.common.util.concurrent.ListenableFutureTask.done(ListenableFutureTask.java:113)
+	at java.base/java.util.concurrent.FutureTask.finishCompletion(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.cancel(Unknown Source)
+	at com.android.tools.idea.gradle.structure.GradleResolver.requestProjectResolved$lambda$3(GradleResolver.kt:61)
+	at com.intellij.openapi.util.ObjectTree.runWithTrace(ObjectTree.java:132)
+	at com.intellij.openapi.util.ObjectTree.executeAll(ObjectTree.java:164)
+	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:205)
+	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:193)
+	at com.android.tools.idea.structure.dialog.ProjectStructureConfigurable.disposeUIResources(ProjectStructureConfigurable.kt:481)
+	at com.intellij.openapi.options.ex.ConfigurableCardPanel.dispose(ConfigurableCardPanel.java:160)
+	at com.intellij.openapi.options.ex.ConfigurableCardPanel.dispose(ConfigurableCardPanel.java:37)
+	at java.base/java.util.IdentityHashMap.forEach(Unknown Source)
+	at com.intellij.ui.CardLayoutPanel.removeAll(CardLayoutPanel.java:220)
+	at com.intellij.ui.CardLayoutPanel.dispose(CardLayoutPanel.java:57)
+	at com.intellij.openapi.options.ex.ConfigurableCardPanel.dispose(ConfigurableCardPanel.java:221)
+	at com.intellij.openapi.util.ObjectTree.runWithTrace(ObjectTree.java:132)
+	at com.intellij.openapi.util.ObjectTree.executeAll(ObjectTree.java:164)
+	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:205)
+	at com.intellij.openapi.util.Disposer.dispose(Disposer.java:193)
+	at com.intellij.openapi.ui.DialogWrapper.lambda$close$4(DialogWrapper.java:528)
+	at com.intellij.openapi.application.WriteIntentReadAction.lambda$run$0(WriteIntentReadAction.java:24)
+	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction$lambda$6(AnyThreadWriteThreadingSupport.kt:274)
+	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWithTemporaryThreadLocal(AnyThreadWriteThreadingSupport.kt:204)
+	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction(AnyThreadWriteThreadingSupport.kt:274)
+	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction(AnyThreadWriteThreadingSupport.kt:222)
+	at com.intellij.openapi.application.impl.ApplicationImpl.runWriteIntentReadAction(ApplicationImpl.java:1009)
+	at com.intellij.openapi.application.WriteIntentReadAction.compute(WriteIntentReadAction.java:55)
+	at com.intellij.openapi.application.WriteIntentReadAction.run(WriteIntentReadAction.java:23)
+	at com.intellij.openapi.ui.DialogWrapper.close(DialogWrapper.java:528)
+	at com.intellij.openapi.ui.DialogWrapper.close(DialogWrapper.java:540)
+	at com.intellij.openapi.ui.DialogWrapper.doCancelAction(DialogWrapper.java:1062)
+	at com.android.tools.idea.structure.dialog.ProjectStructureConfigurable$showDialog$dialog$1.doCancelAction(ProjectStructureConfigurable.kt:369)
+	at com.intellij.openapi.ui.DialogWrapper.doCancelAction(DialogWrapper.java:1081)
+	at com.intellij.openapi.options.newEditor.SettingsDialog.doCancelAction(SettingsDialog.java:279)
+	at com.intellij.openapi.ui.impl.DialogWrapperPeerImpl$MyDialog$MyWindowListener.windowClosing(DialogWrapperPeerImpl.java:1000)
+	at java.desktop/java.awt.AWTEventMulticaster.windowClosing(Unknown Source)
+	at java.desktop/java.awt.AWTEventMulticaster.windowClosing(Unknown Source)
+	at java.desktop/java.awt.Window.processWindowEvent(Unknown Source)
+	at java.desktop/javax.swing.JDialog.processWindowEvent(Unknown Source)
+	at java.desktop/java.awt.Window.processEvent(Unknown Source)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
+	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
+	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at com.intellij.ide.IdeEventQueue.defaultDispatchEvent(IdeEventQueue.kt:585)
+	at com.intellij.ide.IdeEventQueue._dispatchEvent(IdeEventQueue.kt:482)
+	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12$lambda$11$lambda$10$lambda$9(IdeEventQueue.kt:307)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computePrioritized(CoreProgressManager.java:864)
+	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12$lambda$11$lambda$10(IdeEventQueue.kt:306)
+	at com.intellij.ide.IdeEventQueueKt.performActivity$lambda$3(IdeEventQueue.kt:958)
+	at com.intellij.openapi.application.TransactionGuardImpl.performActivity(TransactionGuardImpl.java:109)
+	at com.intellij.ide.IdeEventQueueKt.performActivity(IdeEventQueue.kt:958)
+	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12(IdeEventQueue.kt:301)
+	at com.intellij.ide.IdeEventQueue.dispatchEvent(IdeEventQueue.kt:341)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.desktop/java.awt.WaitDispatchSupport$2.run(Unknown Source)
+	at java.desktop/java.awt.WaitDispatchSupport$4.run(Unknown Source)
+	at java.desktop/java.awt.WaitDispatchSupport$4.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.desktop/java.awt.WaitDispatchSupport.enter(Unknown Source)
+	at java.desktop/java.awt.Dialog.show(Unknown Source)
+	at com.intellij.openapi.ui.impl.DialogWrapperPeerImpl$MyDialog.show(DialogWrapperPeerImpl.java:871)
+	at com.intellij.openapi.ui.impl.DialogWrapperPeerImpl.show(DialogWrapperPeerImpl.java:458)
+	at com.intellij.openapi.ui.DialogWrapper.doShow(DialogWrapper.java:1815)
+	at com.intellij.openapi.ui.DialogWrapper.show(DialogWrapper.java:1764)
+	at com.intellij.openapi.ui.DialogWrapper.showAndGet(DialogWrapper.java:1778)
+	at com.android.tools.idea.structure.dialog.ProjectStructureConfigurable.showDialog(ProjectStructureConfigurable.kt:386)
+	at com.android.tools.idea.structure.dialog.ProjectStructureConfigurable.showPlace(ProjectStructureConfigurable.kt:323)
+	at com.android.tools.idea.gradle.structure.AndroidProjectSettingsServiceImpl.showNewPsd(AndroidProjectSettingsServiceImpl.java:109)
+	at com.android.tools.idea.gradle.structure.AndroidProjectSettingsServiceImpl.openModuleSettings(AndroidProjectSettingsServiceImpl.java:116)
+	at com.android.tools.idea.gradle.notification.ProjectSyncStatusNotificationProvider$ProjectStructureNotificationPanel.lambda$new$0(ProjectSyncStatusNotificationProvider.java:263)
+	at com.intellij.ui.EditorNotificationPanel$6.handlePanelActionClick(EditorNotificationPanel.java:490)
+	at com.intellij.ui.EditorNotificationPanel$ActionHyperlinkLabel$1.hyperlinkActivated(EditorNotificationPanel.java:544)
+	at com.intellij.ui.HyperlinkAdapter.hyperlinkUpdate(HyperlinkAdapter.java:14)
+	at com.intellij.ui.HyperlinkLabel.fireHyperlinkEvent(HyperlinkLabel.java:245)
+	at com.intellij.ui.HyperlinkLabel.processMouseEvent(HyperlinkLabel.java:166)
+	at java.desktop/java.awt.Component.processEvent(Unknown Source)
+	at java.desktop/java.awt.Container.processEvent(Unknown Source)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.Component.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
+	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
+	at java.desktop/java.awt.EventQueue$5.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at com.intellij.ide.IdeEventQueue.defaultDispatchEvent(IdeEventQueue.kt:585)
+	at com.intellij.ide.IdeEventQueue.dispatchMouseEvent(IdeEventQueue.kt:530)
+	at com.intellij.ide.IdeEventQueue._dispatchEvent$lambda$16(IdeEventQueue.kt:473)
+	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction$lambda$6(AnyThreadWriteThreadingSupport.kt:274)
+	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWithTemporaryThreadLocal(AnyThreadWriteThreadingSupport.kt:204)
+	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runWriteIntentReadAction(AnyThreadWriteThreadingSupport.kt:274)
+	at com.intellij.openapi.application.impl.AnyThreadWriteThreadingSupport.runPreventiveWriteIntentReadAction(AnyThreadWriteThreadingSupport.kt:218)
+	at com.intellij.ide.IdeEventQueue._dispatchEvent(IdeEventQueue.kt:473)
+	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12$lambda$11$lambda$10$lambda$9(IdeEventQueue.kt:307)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computePrioritized(CoreProgressManager.java:864)
+	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12$lambda$11$lambda$10(IdeEventQueue.kt:306)
+	at com.intellij.ide.IdeEventQueueKt.performActivity$lambda$3(IdeEventQueue.kt:958)
+	at com.intellij.openapi.application.TransactionGuardImpl.performActivity(TransactionGuardImpl.java:117)
+	at com.intellij.ide.IdeEventQueueKt.performActivity(IdeEventQueue.kt:958)
+	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$12(IdeEventQueue.kt:301)
+	at com.intellij.ide.IdeEventQueue.dispatchEvent(IdeEventQueue.kt:341)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.run(Unknown Source)
+Caused by: java.util.concurrent.CancellationException
+	at java.base/java.util.concurrent.FutureTask.report(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.get(Unknown Source)
+	at com.google.common.util.concurrent.Uninterruptibles.getUninterruptibly(Uninterruptibles.java:247)
+	at com.google.common.util.concurrent.Futures.getDone(Futures.java:1182)
+	at com.google.common.util.concurrent.AbstractCatchingFuture.run(AbstractCatchingFuture.java:104)
+	... 136 more
+2025-12-15 20:19:53,137 [3097870]   WARN - #o.j.p.g.s.e.GradleExecutionHelper - Gradle execution error
+java.lang.InterruptedException
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:111)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$BuildersKt__BuildersKt(Builders.kt:85)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlockingWithParallelismCompensation(Builders.kt:61)
+	at kotlinx.coroutines.BuildersKt.runBlockingWithParallelismCompensation(Unknown Source)
+	at kotlinx.coroutines.internal.intellij.IntellijCoroutines.runBlockingWithParallelismCompensation(intellij.kt:43)
+	at com.intellij.openapi.progress.CoroutinesKt.runBlockingCancellable$lambda$0(coroutines.kt:151)
+	at com.intellij.openapi.progress.ContextKt.prepareIndicatorThreadContext$lambda$5(context.kt:108)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.silenceGlobalIndicator(CoreProgressManager.java:1048)
+	at com.intellij.openapi.progress.ContextKt.prepareIndicatorThreadContext(context.kt:106)
+	at com.intellij.openapi.progress.ContextKt.prepareThreadContext(context.kt:77)
+	at com.intellij.openapi.progress.CoroutinesKt.runBlockingCancellable(coroutines.kt:144)
+	at com.intellij.openapi.progress.CoroutinesKt.runBlockingCancellable(coroutines.kt:127)
+	at org.jetbrains.plugins.gradle.service.modelAction.GradleModelFetchActionResultHandlerBridge.collectAllEvents(GradleModelFetchActionResultHandlerBridge.kt:66)
+	at org.jetbrains.plugins.gradle.service.modelAction.GradleModelFetchActionRunner.runBuildAction(GradleModelFetchActionRunner.kt:58)
+	at org.jetbrains.plugins.gradle.service.modelAction.GradleModelFetchActionRunner.access$runBuildAction(GradleModelFetchActionRunner.kt:28)
+	at org.jetbrains.plugins.gradle.service.modelAction.GradleModelFetchActionRunner$Companion.runBuildAction(GradleModelFetchActionRunner.kt:117)
+	at org.jetbrains.plugins.gradle.service.modelAction.GradleModelFetchActionRunner$Companion.runAndTraceBuildAction(GradleModelFetchActionRunner.kt:139)
+	at org.jetbrains.plugins.gradle.service.modelAction.GradleModelFetchActionRunner.runAndTraceBuildAction(GradleModelFetchActionRunner.kt)
+	at org.jetbrains.plugins.gradle.service.project.GradleProjectResolver.doResolveProjectInfo(GradleProjectResolver.java:330)
+	at org.jetbrains.plugins.gradle.service.project.GradleProjectResolver.lambda$resolveProjectInfo$1(GradleProjectResolver.java:182)
+	at org.jetbrains.plugins.gradle.service.project.GradleProjectResolver.lambda$executeProjectResolverTask$3(GradleProjectResolver.java:239)
+	at org.jetbrains.plugins.gradle.service.execution.GradleExecutionHelper.lambda$execute$0(GradleExecutionHelper.java:155)
+	at org.jetbrains.plugins.gradle.service.execution.SystemPropertiesAdjuster$Companion.executeAdjusted(SystemPropertiesAdjuster.kt:51)
+	at org.jetbrains.plugins.gradle.service.execution.SystemPropertiesAdjuster.executeAdjusted(SystemPropertiesAdjuster.kt)
+	at org.jetbrains.plugins.gradle.service.execution.GradleExecutionHelper.lambda$execute$1(GradleExecutionHelper.java:155)
+	at org.jetbrains.plugins.gradle.GradleConnectorService$Companion.withGradleConnection(GradleConnectorService.kt:259)
+	at org.jetbrains.plugins.gradle.GradleConnectorService.withGradleConnection(GradleConnectorService.kt)
+	at org.jetbrains.plugins.gradle.service.execution.GradleExecutionHelper.execute(GradleExecutionHelper.java:153)
+	at org.jetbrains.plugins.gradle.service.project.GradleProjectResolver.executeProjectResolverTask(GradleProjectResolver.java:231)
+	at org.jetbrains.plugins.gradle.service.project.GradleProjectResolver.resolveProjectInfo(GradleProjectResolver.java:181)
+	at org.jetbrains.plugins.gradle.service.project.GradleProjectResolver.lambda$resolveProjectInfo$0(GradleProjectResolver.java:157)
+	at org.jetbrains.plugins.gradle.service.project.DefaultProjectResolverContext.lambda$computeCancellable$0(DefaultProjectResolverContext.java:136)
+	at org.jetbrains.plugins.gradle.service.project.DefaultProjectResolverContext.lambda$runCancellable$1(DefaultProjectResolverContext.java:145)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$14(CoreProgressManager.java:680)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:755)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:711)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:77)
+	at org.jetbrains.plugins.gradle.service.project.DefaultProjectResolverContext.runCancellable(DefaultProjectResolverContext.java:143)
+	at org.jetbrains.plugins.gradle.service.project.DefaultProjectResolverContext.computeCancellable(DefaultProjectResolverContext.java:135)
+	at org.jetbrains.plugins.gradle.service.project.GradleProjectResolver.computeCancellable(GradleProjectResolver.java:213)
+	at org.jetbrains.plugins.gradle.service.project.GradleProjectResolver.resolveProjectInfo(GradleProjectResolver.java:146)
+	at org.jetbrains.plugins.gradle.service.project.GradleProjectResolver.resolveProjectInfo(GradleProjectResolver.java:90)
+	at com.intellij.openapi.externalSystem.service.project.ExternalSystemProjectResolver.resolveProjectInfo(ExternalSystemProjectResolver.java:44)
+	at com.android.tools.idea.gradle.project.sync.idea.GradleSyncExecutor.fetchGradleModels(GradleSyncExecutor.java:202)
+	at com.android.tools.idea.gradle.project.sync.GradleSyncInvokerImpl.fetchGradleModels(GradleSyncInvokerImpl.kt:85)
+	at com.android.tools.idea.gradle.structure.GradleResolver.requestProjectResolved$lambda$2(GradleResolver.kt:45)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at com.android.tools.idea.gradle.structure.GradleResolver$requestProjectResolved$1.run(GradleResolver.kt:57)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.startTask(CoreProgressManager.java:497)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.startTask(ProgressManagerImpl.java:118)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcessWithProgressAsynchronously$7(CoreProgressManager.java:548)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$submit$4(ProgressRunner.java:252)
+	at com.intellij.openapi.progress.ProgressManager.lambda$runProcess$0(ProgressManager.java:98)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$1(CoreProgressManager.java:229)
+	at com.intellij.platform.diagnostic.telemetry.helpers.TraceKt.use(trace.kt:43)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:228)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$14(CoreProgressManager.java:680)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:755)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:711)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:77)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:209)
+	at com.intellij.openapi.progress.ProgressManager.runProcess(ProgressManager.java:98)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$submit$5(ProgressRunner.java:252)
+	at com.intellij.openapi.progress.impl.ProgressRunner$ProgressRunnable.run(ProgressRunner.java:513)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$launchTask$18(ProgressRunner.java:478)
+	at com.intellij.util.concurrency.ChildContext$runInChildContext$1.invoke(propagation.kt:102)
+	at com.intellij.util.concurrency.ChildContext$runInChildContext$1.invoke(propagation.kt:102)
+	at com.intellij.util.concurrency.ChildContext.runInChildContext(propagation.kt:108)
+	at com.intellij.util.concurrency.ChildContext.runInChildContext(propagation.kt:102)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$launchTask$19(ProgressRunner.java:474)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Unknown Source)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
