@@ -1,4 +1,4 @@
-package org.example.project.login
+package org.example.project.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*

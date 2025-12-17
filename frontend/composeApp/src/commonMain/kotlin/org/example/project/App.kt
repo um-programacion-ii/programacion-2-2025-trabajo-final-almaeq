@@ -1,51 +1,55 @@
 package org.example.project
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import org.example.project.login.LoginScreen
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.example.project.network.TokenManager
+// Asegúrate de importar tus pantallas correctamente
+import org.example.project.screens.EventsListScreen
+import org.example.project.screens.LoginScreen
+
+// Definimos los estados posibles de la App
+enum class AppScreen {
+    LOGIN,
+    EVENTS_LIST,
+    EVENT_DETAIL // Preparado para el siguiente issue
+}
 
 @Composable
 @Preview
 fun App() {
     MaterialTheme {
-        // Estado simple para navegación: si hay token, mostramos contenido, sino Login
-        var isLoggedIn by remember { mutableStateOf(TokenManager.jwtToken != null) }
+        // Estado de navegación
+        var currentScreen by remember { mutableStateOf(AppScreen.LOGIN) }
+        // Estado para guardar el ID del evento seleccionado (para el futuro)
+        var selectedEventId by remember { mutableStateOf<Long?>(null) }
 
-        if (!isLoggedIn) {
-            LoginScreen(
-                onLoginSuccess = {
-                    isLoggedIn = true
-                }
-            )
-        } else {
-            // Aquí iría tu pantalla principal (ej. lista de eventos)
-            // Por ahora mantenemos el saludo original como placeholder
-            MainContent()
+        // Si ya hay token en memoria, saltamos directo a la lista
+        if (currentScreen == AppScreen.LOGIN && TokenManager.jwtToken != null) {
+            currentScreen = AppScreen.EVENTS_LIST
         }
-    }
-}
 
-@Composable
-fun MainContent() {
-    // Este es el contenido que se ve DESPUÉS de loguearse
-    GreetingView()
-}
-
-@Composable
-fun GreetingView() {
-    // Reutilizando lógica existente para mostrar que funciona
-    val greeting = remember { Greeting().greet() }
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxSize()
-    ) {
-        Text("Bienvenido! Token guardado en memoria. Plataforma: $greeting")
+        when (currentScreen) {
+            AppScreen.LOGIN -> {
+                LoginScreen(
+                    onLoginSuccess = {
+                        currentScreen = AppScreen.EVENTS_LIST
+                    }
+                )
+            }
+            AppScreen.EVENTS_LIST -> {
+                EventsListScreen(
+                    onEventClick = { eventId ->
+                        println("Navegando al detalle del evento: $eventId")
+                        selectedEventId = eventId
+                        // Aquí cambiarás a DETAIL en el próximo issue
+                        // currentScreen = AppScreen.EVENT_DETAIL
+                    }
+                )
+            }
+            AppScreen.EVENT_DETAIL -> {
+                // Próximamente: EventDetailScreen(selectedEventId)
+            }
+        }
     }
 }

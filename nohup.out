@@ -1496,3 +1496,143 @@ java.lang.InterruptedException
 	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
 	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Unknown Source)
 	at java.base/java.lang.Thread.run(Unknown Source)
+2025-12-16 22:37:07,159 [    718]   WARN - #c.i.o.v.n.p.FSRecords - Records storage [/home/alma/.cache/Google/AndroidStudio2025.1.4/caches/records.dat] was in use by process [OwnershipInfo{owner pid: 63340, acquired at: 1765837695966}] which is not exist now (wasn't closed properly/crashed?) -> re-acquiring forcibly
+2025-12-16 22:37:07,227 [    786]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: VFS wasn't safely shut down: records.wasClosedProperly is false
+2025-12-16 22:37:07,669 [   1228]   WARN - org.apache.lucene.internal.vectorization.VectorizationProvider - Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+2025-12-16 22:37:08,472 [   2031]   WARN - #com.android.studio.ml.enterprise.login.StudioModelsOnboardingController$Companion - Auth state changed from AuthState.Initializing(isAuthorized=false) to AuthState.LoggedOut(isAuthorized=false)
+2025-12-16 22:37:12,621 [   6180]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: NOT_CLOSED_PROPERLY recovered, no problems remain
+2025-12-16 22:37:19,631 [  13190]   WARN - #c.i.o.a.i.ActionUpdater - 1066 ms to call on BGT DeviceAndSnapshotComboBoxAction#presentation@MainToolbar (com.android.tools.idea.run.deployment.selector.DeviceAndSnapshotComboBoxAction)
+2025-12-16 22:37:19,649 [  13208]   WARN - #c.i.o.a.i.ActionUpdater - 1018 ms to call on BGT ExecutionTargetComboBoxAction#presentation@MainToolbar (com.intellij.execution.actions.ExecutionTargetComboBoxAction)
+2025-12-16 22:37:24,392 [  17951]   WARN - #c.i.u.j.JBCefApp - JCefAppConfig.class is not from a JBR module, url: jar:file:/opt/android-studio/lib/lib.jar!/com/jetbrains/cef/JCefAppConfig.class (Use JBR bundled with the IDE)
+2025-12-16 22:37:24,664 [  18223]   WARN - #c.i.o.a.i.ActionUpdater - 1560 ms to call on BGT DeviceAndSnapshotComboBoxAction#presentation@MainToolbar (com.android.tools.idea.run.deployment.selector.DeviceAndSnapshotComboBoxAction)
+2025-12-16 22:37:25,319 [  18878]   WARN - #c.i.o.a.i.ActionUpdater - 3152 ms total to grab EDT 5 times to expand ToolWindowHeader$2#expandGroup@ToolwindowTitle (com.intellij.toolWindow.ToolWindowHeader$2). Use `ActionUpdateThread.BGT`.
+2025-12-16 22:37:25,825 [  19384]   WARN - #com.android.tools.ndk.HotfixForOCInitialTablesBuildingActivity - Overriding OCInitialTablesBuildingActivity with HotfixForOCInitialTablesBuildingActivity
+2025-12-16 22:37:29,606 [  23165]   WARN - #c.i.c.navigation - Failed to move /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index to /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index
+java.nio.file.NoSuchFileException: /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index
+	at java.base/sun.nio.fs.UnixException.translateToIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystem.move(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.move(Unknown Source)
+	at java.base/java.nio.file.Files.move(Unknown Source)
+	at com.intellij.vcs.log.util.StorageId.cleanupAllStorageFiles(PersistentUtil.kt:58)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.lambda$createStorageAndIndexBackend$4(VcsLogStorageImpl.java:341)
+	at com.intellij.util.io.IOUtil.openCleanOrResetBroken(IOUtil.java:310)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.createStorageAndIndexBackend(VcsLogStorageImpl.java:324)
+	at com.intellij.vcs.log.data.VcsLogData.createStorageAndIndex(VcsLogData.java:149)
+	at com.intellij.vcs.log.data.VcsLogData.<init>(VcsLogData.java:92)
+	at com.intellij.vcs.log.impl.VcsLogManager.<init>(VcsLogManager.java:81)
+	at com.intellij.vcs.log.impl.VcsProjectLogManager.<init>(VcsProjectLogManager.kt:17)
+	at com.intellij.vcs.log.impl.VcsProjectLog.getOrCreateLogManager(VcsProjectLog.kt:222)
+	at com.intellij.vcs.log.impl.VcsProjectLog.access$getOrCreateLogManager(VcsProjectLog.kt:59)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invokeSuspend(VcsProjectLog.kt:210)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invoke(VcsProjectLog.kt)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invoke(VcsProjectLog.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invokeSuspend(PlatformActivityTrackerService.kt:72)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:62)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService.trackConfigurationActivity(PlatformActivityTrackerService.kt:71)
+	at com.intellij.platform.backend.observation.TrackingUtil.trackActivity(util.kt:23)
+	at com.intellij.vcs.log.impl.VcsProjectLog.createLogInternal(VcsProjectLog.kt:209)
+	at com.intellij.vcs.log.impl.VcsProjectLog.access$createLogInternal(VcsProjectLog.kt:59)
+	at com.intellij.vcs.log.impl.VcsProjectLog$launchRecreateLog$1.invokeSuspend(VcsProjectLog.kt:190)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:608)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:873)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:763)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:750)
+2025-12-16 22:37:30,657 [  24216]   WARN - #c.i.o.a.i.ActionUpdater - 3239 ms total to grab EDT 2 times to expand DefaultActionGroup#expandGroup@ContextToolbar (DefaultActionGroup). Use `ActionUpdateThread.BGT`.
+2025-12-16 22:37:42,293 [  35852]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-16 22:37:42,297 [  35856]   WARN - #c.i.o.f.i.FileEditorProviderManagerImpl - Please make class com.android.tools.idea.editors.manifest.GradleManifestEditorProvider dumb-aware
+2025-12-16 22:40:10,334 [ 183893]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-16 22:40:24,561 [ 198120]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-16 22:40:31,900 [ 205459]   WARN - org.apache.velocity.deprecation - configuration key 'resource.loader' has been deprecated in favor of 'resource.loaders'
+2025-12-16 22:40:31,901 [ 205460]   WARN - org.apache.velocity.deprecation - configuration key 'includes.resource.loader.instance' has been deprecated in favor of 'resource.loader.includes.instance'
+2025-12-16 22:40:55,040 [ 228599]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-16 22:41:28,231 [ 261790]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-16 22:41:45,426 [ 278985]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-16 22:45:00,376 [ 473935]   WARN - Emulator: Pixel 8 Pro - Your GPU drivers may have a bug. Switching to software rendering.
+2025-12-16 22:45:00,696 [ 474255]   WARN - Emulator: Pixel 8 Pro - Setting read-only feature 'GLAsyncSwap' to '0'
+2025-12-16 22:45:00,982 [ 474541]   WARN - Emulator: Pixel 8 Pro - *** Basic token auth should only be used by android-studio ***
+2025-12-16 22:45:01,184 [ 474743]   WARN - Emulator: Pixel 8 Pro - Error -1 from the snapshot callback
+2025-12-16 22:45:01,184 [ 474743]   WARN - Emulator: Pixel 8 Pro - Failed to load snapshot 'default_boot'
+2025-12-16 22:45:19,346 [ 492905]   WARN - #com.android.ddmlib - Failed to start Emulator console for 5554
+2025-12-16 22:45:20,053 [ 493612]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:21,145 [ 494704]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:22,292 [ 495851]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:23,381 [ 496940]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:24,616 [ 498175]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:26,456 [ 500015]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:27,673 [ 501232]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:29,079 [ 502638]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:30,272 [ 503831]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:31,505 [ 505064]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:33,071 [ 506630]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:34,994 [ 508553]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:36,899 [ 510458]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:38,872 [ 512431]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:40,160 [ 513719]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:41,521 [ 515080]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:42,771 [ 516330]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:43,937 [ 517496]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:45,297 [ 518856]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:46,471 [ 520030]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:47,885 [ 521444]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:49,652 [ 523211]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:51,072 [ 524631]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:52,262 [ 525821]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:53,480 [ 527039]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:54,640 [ 528199]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:55,777 [ 529336]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:56,965 [ 530524]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:45:58,758 [ 532317]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:00,760 [ 534319]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:02,173 [ 535732]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:03,479 [ 537038]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:04,819 [ 538378]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:06,053 [ 539612]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:07,749 [ 541308]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:09,369 [ 542928]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:10,757 [ 544316]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:12,247 [ 545806]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:13,562 [ 547121]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:14,827 [ 548386]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:16,172 [ 549731]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:17,497 [ 551056]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:18,785 [ 552344]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:20,785 [ 554344]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:22,793 [ 556352]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:24,751 [ 558310]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:26,274 [ 559833]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:27,510 [ 561069]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:28,937 [ 562496]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:30,139 [ 563698]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:31,841 [ 565400]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:33,172 [ 566731]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:34,555 [ 568114]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:36,039 [ 569598]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:37,231 [ 570790]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:38,650 [ 572209]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:39,819 [ 573378]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:40,996 [ 574555]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:42,455 [ 576014]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:43,700 [ 577259]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:45,164 [ 578723]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:46,507 [ 580066]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:47,775 [ 581334]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:49,077 [ 582636]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:50,194 [ 583753]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:51,535 [ 585094]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:53,072 [ 586631]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:54,737 [ 588296]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:56,081 [ 589640]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:58,108 [ 591667]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:46:59,559 [ 593118]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:47:01,057 [ 594616]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-16 22:47:08,506 [ 602065]   WARN - Emulator: Pixel 8 Pro - adb protocol fault (couldn't read status length)
+2025-12-16 23:32:28,861 [3322420]   WARN - o.j.p.g.i.d.GradleDaemonServices - Unable to send daemon message for Gradle 8.14.3
+2025-12-16 23:32:28,862 [3322421]   WARN - o.j.p.g.i.d.GradleDaemonServices - org.gradle.api.internal.file.DefaultFileCollectionFactory.<init>(org.gradle.internal.file.PathToFileResolver,org.gradle.api.internal.tasks.TaskDependencyFactory,org.gradle.api.internal.file.collections.DirectoryFileTreeFactory,org.gradle.internal.Factory,org.gradle.api.internal.provider.PropertyHost,org.gradle.internal.nativeintegration.filesystem.FileSystem)
