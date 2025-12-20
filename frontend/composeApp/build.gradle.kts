@@ -57,6 +57,10 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.ktor.client.auth)
+            implementation(compose.material)
+            implementation(compose.materialIconsExtended)
+            implementation("io.coil-kt.coil3:coil-compose:3.0.4")
+            implementation("io.coil-kt.coil3:coil-network-ktor3:3.0.4")
 
             // NUEVO: Ktor Core y Plugins
             implementation(libs.ktor.client.core)

@@ -39,4 +39,26 @@ class EventRepository {
             emptyList()
         }
     }
+
+    suspend fun getEventDetail(id: Long): Event? {
+        return try {
+            val token = TokenManager.jwtToken ?: return null
+
+            // Llama a /api/events/{id}
+            val response = ApiClient.client.get("events/$id") {
+                header("Authorization", "Bearer $token")
+            }
+
+            if (response.status == HttpStatusCode.OK) {
+                response.body<Event>()
+            } else {
+                println("Error Detalle: ${response.status}")
+                null
+            }
+        } catch (e: Exception) {
+            println("Excepción Detalle: ${e.message}")
+            e.printStackTrace()
+            null
+        }
+    }
 }

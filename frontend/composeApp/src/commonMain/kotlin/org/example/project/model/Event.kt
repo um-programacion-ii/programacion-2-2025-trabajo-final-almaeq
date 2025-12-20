@@ -7,5 +7,11 @@ data class Event(
     val id: Long,
     val titulo: String,
     val descripcion: String,
-    val fechaHora: String // El DTO del backend lo envía como String
+    val fechaHora: String,
+    // Campos nuevos para el detalle (pueden venir nulos en el listado general)
+    val resumen: String? = null,
+    val imagenUrl: String? = null,
+    val direccion: String? = null,
+    val organizador: String? = null,
+    val asientos: List<Seat> = emptyList()
 )
