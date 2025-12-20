@@ -13,5 +13,7 @@ data class Event(
     val imagenUrl: String? = null,
     val direccion: String? = null,
     val organizador: String? = null,
+    val filas: Int = 0,
+    val columnas: Int = 0,
     val asientos: List<Seat> = emptyList()
 )

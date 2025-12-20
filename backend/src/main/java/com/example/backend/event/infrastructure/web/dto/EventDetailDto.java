@@ -22,6 +22,8 @@ public class EventDetailDto {
 
     private LocalDateTime fechaHora;
     private String organizador;
+    private Integer filas;
+    private Integer columnas;
 
     private List<SeatDto> asientos;
 }

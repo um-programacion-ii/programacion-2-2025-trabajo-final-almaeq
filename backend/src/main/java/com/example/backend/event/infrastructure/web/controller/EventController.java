@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors; // <--- Necesario para convertir la lista
@@ -47,47 +48,67 @@ public class EventController {
 
     @GetMapping("/{id}")
     public ResponseEntity<EventDetailDto> getEventDetail(@PathVariable Long id) {
-        // 1. Buscar evento en DB local
+        // 1. Buscar evento en DB local (MySQL) para saber dimensiones
         Event event = eventService.getEventById(id);
         if (event == null) {
             return ResponseEntity.notFound().build();
         }
 
-        // 2. Consultar al Proxy (Asientos)
+        // 2. Consultar al Proxy (Redis) para saber cuáles están OCUPADOS
         Map<String, Object> proxyResponse = proxyClientService.getSeatsStatus(id);
 
-        // 3. Procesar asientos (Mismo código de antes...)
-        List<SeatDto> asientosDto = new ArrayList<>();
+        // Creamos un mapa rápido para buscar asientos ocupados: "fila-columna" -> "Estado"
+        Map<String, String> ocupadosMap = new HashMap<>();
+
         if (proxyResponse != null && proxyResponse.containsKey("asientos")) {
             Object asientosObj = proxyResponse.get("asientos");
             if (asientosObj instanceof List) {
-                List<Map<String, Object>> listaAsientos = (List<Map<String, Object>>) asientosObj;
-                for (Map<String, Object> asientoMap : listaAsientos) {
-                    SeatDto s = new SeatDto();
-                    s.setFila(parseIntSafely(asientoMap.get("fila")));
-                    s.setColumna(parseIntSafely(asientoMap.get("columna")));
-                    s.setEstado((String) asientoMap.get("estado"));
-                    asientosDto.add(s);
+                List<Map<String, Object>> listaProxy = (List<Map<String, Object>>) asientosObj;
+                for (Map<String, Object> s : listaProxy) {
+                    int f = parseIntSafely(s.get("fila"));
+                    int c = parseIntSafely(s.get("columna"));
+                    String estado = (String) s.get("estado");
+                    // Guardamos ej: "1-1" -> "Vendido"
+                    ocupadosMap.put(f + "-" + c, estado);
                 }
             }
         }
 
-        // 4. Retornar respuesta CON LOS DATOS NUEVOS
+        // 3. GENERAR LA MATRIZ COMPLETA (Libres + Ocupados)
+        List<SeatDto> todosLosAsientos = new ArrayList<>();
+
+        // Usamos las filas/columnas del evento. Si son nulos, asumimos 0.
+        int totalFilas = event.getFilas() != null ? event.getFilas() : 0;
+        int totalCols = event.getColumnas() != null ? event.getColumnas() : 0;
+
+        for (int f = 1; f <= totalFilas; f++) {
+            for (int c = 1; c <= totalCols; c++) {
+                String key = f + "-" + c;
+
+                // Si está en el mapa de ocupados, usamos ese estado. Si no, es "Libre".
+                String estado = ocupadosMap.getOrDefault(key, "Libre");
+
+                todosLosAsientos.add(new SeatDto(f, c, estado));
+            }
+        }
+
+        // 4. Retornar respuesta con la lista COMPLETA
         EventDetailDto response = new EventDetailDto(
                 event.getId(),
                 event.getTitulo(),
-                event.getResumen(),       // <--- Nuevo
+                event.getResumen(),
                 event.getDescripcion(),
-                event.getImagenUrl(),     // <--- Nuevo
-                event.getDireccion(),     // <--- Nuevo
+                event.getImagenUrl(),
+                event.getDireccion(),
                 event.getFechaHora(),
                 event.getOrganizador(),
-                asientosDto
+                event.getFilas(),
+                event.getColumnas(),
+                todosLosAsientos     // <--- Aquí va la lista generada
         );
 
         return ResponseEntity.ok(response);
     }
-
     // Método auxiliar de seguridad
     private Integer parseIntSafely(Object value) {
         if (value == null) return 0;

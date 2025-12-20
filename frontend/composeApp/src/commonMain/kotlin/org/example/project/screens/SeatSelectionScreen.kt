@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import org.example.project.model.Event
@@ -27,14 +28,12 @@ import org.example.project.network.EventRepository
 fun SeatSelectionScreen(
     eventId: Long,
     onBack: () -> Unit,
-    onContinue: (List<Seat>) -> Unit // Pasamos los asientos seleccionados al siguiente paso
+    onContinue: (List<Seat>) -> Unit
 ) {
     val repository = remember { EventRepository() }
     val scope = rememberCoroutineScope()
     var event by remember { mutableStateOf<Event?>(null) }
     var isLoading by remember { mutableStateOf(true) }
-
-    // Estado de selección
     val selectedSeats = remember { mutableStateListOf<Seat>() }
 
     LaunchedEffect(eventId) {
@@ -77,51 +76,75 @@ fun SeatSelectionScreen(
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
             } else if (event != null) {
                 val currentEvent = event!!
-                Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
 
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp)
+                ) {
                     Text(
                         text = currentEvent.titulo,
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold
                     )
-                    Text("Máximo 4 asientos", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
+                    Text("Selecciona hasta 4 asientos.", style = MaterialTheme.typography.bodySmall, color = Color.Gray)
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    // LEYENDA
+                    // LEYENDA DE COLORES
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        LegendItem(Color.Gray, "Ocupado")
                         LegendItem(Color.Green, "Libre")
                         LegendItem(Color.Blue, "Tu Selección")
+                        LegendItem(Color(0xFFFFB74D), "Bloqueado")
+                        LegendItem(Color(0xFFE57373), "Vendido")
                     }
 
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Divider(modifier = Modifier.padding(vertical = 8.dp))
+                    Spacer(modifier = Modifier.height(8.dp))
 
                     // GRILLA DE ASIENTOS
-                    val maxCol = currentEvent.asientos.maxOfOrNull { it.columna } ?: 1
+                    val seatsList = currentEvent.asientos
 
-                    LazyVerticalGrid(
-                        columns = GridCells.Fixed(maxCol),
-                        verticalArrangement = Arrangement.spacedBy(4.dp),
-                        horizontalArrangement = Arrangement.spacedBy(4.dp),
-                        modifier = Modifier.weight(1f)
-                    ) {
-                        items(currentEvent.asientos.sortedWith(compareBy({ it.fila }, { it.columna }))) { seat ->
-                            SeatItem(
-                                seat = seat,
-                                isSelected = selectedSeats.contains(seat),
-                                onSeatClick = { clickedSeat ->
-                                    if (selectedSeats.contains(clickedSeat)) {
-                                        selectedSeats.remove(clickedSeat)
-                                    } else {
-                                        if (selectedSeats.size < 4) {
+                    if (seatsList.isEmpty()) {
+                        // Mensaje si no hay datos de asientos
+                        Box(modifier = Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
+                            Text("No hay información de asientos disponible para este evento.")
+                        }
+                    } else {
+                        // 1. Calculamos las columnas reales (evitamos división por 0)
+                        val columnasReales = if (currentEvent.columnas > 0) currentEvent.columnas else 1
+
+                        // 2. Ordenamos los asientos para que se pinten en orden
+                        val sortedSeats = remember(seatsList) {
+                            seatsList.sortedWith(compareBy({ it.fila }, { it.columna }))
+                        }
+
+                        // 3. Renderizamos la grilla correcta
+                        LazyVerticalGrid(
+                            columns = GridCells.Fixed(columnasReales),
+                            contentPadding = PaddingValues(4.dp),
+                            verticalArrangement = Arrangement.spacedBy(6.dp),
+                            horizontalArrangement = Arrangement.spacedBy(6.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .weight(1f)
+                        ) {
+                            items(sortedSeats) { seat ->
+                                SeatItem(
+                                    seat = seat,
+                                    isSelected = selectedSeats.contains(seat),
+                                    onSeatClick = { clickedSeat ->
+                                        if (selectedSeats.contains(clickedSeat)) {
+                                            selectedSeats.remove(clickedSeat)
+                                        } else if (selectedSeats.size < 4) {
                                             selectedSeats.add(clickedSeat)
                                         }
                                     }
-                                }
-                            )
+                                )
+                            }
                         }
                     }
                 }
@@ -130,28 +153,33 @@ fun SeatSelectionScreen(
     }
 }
 
-// Reutilizamos los componentes pequeños (SeatItem y LegendItem) del paso anterior
+// --- COMPONENTES DE UI ---
+
 @Composable
 fun SeatItem(seat: Seat, isSelected: Boolean, onSeatClick: (Seat) -> Unit) {
     val backgroundColor = when {
-        seat.estado == "Ocupado" || seat.estado == "Bloqueado" -> Color.Gray
-        isSelected -> Color.Blue
-        else -> Color.Green
+        seat.estado == "Vendido" || seat.estado == "Ocupado" -> Color(0xFFE57373) // Rojo
+        seat.estado == "Bloqueado" -> Color(0xFFFFB74D) // Naranja
+        isSelected -> Color.Blue // Azul
+        else -> Color.Green // Verde (Libre)
     }
-    val isEnabled = seat.estado == "Libre"
+
+    val isEnabled = seat.estado != "Vendido" && seat.estado != "Ocupado" && seat.estado != "Bloqueado"
 
     Box(
         modifier = Modifier
-            .aspectRatio(1f)
+            .aspectRatio(1f) // Cuadrado perfecto
             .clip(RoundedCornerShape(4.dp))
             .background(backgroundColor)
             .clickable(enabled = isEnabled) { onSeatClick(seat) }
-            .border(1.dp, Color.DarkGray, RoundedCornerShape(4.dp)),
+            .border(1.dp, Color.LightGray, RoundedCornerShape(4.dp)),
         contentAlignment = Alignment.Center
     ) {
+        // Mostramos solo el número de columna para que entre bien
         Text(
-            text = "${seat.fila}-${seat.columna}",
+            text = "${seat.columna}",
             style = MaterialTheme.typography.labelSmall,
+            fontWeight = FontWeight.Bold,
             color = if (isSelected || !isEnabled) Color.White else Color.Black
         )
     }
@@ -160,8 +188,8 @@ fun SeatItem(seat: Seat, isSelected: Boolean, onSeatClick: (Seat) -> Unit) {
 @Composable
 fun LegendItem(color: Color, text: String) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        Box(modifier = Modifier.size(12.dp).background(color, RoundedCornerShape(2.dp)))
-        Spacer(modifier = Modifier.width(4.dp))
-        Text(text, style = MaterialTheme.typography.labelSmall)
+        Box(modifier = Modifier.size(14.dp).background(color, RoundedCornerShape(4.dp)).border(1.dp, Color.LightGray, RoundedCornerShape(4.dp)))
+        Spacer(modifier = Modifier.width(6.dp))
+        Text(text, style = MaterialTheme.typography.bodySmall)
     }
 }
