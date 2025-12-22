@@ -1636,3 +1636,952 @@ java.nio.file.NoSuchFileException: /home/alma/.cache/Google/AndroidStudio2025.1.
 2025-12-16 22:47:08,506 [ 602065]   WARN - Emulator: Pixel 8 Pro - adb protocol fault (couldn't read status length)
 2025-12-16 23:32:28,861 [3322420]   WARN - o.j.p.g.i.d.GradleDaemonServices - Unable to send daemon message for Gradle 8.14.3
 2025-12-16 23:32:28,862 [3322421]   WARN - o.j.p.g.i.d.GradleDaemonServices - org.gradle.api.internal.file.DefaultFileCollectionFactory.<init>(org.gradle.internal.file.PathToFileResolver,org.gradle.api.internal.tasks.TaskDependencyFactory,org.gradle.api.internal.file.collections.DirectoryFileTreeFactory,org.gradle.internal.Factory,org.gradle.api.internal.provider.PropertyHost,org.gradle.internal.nativeintegration.filesystem.FileSystem)
+2025-12-21 18:08:52,848 [    821]   WARN - #c.i.o.v.n.p.FSRecords - Records storage [/home/alma/.cache/JetBrains/IntelliJIdea2025.2/caches/records.dat] was in use by process [OwnershipInfo{owner pid: 682610, acquired at: 1766193936213}] which is not exist now (wasn't closed properly/crashed?) -> re-acquiring forcibly
+2025-12-21 18:08:52,871 [    844]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: VFS wasn't safely shut down: records.wasClosedProperly is false
+2025-12-21 18:08:55,640 [   3613]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: NOT_CLOSED_PROPERLY recovered, no problems remain
+2025-12-21 18:08:56,178 [   4151]   WARN - #c.i.w.i.i.WorkspaceModelMessageDeliveryListener - Long WSM event processing. Topic=WorkspaceModelChangeListener, offender=class com.intellij.jarRepository.RepositoryLibraryChangeListener, message=changed, time=286ms
+2025-12-21 18:09:00,454 [   8427]   WARN - #c.i.o.a.i.ActionUpdater - 4263 ms total to grab EDT 5 times to expand ToolWindowHeader$2#expandGroup@ToolwindowTitle (com.intellij.toolWindow.ToolWindowHeader$2). Use `ActionUpdateThread.BGT`.
+JCEF_V(09:01:018): Found cef_server binary '/opt/idea-IU-252.26830.84/jbr/lib/cef_server' via System.getProperty('java.home')=/opt/idea-IU-252.26830.84/jbr
+JCEF_V(09:01:018): Java is started via native launcher. Found cef_server path /opt/idea-IU-252.26830.84/jbr/lib/cef_server (via system propety)
+2025-12-21 18:09:02,894 [  10867]   WARN - #c.i.s.c.i.StationSocketConnectionLoop - RecentProjects connection failed with NoSuchFileException (/run/user/1000/jb.station.sock)
+2025-12-21 18:09:04,379 [  12352]   WARN - #c.i.o.f.i.EditorCompositeModelManager - Cannot use saved provider list (savedProviders={split-provider[text-editor;markdown-preview-editor]=[Element: <state/>]}, resolvedProvider=[])
+2025-12-21 18:09:04,448 [  12421] SEVERE - #c.i.u.i.UnindexedFilesScanner - It should not happen that project has seen file id in orphan queue at index larger than number of files that orphan queue ever had. projectQueue.lastSeenIdsInOrphanQueue=79, orphanQueue.untrimmedSize=0, orphanQueue.fileIds.size=0, project=Project(name=proxy, containerState=COMPONENT_CREATED, componentStore=/home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/proxy), orphanQueueDiscardReason=com.intellij.util.indexing.OrphanDirtyFilesQueueDiscardReason@5407599e
+java.lang.Throwable: It should not happen that project has seen file id in orphan queue at index larger than number of files that orphan queue ever had. projectQueue.lastSeenIdsInOrphanQueue=79, orphanQueue.untrimmedSize=0, orphanQueue.fileIds.size=0, project=Project(name=proxy, containerState=COMPONENT_CREATED, componentStore=/home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/proxy), orphanQueueDiscardReason=com.intellij.util.indexing.OrphanDirtyFilesQueueDiscardReason@5407599e
+	at com.intellij.openapi.diagnostic.Logger.error(Logger.java:375)
+	at com.intellij.util.indexing.UnindexedFilesScannerStartupKt.getNotSeenIds(unindexedFilesScannerStartup.kt:207)
+	at com.intellij.util.indexing.UnindexedFilesScannerStartupKt.scanAndIndexProjectAfterOpen(unindexedFilesScannerStartup.kt:72)
+	at com.intellij.util.indexing.ProjectFileBasedIndexStartupActivity.runActivity(ProjectFileBasedIndexStartupActivity.kt:93)
+	at com.intellij.openapi.project.InitialDumbTaskRequiredForSmartMode.performInDumbMode(InitialDumbTaskRequiredForSmartMode.kt:22)
+	at com.intellij.openapi.project.DumbModeTask.perform(DumbModeTask.java:40)
+	at com.intellij.openapi.project.MergingTaskQueue$QueuedTask.executeTask(MergingTaskQueue.java:296)
+	at com.intellij.openapi.project.MergingTaskQueue$QueuedTask.executeTask(MergingTaskQueue.java:284)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runSingleTask$lambda$8(MergingQueueGuiExecutor.kt:255)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$1(CoreProgressManager.java:229)
+	at com.intellij.platform.diagnostic.telemetry.helpers.TraceKt.use(trace.kt:44)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:228)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$14(CoreProgressManager.java:681)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:756)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:712)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:680)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:78)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:209)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runSingleTask(MergingQueueGuiExecutor.kt:251)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.processTasksWithProgress$lambda$3(MergingQueueGuiExecutor.kt:126)
+	at com.intellij.openapi.project.MergingQueueGuiSuspender.setCurrentSuspenderAndSuspendIfRequested(MergingQueueGuiSuspender.kt:61)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.processTasksWithProgress(MergingQueueGuiExecutor.kt:110)
+	at com.intellij.openapi.project.DumbServiceGuiExecutor.processTasksWithProgress(DumbServiceGuiExecutor.kt:41)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runBackgroundProcessWithSuspender(MergingQueueGuiExecutor.kt:242)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.lambda$1$lambda$0(MergingQueueGuiExecutor.kt:102)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runWithCallbacks(MergingQueueGuiExecutor.kt:226)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor._init_$lambda$1(MergingQueueGuiExecutor.kt:101)
+	at com.intellij.openapi.project.SingleTaskExecutor$StateAwareTask.run$lambda$0(SingleTaskExecutor.kt:37)
+	at com.intellij.openapi.project.SingleTaskExecutor.runWithStateHandling(SingleTaskExecutor.kt:63)
+	at com.intellij.openapi.project.SingleTaskExecutor.access$runWithStateHandling(SingleTaskExecutor.kt:22)
+	at com.intellij.openapi.project.SingleTaskExecutor$StateAwareTask.run(SingleTaskExecutor.kt:37)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.startBackgroundProcess$lambda$6$lambda$5(MergingQueueGuiExecutor.kt:156)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor$startInBackgroundWithVisibleOrInvisibleProgress$backgroundableTask$1.run(MergingQueueGuiExecutor.kt:197)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.startTask(CoreProgressManager.java:498)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.startTask(ProgressManagerImpl.java:119)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcessWithProgressAsynchronously$7(CoreProgressManager.java:549)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$submit$4(ProgressRunner.java:252)
+	at com.intellij.openapi.progress.ProgressManager.lambda$runProcess$0(ProgressManager.java:98)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$1(CoreProgressManager.java:229)
+	at com.intellij.platform.diagnostic.telemetry.helpers.TraceKt.use(trace.kt:44)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:228)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$14(CoreProgressManager.java:681)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:756)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:712)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:680)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:78)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:209)
+	at com.intellij.openapi.progress.ProgressManager.runProcess(ProgressManager.java:98)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$submit$5(ProgressRunner.java:252)
+	at com.intellij.openapi.progress.impl.ProgressRunner$ProgressRunnable.run(ProgressRunner.java:515)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$launchTask$18(ProgressRunner.java:480)
+	at com.intellij.util.concurrency.ChildContext$runInChildContext$1.invoke(propagation.kt:167)
+	at com.intellij.util.concurrency.ChildContext$runInChildContext$1.invoke(propagation.kt:167)
+	at com.intellij.util.concurrency.ChildContext.runInChildContext(propagation.kt:173)
+	at com.intellij.util.concurrency.ChildContext.runInChildContext(propagation.kt:167)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$launchTask$19(ProgressRunner.java:476)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:735)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:732)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:732)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-12-21 18:09:04,463 [  12436] SEVERE - #c.i.u.i.UnindexedFilesScanner - IntelliJ IDEA 2025.2.3  Build #IU-252.26830.84
+2025-12-21 18:09:04,463 [  12436] SEVERE - #c.i.u.i.UnindexedFilesScanner - JDK: 21.0.8; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2025-12-21 18:09:04,463 [  12436] SEVERE - #c.i.u.i.UnindexedFilesScanner - OS: Linux
+2025-12-21 18:09:04,463 [  12436] SEVERE - #c.i.u.i.UnindexedFilesScanner - Last Action: 
+JCEF_I(09:06:008): Found free tcp-port 6188 for server.
+JCEF_I(09:06:008): Found free tcp-port 6189 for java-handlers.
+JCEF_V(09:06:047): Created CefServer instance. Transport port=6188 (backward port=6189). Params:
+[--disable-features=SpareRendererForSitePerProcess, --force-device-scale-factor=1.0, --disable-gpu-process-crash-limit, --disable-component-update, --autoplay-policy=no-user-gesture-required]| log_file=/home/alma/.cache/JetBrains/IntelliJIdea2025.2/log/jcef_25213.log, log_severity=LOGSEVERITY_DISABLE
+2025-12-21 18:09:07,640 [  15613]   WARN - #c.i.v.l.u.StorageId$Directory - Failed to move /home/alma/.cache/JetBrains/IntelliJIdea2025.2/vcs-log/proxy_743d0145_289ba3ea/index to /home/alma/.cache/JetBrains/IntelliJIdea2025.2/vcs-log/proxy_743d0145_289ba3ea/index
+java.nio.file.NoSuchFileException: /home/alma/.cache/JetBrains/IntelliJIdea2025.2/vcs-log/proxy_743d0145_289ba3ea/index
+	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:108)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:114)
+	at java.base/sun.nio.fs.UnixFileSystem.move(UnixFileSystem.java:892)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.move(UnixFileSystemProvider.java:309)
+	at com.intellij.platform.core.nio.fs.DelegatingFileSystemProvider.move(DelegatingFileSystemProvider.java:211)
+	at java.base/java.nio.file.Files.move(Files.java:1431)
+	at com.intellij.vcs.log.util.StorageId.cleanupAllStorageFiles(PersistentUtil.kt:58)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.lambda$createStorageAndIndexBackend$4(VcsLogStorageImpl.java:375)
+	at com.intellij.util.io.IOUtil.openCleanOrResetBroken(IOUtil.java:310)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.createStorageAndIndexBackend(VcsLogStorageImpl.java:358)
+	at com.intellij.vcs.log.data.VcsLogData.createStorageAndIndex(VcsLogData.java:149)
+	at com.intellij.vcs.log.data.VcsLogData.<init>(VcsLogData.java:92)
+	at com.intellij.vcs.log.impl.VcsLogManager.<init>(VcsLogManager.kt:62)
+	at com.intellij.vcs.log.impl.IdeVcsLogManager.<init>(IdeVcsLogManager.kt:33)
+	at com.intellij.vcs.log.impl.IdeVcsProjectLog.createLogManager(IdeVcsProjectLog.kt:48)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.getOrCreateLogManager(VcsProjectLogBase.kt:221)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.access$getOrCreateLogManager(VcsProjectLogBase.kt:52)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$getOrCreateLogManager$2.invokeSuspend(VcsProjectLogBase.kt:209)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$getOrCreateLogManager$2.invoke(VcsProjectLogBase.kt)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$getOrCreateLogManager$2.invoke(VcsProjectLogBase.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invokeSuspend(PlatformActivityTrackerService.kt:72)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:44)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:166)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService.trackConfigurationActivity(PlatformActivityTrackerService.kt:71)
+	at com.intellij.platform.backend.observation.TrackingUtil.trackActivity(util.kt:23)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.getOrCreateLogManager(VcsProjectLogBase.kt:208)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.access$getOrCreateLogManager(VcsProjectLogBase.kt:52)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$initAsync$1.invokeSuspend(VcsProjectLogBase.kt:164)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:613)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:1189)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
+2025-12-21 18:09:09,308 [  17281] SEVERE - #c.i.u.i.UnindexedFilesScanner - It should not happen that project has seen file id in orphan queue at index larger than number of files that orphan queue ever had. projectQueue.lastSeenIdsInOrphanQueue=79, orphanQueue.untrimmedSize=0, orphanQueue.fileIds.size=0, project=Project(name=backend, containerState=COMPONENT_CREATED, componentStore=/home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/backend), orphanQueueDiscardReason=com.intellij.util.indexing.OrphanDirtyFilesQueueDiscardReason@5407599e
+java.lang.Throwable: It should not happen that project has seen file id in orphan queue at index larger than number of files that orphan queue ever had. projectQueue.lastSeenIdsInOrphanQueue=79, orphanQueue.untrimmedSize=0, orphanQueue.fileIds.size=0, project=Project(name=backend, containerState=COMPONENT_CREATED, componentStore=/home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/backend), orphanQueueDiscardReason=com.intellij.util.indexing.OrphanDirtyFilesQueueDiscardReason@5407599e
+	at com.intellij.openapi.diagnostic.Logger.error(Logger.java:375)
+	at com.intellij.util.indexing.UnindexedFilesScannerStartupKt.getNotSeenIds(unindexedFilesScannerStartup.kt:207)
+	at com.intellij.util.indexing.UnindexedFilesScannerStartupKt.scanAndIndexProjectAfterOpen(unindexedFilesScannerStartup.kt:72)
+	at com.intellij.util.indexing.ProjectFileBasedIndexStartupActivity.runActivity(ProjectFileBasedIndexStartupActivity.kt:93)
+	at com.intellij.openapi.project.InitialDumbTaskRequiredForSmartMode.performInDumbMode(InitialDumbTaskRequiredForSmartMode.kt:22)
+	at com.intellij.openapi.project.DumbModeTask.perform(DumbModeTask.java:40)
+	at com.intellij.openapi.project.MergingTaskQueue$QueuedTask.executeTask(MergingTaskQueue.java:296)
+	at com.intellij.openapi.project.MergingTaskQueue$QueuedTask.executeTask(MergingTaskQueue.java:284)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runSingleTask$lambda$8(MergingQueueGuiExecutor.kt:255)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$1(CoreProgressManager.java:229)
+	at com.intellij.platform.diagnostic.telemetry.helpers.TraceKt.use(trace.kt:44)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:228)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$14(CoreProgressManager.java:681)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:756)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:712)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:680)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:78)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:209)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runSingleTask(MergingQueueGuiExecutor.kt:251)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.processTasksWithProgress$lambda$3(MergingQueueGuiExecutor.kt:126)
+	at com.intellij.openapi.project.MergingQueueGuiSuspender.setCurrentSuspenderAndSuspendIfRequested(MergingQueueGuiSuspender.kt:61)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.processTasksWithProgress(MergingQueueGuiExecutor.kt:110)
+	at com.intellij.openapi.project.DumbServiceGuiExecutor.processTasksWithProgress(DumbServiceGuiExecutor.kt:41)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runBackgroundProcessWithSuspender(MergingQueueGuiExecutor.kt:242)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.lambda$1$lambda$0(MergingQueueGuiExecutor.kt:102)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runWithCallbacks(MergingQueueGuiExecutor.kt:226)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor._init_$lambda$1(MergingQueueGuiExecutor.kt:101)
+	at com.intellij.openapi.project.SingleTaskExecutor$StateAwareTask.run$lambda$0(SingleTaskExecutor.kt:37)
+	at com.intellij.openapi.project.SingleTaskExecutor.runWithStateHandling(SingleTaskExecutor.kt:63)
+	at com.intellij.openapi.project.SingleTaskExecutor.access$runWithStateHandling(SingleTaskExecutor.kt:22)
+	at com.intellij.openapi.project.SingleTaskExecutor$StateAwareTask.run(SingleTaskExecutor.kt:37)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.startBackgroundProcess$lambda$6$lambda$5(MergingQueueGuiExecutor.kt:156)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor$startInBackgroundWithVisibleOrInvisibleProgress$backgroundableTask$1.run(MergingQueueGuiExecutor.kt:197)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.startTask(CoreProgressManager.java:498)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.startTask(ProgressManagerImpl.java:119)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcessWithProgressAsynchronously$7(CoreProgressManager.java:549)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$submit$4(ProgressRunner.java:252)
+	at com.intellij.openapi.progress.ProgressManager.lambda$runProcess$0(ProgressManager.java:98)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$1(CoreProgressManager.java:229)
+	at com.intellij.platform.diagnostic.telemetry.helpers.TraceKt.use(trace.kt:44)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:228)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$14(CoreProgressManager.java:681)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:756)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:712)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:680)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:78)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:209)
+	at com.intellij.openapi.progress.ProgressManager.runProcess(ProgressManager.java:98)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$submit$5(ProgressRunner.java:252)
+	at com.intellij.openapi.progress.impl.ProgressRunner$ProgressRunnable.run(ProgressRunner.java:515)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$launchTask$18(ProgressRunner.java:480)
+	at com.intellij.util.concurrency.ChildContext$runInChildContext$1.invoke(propagation.kt:167)
+	at com.intellij.util.concurrency.ChildContext$runInChildContext$1.invoke(propagation.kt:167)
+	at com.intellij.util.concurrency.ChildContext.runInChildContext(propagation.kt:173)
+	at com.intellij.util.concurrency.ChildContext.runInChildContext(propagation.kt:167)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$launchTask$19(ProgressRunner.java:476)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:735)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:732)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:732)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-12-21 18:09:09,314 [  17287] SEVERE - #c.i.u.i.UnindexedFilesScanner - IntelliJ IDEA 2025.2.3  Build #IU-252.26830.84
+2025-12-21 18:09:09,314 [  17287] SEVERE - #c.i.u.i.UnindexedFilesScanner - JDK: 21.0.8; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2025-12-21 18:09:09,314 [  17287] SEVERE - #c.i.u.i.UnindexedFilesScanner - OS: Linux
+2025-12-21 18:09:09,314 [  17287] SEVERE - #c.i.u.i.UnindexedFilesScanner - Last Action: 
+2025-12-21 18:09:11,780 [  19753]   WARN - #c.i.s.c.i.StationSocketConnectionLoop - Discovery connection failed with NoSuchFileException (/run/user/1000/jb.station.sock)
+2025-12-21 18:09:12,712 [  20685]   WARN - #c.i.o.a.i.ActionUpdater - 4581 ms total to grab EDT 5 times to expand ToolWindowHeader$2#expandGroup@ToolwindowTitle (com.intellij.toolWindow.ToolWindowHeader$2). Use `ActionUpdateThread.BGT`.
+2025-12-21 18:09:12,713 [  20686]   WARN - #c.i.o.a.i.ActionUpdater - 4532 ms total to grab EDT 5 times to expand ToolWindowHeader$2#expandGroup@ToolwindowTitle (com.intellij.toolWindow.ToolWindowHeader$2). Use `ActionUpdateThread.BGT`.
+2025-12-21 18:09:12,716 [  20689]   WARN - #c.i.o.a.i.ActionUpdater - 4600 ms total to grab EDT 5 times to expand ToolWindowHeader$2#expandGroup@ToolwindowTitle (com.intellij.toolWindow.ToolWindowHeader$2). Use `ActionUpdateThread.BGT`.
+2025-12-21 18:09:13,512 [  21485]   WARN - #c.i.v.l.u.StorageId$Directory - Failed to move /home/alma/.cache/JetBrains/IntelliJIdea2025.2/vcs-log/backend_56b8e3ab_289ba3ea/index to /home/alma/.cache/JetBrains/IntelliJIdea2025.2/vcs-log/backend_56b8e3ab_289ba3ea/index
+java.nio.file.NoSuchFileException: /home/alma/.cache/JetBrains/IntelliJIdea2025.2/vcs-log/backend_56b8e3ab_289ba3ea/index
+	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:108)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:114)
+	at java.base/sun.nio.fs.UnixFileSystem.move(UnixFileSystem.java:892)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.move(UnixFileSystemProvider.java:309)
+	at com.intellij.platform.core.nio.fs.DelegatingFileSystemProvider.move(DelegatingFileSystemProvider.java:211)
+	at java.base/java.nio.file.Files.move(Files.java:1431)
+	at com.intellij.vcs.log.util.StorageId.cleanupAllStorageFiles(PersistentUtil.kt:58)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.lambda$createStorageAndIndexBackend$4(VcsLogStorageImpl.java:375)
+	at com.intellij.util.io.IOUtil.openCleanOrResetBroken(IOUtil.java:310)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.createStorageAndIndexBackend(VcsLogStorageImpl.java:358)
+	at com.intellij.vcs.log.data.VcsLogData.createStorageAndIndex(VcsLogData.java:149)
+	at com.intellij.vcs.log.data.VcsLogData.<init>(VcsLogData.java:92)
+	at com.intellij.vcs.log.impl.VcsLogManager.<init>(VcsLogManager.kt:62)
+	at com.intellij.vcs.log.impl.IdeVcsLogManager.<init>(IdeVcsLogManager.kt:33)
+	at com.intellij.vcs.log.impl.IdeVcsProjectLog.createLogManager(IdeVcsProjectLog.kt:48)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.getOrCreateLogManager(VcsProjectLogBase.kt:221)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.access$getOrCreateLogManager(VcsProjectLogBase.kt:52)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$getOrCreateLogManager$2.invokeSuspend(VcsProjectLogBase.kt:209)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$getOrCreateLogManager$2.invoke(VcsProjectLogBase.kt)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$getOrCreateLogManager$2.invoke(VcsProjectLogBase.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invokeSuspend(PlatformActivityTrackerService.kt:72)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:44)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:166)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService.trackConfigurationActivity(PlatformActivityTrackerService.kt:71)
+	at com.intellij.platform.backend.observation.TrackingUtil.trackActivity(util.kt:23)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.getOrCreateLogManager(VcsProjectLogBase.kt:208)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.reinitUnsafe(VcsProjectLogBase.kt:188)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.access$reinitUnsafe(VcsProjectLogBase.kt:52)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$reinitAsync$1.invokeSuspend(VcsProjectLogBase.kt:182)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:613)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:1189)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
+2025-12-21 18:09:15,417 [  23390]   WARN - com.github.benmanes.caffeine.cache.LocalAsyncCache - Exception thrown during asynchronous load
+java.util.concurrent.CompletionException: java.net.ConnectException
+	at com.github.benmanes.caffeine.cache.CacheLoader.lambda$asyncLoad$0(CacheLoader.java:113)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1491)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:2073)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2035)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+Caused by: java.net.ConnectException
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:955)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133)
+	at com.intellij.util.net.PlatformHttpClient$DelegatingHttpClient.send(PlatformHttpClient.java:337)
+	at com.intellij.ide.RegionUrlMapper.doLoadMappingOrThrow(RegionUrlMapper.java:152)
+	at com.github.benmanes.caffeine.cache.CacheLoader.lambda$asyncLoad$0(CacheLoader.java:109)
+	... 7 more
+Caused by: java.net.ConnectException
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1066)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:227)
+	at java.net.http/jdk.internal.net.http.AsyncSSLConnection.connectAsync(AsyncSSLConnection.java:56)
+	at java.net.http/jdk.internal.net.http.Http2Connection.createAsync(Http2Connection.java:529)
+	at java.net.http/jdk.internal.net.http.Http2ClientImpl.getConnectionFor(Http2ClientImpl.java:140)
+	at java.net.http/jdk.internal.net.http.ExchangeImpl.get(ExchangeImpl.java:98)
+	at java.net.http/jdk.internal.net.http.Exchange.establishExchange(Exchange.java:391)
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl0(Exchange.java:584)
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl(Exchange.java:428)
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsync(Exchange.java:420)
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:435)
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsyncImpl$7(MultiExchange.java:477)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandleStage(CompletableFuture.java:950)
+	at java.base/java.util.concurrent.CompletableFuture.handle(CompletableFuture.java:2372)
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:467)
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsync0$2(MultiExchange.java:355)
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1150)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$DelegatingExecutor.execute(HttpClientImpl.java:177)
+	at java.base/java.util.concurrent.CompletableFuture.completeAsync(CompletableFuture.java:2719)
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsync(MultiExchange.java:308)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.sendAsync(HttpClientImpl.java:1053)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:933)
+	... 11 more
+Caused by: java.nio.channels.UnresolvedAddressException
+	at java.base/sun.nio.ch.Net.checkAddress(Net.java:137)
+	at java.base/sun.nio.ch.Net.checkAddress(Net.java:145)
+	at java.base/sun.nio.ch.SocketChannelImpl.checkRemote(SocketChannelImpl.java:842)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:865)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:210)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212)
+	... 34 more
+2025-12-21 18:09:18,055 [  26028]   WARN - #o.j.k.i.s.r.KotlinCompilerReferenceIndexStorage - kotlin-data-container is not found
+2025-12-21 18:09:23,321 [  31294]   WARN - #c.i.p.j.n.WebTypesNpmLoader - Failed to fetch packages for '@web-types' (Full Text): registry.npmjs.org
+2025-12-21 18:09:29,072 [  37045]   WARN - #o.j.p.g.j.IdeVersionedDataUpdater - Could not download new IDE versioned data for org.jetbrains.plugins.gradle.jvmcompat.GradleCompatibilitySupportUpdater
+java.net.UnknownHostException: download.jetbrains.com
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:567)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:751)
+	at java.base/sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:304)
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:178)
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:531)
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:636)
+	at java.base/sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:264)
+	at java.base/sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:377)
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1298)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1139)
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1691)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1615)
+	at java.base/java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:531)
+	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:307)
+	at com.intellij.util.io.HttpRequests.openConnection(HttpRequests.java:626)
+	at com.intellij.util.io.HttpRequests$RequestImpl.getConnection(HttpRequests.java:366)
+	at com.intellij.util.io.HttpRequests$RequestImpl.doReadBytes(HttpRequests.java:442)
+	at com.intellij.util.io.HttpRequests$RequestImpl.readString(HttpRequests.java:431)
+	at com.intellij.util.io.RequestBuilder.lambda$readString$5(RequestBuilder.java:85)
+	at com.intellij.util.io.HttpRequests.doProcess(HttpRequests.java:529)
+	at com.intellij.util.io.HttpRequests.process(HttpRequests.java:511)
+	at com.intellij.util.io.HttpRequests$RequestBuilderImpl.connect(HttpRequests.java:340)
+	at com.intellij.util.io.RequestBuilder.readString(RequestBuilder.java:85)
+	at com.intellij.util.io.RequestBuilder.readString(RequestBuilder.java:89)
+	at org.jetbrains.plugins.gradle.jvmcompat.IdeVersionedDataUpdater.retrieveNewData(IdeVersionedDataUpdater.kt:42)
+	at org.jetbrains.plugins.gradle.jvmcompat.IdeVersionedDataUpdater.checkForUpdates(IdeVersionedDataUpdater.kt:30)
+	at org.jetbrains.plugins.gradle.service.project.GradleVersionUpdateStartupActivity.execute(GradleVersionUpdateStartupActivity.kt:20)
+	at com.intellij.ide.startup.impl.StartupManagerImplKt$launchActivity$1.invokeSuspend(StartupManagerImpl.kt:511)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:613)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:1189)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
+2025-12-21 18:09:29,077 [  37050]   WARN - #o.j.p.g.j.IdeVersionedDataUpdater - Suppressed a frequent exception logged for the 2nd time: download.jetbrains.com
+2025-12-21 18:09:48,819 [  56792]   WARN - com.github.benmanes.caffeine.cache.LocalAsyncCache - Exception thrown during asynchronous load
+java.util.concurrent.CompletionException: java.net.http.HttpConnectTimeoutException: HTTP connect timed out
+	at com.github.benmanes.caffeine.cache.CacheLoader.lambda$asyncLoad$0(CacheLoader.java:113)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1491)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:2073)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2035)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+Caused by: java.net.http.HttpConnectTimeoutException: HTTP connect timed out
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:949)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133)
+	at com.intellij.util.net.PlatformHttpClient$DelegatingHttpClient.send(PlatformHttpClient.java:337)
+	at com.intellij.ide.RegionUrlMapper.doLoadMappingOrThrow(RegionUrlMapper.java:152)
+	at com.github.benmanes.caffeine.cache.CacheLoader.lambda$asyncLoad$0(CacheLoader.java:109)
+	... 7 more
+Caused by: java.net.http.HttpConnectTimeoutException: HTTP connect timed out
+	at java.net.http/jdk.internal.net.http.MultiExchange.toTimeoutException(MultiExchange.java:612)
+	at java.net.http/jdk.internal.net.http.MultiExchange.getExceptionalCF(MultiExchange.java:556)
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsyncImpl$7(MultiExchange.java:475)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934)
+	at java.base/java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194)
+	at java.net.http/jdk.internal.net.http.Exchange.checkCancelled(Exchange.java:335)
+	at java.net.http/jdk.internal.net.http.Exchange.cancel(Exchange.java:298)
+	at java.net.http/jdk.internal.net.http.MultiExchange.cancel(MultiExchange.java:266)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection$ConnectTimerEvent.handle(PlainHttpConnection.java:103)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.purgeTimeoutsAndReturnNextDeadline(HttpClientImpl.java:1788)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1386)
+Caused by: java.net.ConnectException: HTTP connect timed out
+	at java.net.http/jdk.internal.net.http.MultiExchange.toTimeoutException(MultiExchange.java:613)
+	... 12 more
+com.intellij.packageChecker.model.exceptions.AnalysisException: Failed to check dependencies on server: https://vulnerability-search.jetbrains.com/api/v5/vulnerabilities
+	at com.intellij.packageChecker.model.GeneralRepositoryServer.getPackagesFromServer(GeneralRepositoryServer.kt:104)
+	at com.intellij.packageChecker.model.GeneralRepositoryServer.access$getPackagesFromServer(GeneralRepositoryServer.kt:21)
+	at com.intellij.packageChecker.model.GeneralRepositoryServer$getPackagesFromServer$1.invokeSuspend(GeneralRepositoryServer.kt)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:613)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:1189)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
+2025-12-21 18:10:16,409 [  84382]   WARN - #c.i.p.m.GeneralRepositoryServer - Failed to check dependencies on server: https://vulnerability-search.jetbrains.com
+com.intellij.packageChecker.model.exceptions.AnalysisException: Failed to check dependencies on server: https://vulnerability-search.jetbrains.com/api/v5/vulnerabilities
+	at com.intellij.packageChecker.model.GeneralRepositoryServer.getPackagesFromServer(GeneralRepositoryServer.kt:104)
+	at com.intellij.packageChecker.model.GeneralRepositoryServer.access$getPackagesFromServer(GeneralRepositoryServer.kt:21)
+	at com.intellij.packageChecker.model.GeneralRepositoryServer$getPackagesFromServer$1.invokeSuspend(GeneralRepositoryServer.kt)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:613)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:1189)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
+2025-12-21 18:10:16,614 [  84587]   WARN - #c.i.p.m.GeneralRepositoryServer - Failed to check dependencies on server: https://vulnerability-search.jetbrains.com
+com.intellij.packageChecker.model.exceptions.AnalysisException: Failed to check dependencies on server: https://vulnerability-search.jetbrains.com/api/v5/vulnerabilities
+	at com.intellij.packageChecker.model.GeneralRepositoryServer.getPackagesFromServer(GeneralRepositoryServer.kt:104)
+	at com.intellij.packageChecker.model.GeneralRepositoryServer.access$getPackagesFromServer(GeneralRepositoryServer.kt:21)
+	at com.intellij.packageChecker.model.GeneralRepositoryServer$getPackagesFromServer$1.invokeSuspend(GeneralRepositoryServer.kt)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:613)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:1189)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
+2025-12-21 18:10:17,020 [  84993]   WARN - #c.i.p.m.GeneralRepositoryServer - Failed to check dependencies on server: https://vulnerability-search.jetbrains.com
+2025-12-21 18:10:17,621 [  85594]   WARN - #c.i.p.m.GeneralRepositoryServer - com.intellij.packageChecker.model.GeneralRepositoryServer.getPackagesFromServer(GeneralRepositoryServer.kt:104)
+com.intellij.packageChecker.model.GeneralRepositoryServer.access$getPackagesFromServer(GeneralRepositoryServer.kt:21)
+com.intellij.packageChecker.model.GeneralRepositoryServer$getPackagesFromServer$1.invokeSuspend(GeneralRepositoryServer.kt)
+kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:613)
+kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:1189)
+kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
+kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
+com.intellij.packageChecker.model.exceptions.AnalysisException: Failed to check dependencies on server: https://vulnerability-search.jetbrains.com/api/v5/vulnerabilities
+	at com.intellij.packageChecker.model.GeneralRepositoryServer.getPackagesFromServer(GeneralRepositoryServer.kt:104)
+	at com.intellij.packageChecker.model.GeneralRepositoryServer.access$getPackagesFromServer(GeneralRepositoryServer.kt:21)
+	at com.intellij.packageChecker.model.GeneralRepositoryServer$getPackagesFromServer$1.invokeSuspend(GeneralRepositoryServer.kt)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:613)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:1189)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
+2025-12-21 18:10:17,624 [  85597]   WARN - #c.i.p.m.GeneralRepositoryServer - Failed to check dependencies on server: https://vulnerability-search.jetbrains.com
+com.intellij.packageChecker.model.exceptions.AnalysisException: Failed to check dependencies on server: https://vulnerability-search.jetbrains.com/api/v5/vulnerabilities
+	at com.intellij.packageChecker.model.GeneralRepositoryServer.getPackagesFromServer(GeneralRepositoryServer.kt:104)
+	at com.intellij.packageChecker.model.GeneralRepositoryServer.access$getPackagesFromServer(GeneralRepositoryServer.kt:21)
+	at com.intellij.packageChecker.model.GeneralRepositoryServer$getPackagesFromServer$1.invokeSuspend(GeneralRepositoryServer.kt)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:613)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:1189)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
+2025-12-21 18:10:17,832 [  85805]   WARN - #c.i.p.m.GeneralRepositoryServer - Failed to check dependencies on server: https://vulnerability-search.jetbrains.com
+com.intellij.packageChecker.model.exceptions.AnalysisException: Failed to check dependencies on server: https://vulnerability-search.jetbrains.com/api/v5/vulnerabilities
+	at com.intellij.packageChecker.model.GeneralRepositoryServer.getPackagesFromServer(GeneralRepositoryServer.kt:104)
+	at com.intellij.packageChecker.model.GeneralRepositoryServer.access$getPackagesFromServer(GeneralRepositoryServer.kt:21)
+	at com.intellij.packageChecker.model.GeneralRepositoryServer$getPackagesFromServer$1.invokeSuspend(GeneralRepositoryServer.kt)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:613)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:1189)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
+2025-12-21 18:10:18,238 [  86211]   WARN - #c.i.p.m.GeneralRepositoryServer - Failed to check dependencies on server: https://vulnerability-search.jetbrains.com
+2025-12-21 18:10:18,838 [  86811]   WARN - #c.i.p.m.GeneralRepositoryServer - com.intellij.packageChecker.model.GeneralRepositoryServer.getPackagesFromServer(GeneralRepositoryServer.kt:104)
+com.intellij.packageChecker.model.GeneralRepositoryServer.access$getPackagesFromServer(GeneralRepositoryServer.kt:21)
+com.intellij.packageChecker.model.GeneralRepositoryServer$getPackagesFromServer$1.invokeSuspend(GeneralRepositoryServer.kt)
+kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:613)
+kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:1189)
+kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
+kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
+2025-12-21 18:10:28,945 [  96918]   WARN - com.github.benmanes.caffeine.cache.LocalAsyncCache - Exception thrown during asynchronous load
+java.util.concurrent.CompletionException: java.net.ConnectException
+	at com.github.benmanes.caffeine.cache.CacheLoader.lambda$asyncLoad$0(CacheLoader.java:113)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1491)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:2073)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2035)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+Caused by: java.net.ConnectException
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:955)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133)
+	at com.intellij.util.net.PlatformHttpClient$DelegatingHttpClient.send(PlatformHttpClient.java:337)
+	at com.intellij.ide.RegionUrlMapper.doLoadMappingOrThrow(RegionUrlMapper.java:152)
+	at com.github.benmanes.caffeine.cache.CacheLoader.lambda$asyncLoad$0(CacheLoader.java:109)
+	... 7 more
+Caused by: java.net.ConnectException
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1066)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:227)
+	at java.net.http/jdk.internal.net.http.AsyncSSLConnection.connectAsync(AsyncSSLConnection.java:56)
+	at java.net.http/jdk.internal.net.http.Http2Connection.createAsync(Http2Connection.java:529)
+	at java.net.http/jdk.internal.net.http.Http2ClientImpl.getConnectionFor(Http2ClientImpl.java:140)
+	at java.net.http/jdk.internal.net.http.ExchangeImpl.get(ExchangeImpl.java:98)
+	at java.net.http/jdk.internal.net.http.Exchange.establishExchange(Exchange.java:391)
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl0(Exchange.java:584)
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl(Exchange.java:428)
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsync(Exchange.java:420)
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:435)
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsyncImpl$7(MultiExchange.java:477)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandleStage(CompletableFuture.java:950)
+	at java.base/java.util.concurrent.CompletableFuture.handle(CompletableFuture.java:2372)
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:467)
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsync0$2(MultiExchange.java:355)
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1150)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$DelegatingExecutor.execute(HttpClientImpl.java:177)
+	at java.base/java.util.concurrent.CompletableFuture.completeAsync(CompletableFuture.java:2719)
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsync(MultiExchange.java:308)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.sendAsync(HttpClientImpl.java:1053)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:933)
+	... 11 more
+Caused by: java.nio.channels.UnresolvedAddressException
+	at java.base/sun.nio.ch.Net.checkAddress(Net.java:137)
+	at java.base/sun.nio.ch.Net.checkAddress(Net.java:145)
+	at java.base/sun.nio.ch.SocketChannelImpl.checkRemote(SocketChannelImpl.java:842)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:865)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:210)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212)
+	... 34 more
+2025-12-21 18:10:39,940 [ 107913]   WARN - #c.i.o.p.i.j.JdkListDownloaderBase - Failed to download the list of available JDKs from https://download.jetbrains.com/jdk/feed/v1/jdks.json.xz. download.jetbrains.com
+2025-12-21 18:14:13,344 [ 321317]   WARN - com.github.benmanes.caffeine.cache.LocalAsyncCache - Exception thrown during asynchronous load
+java.util.concurrent.CompletionException: java.net.ConnectException
+	at com.github.benmanes.caffeine.cache.CacheLoader.lambda$asyncLoad$0(CacheLoader.java:113)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:507)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1491)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:2073)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:2035)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:187)
+Caused by: java.net.ConnectException
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:955)
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133)
+	at com.intellij.util.net.PlatformHttpClient$DelegatingHttpClient.send(PlatformHttpClient.java:337)
+	at com.intellij.ide.RegionUrlMapper.doLoadMappingOrThrow(RegionUrlMapper.java:152)
+	at com.github.benmanes.caffeine.cache.CacheLoader.lambda$asyncLoad$0(CacheLoader.java:109)
+	... 7 more
+Caused by: java.net.ConnectException
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1066)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:227)
+	at java.net.http/jdk.internal.net.http.AsyncSSLConnection.connectAsync(AsyncSSLConnection.java:56)
+	at java.net.http/jdk.internal.net.http.Http2Connection.createAsync(Http2Connection.java:529)
+	at java.net.http/jdk.internal.net.http.Http2ClientImpl.getConnectionFor(Http2ClientImpl.java:140)
+	at java.net.http/jdk.internal.net.http.ExchangeImpl.get(ExchangeImpl.java:98)
+	at java.net.http/jdk.internal.net.http.Exchange.establishExchange(Exchange.java:391)
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl0(Exchange.java:584)
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl(Exchange.java:428)
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsync(Exchange.java:420)
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:435)
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsyncImpl$7(MultiExchange.java:477)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934)
+	at java.base/java.util.concurrent.CompletableFuture.uniHandleStage(CompletableFuture.java:950)
+	at java.base/java.util.concurrent.CompletableFuture.handle(CompletableFuture.java:2372)
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:467)
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsync0$2(MultiExchange.java:355)
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1150)
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$DelegatingExecutor.execute(HttpClientImpl.java:177)
+	at java.base/java.util.concurrent.CompletableFuture.completeAsync(CompletableFuture.java:2719)
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsync(MultiExchange.java:308)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.sendAsync(HttpClientImpl.java:1053)
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:933)
+	... 11 more
+Caused by: java.nio.channels.UnresolvedAddressException
+	at java.base/sun.nio.ch.Net.checkAddress(Net.java:137)
+	at java.base/sun.nio.ch.Net.checkAddress(Net.java:145)
+	at java.base/sun.nio.ch.SocketChannelImpl.checkRemote(SocketChannelImpl.java:842)
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:865)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:210)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571)
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212)
+	... 34 more
+2025-12-21 18:14:27,373 [ 335346]   WARN - #git4idea.statistics.GitAvailabilityChecker - Connect to github.com:443 [github.com/4.228.31.150] failed: Connect timed out
+org.apache.http.conn.ConnectTimeoutException: Connect to github.com:443 [github.com/4.228.31.150] failed: Connect timed out
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:151)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
+	at git4idea.statistics.GitAvailabilityChecker.sendHeadRequest(GitAvailabilityChecker.kt:42)
+	at git4idea.statistics.GitAvailabilityChecker.checkRemoteStatus(GitAvailabilityChecker.kt:34)
+	at git4idea.statistics.GitAvailabilityChecker.checkRepoStatus(GitAvailabilityChecker.kt:22)
+	at git4idea.GitStatisticsCollector.getMetrics(GitStatisticsCollector.kt:92)
+	at com.intellij.internal.statistic.service.fus.collectors.ProjectUsagesCollector.collect$suspendImpl(ProjectUsagesCollector.kt:79)
+	at com.intellij.internal.statistic.service.fus.collectors.ProjectUsagesCollector.collect(ProjectUsagesCollector.kt)
+	at com.intellij.internal.statistic.service.fus.collectors.ProjectFUStateUsagesLogger$logProjectState$2$1$1.invokeSuspend(FUStateUsagesLogger.kt:238)
+	at com.intellij.internal.statistic.service.fus.collectors.ProjectFUStateUsagesLogger$logProjectState$2$1$1.invoke(FUStateUsagesLogger.kt)
+	at com.intellij.internal.statistic.service.fus.collectors.ProjectFUStateUsagesLogger$logProjectState$2$1$1.invoke(FUStateUsagesLogger.kt)
+	at com.intellij.internal.statistic.service.fus.collectors.FUStateUsagesLogger$Companion.logMetricsOrError$intellij_platform_statistics(FUStateUsagesLogger.kt:80)
+	at com.intellij.internal.statistic.service.fus.collectors.ProjectFUStateUsagesLogger$logProjectState$2$1.invokeSuspend(FUStateUsagesLogger.kt:234)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:613)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:1189)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
+Caused by: java.net.SocketTimeoutException: Connect timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:546)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:592)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:751)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:368)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142)
+	... 26 more
+2025-12-22 08:46:37,423 [52665396]   WARN - #c.i.o.v.i.l.NativeFileWatcherImpl - Watcher terminated with exit code 143
+2025-12-22 10:26:14,293 [    776]   WARN - #c.i.o.v.n.p.FSRecords - Records storage [/home/alma/.cache/JetBrains/IntelliJIdea2025.2/caches/records.dat] was in use by process [OwnershipInfo{owner pid: 25213, acquired at: 1766351332848}] which is not exist now (wasn't closed properly/crashed?) -> re-acquiring forcibly
+2025-12-22 10:26:14,317 [    800]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: VFS wasn't safely shut down: records.wasClosedProperly is false
+2025-12-22 10:26:17,003 [   3486]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: NOT_CLOSED_PROPERLY recovered, no problems remain
+2025-12-22 10:26:20,053 [   6536]   WARN - #c.i.o.a.i.ActionUpdater - 3114 ms total to grab EDT 5 times to expand ToolWindowHeader$2#expandGroup@ToolwindowTitle (com.intellij.toolWindow.ToolWindowHeader$2). Use `ActionUpdateThread.BGT`.
+JCEF_V(26:20:313): Found cef_server binary '/opt/idea-IU-252.26830.84/jbr/lib/cef_server' via System.getProperty('java.home')=/opt/idea-IU-252.26830.84/jbr
+JCEF_V(26:20:313): Java is started via native launcher. Found cef_server path /opt/idea-IU-252.26830.84/jbr/lib/cef_server (via system propety)
+2025-12-22 10:26:21,239 [   7722]   WARN - #c.i.s.c.i.StationSocketConnectionLoop - RecentProjects connection failed with NoSuchFileException (/run/user/1000/jb.station.sock)
+2025-12-22 10:26:23,269 [   9752]   WARN - #c.i.o.f.i.EditorCompositeModelManager - Cannot use saved provider list (savedProviders={split-provider[text-editor;markdown-preview-editor]=[Element: <state/>]}, resolvedProvider=[])
+2025-12-22 10:26:23,369 [   9852] SEVERE - #c.i.u.i.UnindexedFilesScanner - It should not happen that project has seen file id in orphan queue at index larger than number of files that orphan queue ever had. projectQueue.lastSeenIdsInOrphanQueue=79, orphanQueue.untrimmedSize=0, orphanQueue.fileIds.size=0, project=Project(name=proxy, containerState=COMPONENT_CREATED, componentStore=/home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/proxy), orphanQueueDiscardReason=com.intellij.util.indexing.OrphanDirtyFilesQueueDiscardReason@79903d24
+java.lang.Throwable: It should not happen that project has seen file id in orphan queue at index larger than number of files that orphan queue ever had. projectQueue.lastSeenIdsInOrphanQueue=79, orphanQueue.untrimmedSize=0, orphanQueue.fileIds.size=0, project=Project(name=proxy, containerState=COMPONENT_CREATED, componentStore=/home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/proxy), orphanQueueDiscardReason=com.intellij.util.indexing.OrphanDirtyFilesQueueDiscardReason@79903d24
+	at com.intellij.openapi.diagnostic.Logger.error(Logger.java:375)
+	at com.intellij.util.indexing.UnindexedFilesScannerStartupKt.getNotSeenIds(unindexedFilesScannerStartup.kt:207)
+	at com.intellij.util.indexing.UnindexedFilesScannerStartupKt.scanAndIndexProjectAfterOpen(unindexedFilesScannerStartup.kt:72)
+	at com.intellij.util.indexing.ProjectFileBasedIndexStartupActivity.runActivity(ProjectFileBasedIndexStartupActivity.kt:93)
+	at com.intellij.openapi.project.InitialDumbTaskRequiredForSmartMode.performInDumbMode(InitialDumbTaskRequiredForSmartMode.kt:22)
+	at com.intellij.openapi.project.DumbModeTask.perform(DumbModeTask.java:40)
+	at com.intellij.openapi.project.MergingTaskQueue$QueuedTask.executeTask(MergingTaskQueue.java:296)
+	at com.intellij.openapi.project.MergingTaskQueue$QueuedTask.executeTask(MergingTaskQueue.java:284)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runSingleTask$lambda$8(MergingQueueGuiExecutor.kt:255)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$1(CoreProgressManager.java:229)
+	at com.intellij.platform.diagnostic.telemetry.helpers.TraceKt.use(trace.kt:44)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:228)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$14(CoreProgressManager.java:681)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:756)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:712)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:680)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:78)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:209)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runSingleTask(MergingQueueGuiExecutor.kt:251)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.processTasksWithProgress$lambda$3(MergingQueueGuiExecutor.kt:126)
+	at com.intellij.openapi.project.MergingQueueGuiSuspender.setCurrentSuspenderAndSuspendIfRequested(MergingQueueGuiSuspender.kt:61)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.processTasksWithProgress(MergingQueueGuiExecutor.kt:110)
+	at com.intellij.openapi.project.DumbServiceGuiExecutor.processTasksWithProgress(DumbServiceGuiExecutor.kt:41)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runBackgroundProcessWithSuspender(MergingQueueGuiExecutor.kt:242)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.lambda$1$lambda$0(MergingQueueGuiExecutor.kt:102)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runWithCallbacks(MergingQueueGuiExecutor.kt:226)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor._init_$lambda$1(MergingQueueGuiExecutor.kt:101)
+	at com.intellij.openapi.project.SingleTaskExecutor$StateAwareTask.run$lambda$0(SingleTaskExecutor.kt:37)
+	at com.intellij.openapi.project.SingleTaskExecutor.runWithStateHandling(SingleTaskExecutor.kt:63)
+	at com.intellij.openapi.project.SingleTaskExecutor.access$runWithStateHandling(SingleTaskExecutor.kt:22)
+	at com.intellij.openapi.project.SingleTaskExecutor$StateAwareTask.run(SingleTaskExecutor.kt:37)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.startBackgroundProcess$lambda$6$lambda$5(MergingQueueGuiExecutor.kt:156)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor$startInBackgroundWithVisibleOrInvisibleProgress$backgroundableTask$1.run(MergingQueueGuiExecutor.kt:197)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.startTask(CoreProgressManager.java:498)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.startTask(ProgressManagerImpl.java:119)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcessWithProgressAsynchronously$7(CoreProgressManager.java:549)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$submit$4(ProgressRunner.java:252)
+	at com.intellij.openapi.progress.ProgressManager.lambda$runProcess$0(ProgressManager.java:98)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$1(CoreProgressManager.java:229)
+	at com.intellij.platform.diagnostic.telemetry.helpers.TraceKt.use(trace.kt:44)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:228)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$14(CoreProgressManager.java:681)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:756)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:712)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:680)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:78)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:209)
+	at com.intellij.openapi.progress.ProgressManager.runProcess(ProgressManager.java:98)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$submit$5(ProgressRunner.java:252)
+	at com.intellij.openapi.progress.impl.ProgressRunner$ProgressRunnable.run(ProgressRunner.java:515)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$launchTask$18(ProgressRunner.java:480)
+	at com.intellij.util.concurrency.ChildContext$runInChildContext$1.invoke(propagation.kt:167)
+	at com.intellij.util.concurrency.ChildContext$runInChildContext$1.invoke(propagation.kt:167)
+	at com.intellij.util.concurrency.ChildContext.runInChildContext(propagation.kt:173)
+	at com.intellij.util.concurrency.ChildContext.runInChildContext(propagation.kt:167)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$launchTask$19(ProgressRunner.java:476)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:735)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:732)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:732)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-12-22 10:26:23,375 [   9858] SEVERE - #c.i.u.i.UnindexedFilesScanner - IntelliJ IDEA 2025.2.3  Build #IU-252.26830.84
+2025-12-22 10:26:23,375 [   9858] SEVERE - #c.i.u.i.UnindexedFilesScanner - JDK: 21.0.8; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2025-12-22 10:26:23,375 [   9858] SEVERE - #c.i.u.i.UnindexedFilesScanner - OS: Linux
+2025-12-22 10:26:23,376 [   9859] SEVERE - #c.i.u.i.UnindexedFilesScanner - Last Action: 
+JCEF_I(26:24:844): Found free tcp-port 6188 for server.
+JCEF_I(26:24:844): Found free tcp-port 6189 for java-handlers.
+JCEF_V(26:24:877): Created CefServer instance. Transport port=6188 (backward port=6189). Params:
+[--disable-features=SpareRendererForSitePerProcess, --force-device-scale-factor=1.0, --disable-gpu-process-crash-limit, --disable-component-update, --autoplay-policy=no-user-gesture-required]| log_file=/home/alma/.cache/JetBrains/IntelliJIdea2025.2/log/jcef_47609.log, log_severity=LOGSEVERITY_DISABLE
+2025-12-22 10:26:25,169 [  11652]   WARN - #c.i.p.j.n.WebTypesNpmLoader - Failed to fetch packages for '@web-types' (Full Text): Request failed with status code 429
+2025-12-22 10:26:26,476 [  12959]   WARN - #c.i.v.l.u.StorageId$Directory - Failed to move /home/alma/.cache/JetBrains/IntelliJIdea2025.2/vcs-log/proxy_743d0145_289ba3ea/index to /home/alma/.cache/JetBrains/IntelliJIdea2025.2/vcs-log/proxy_743d0145_289ba3ea/index
+java.nio.file.NoSuchFileException: /home/alma/.cache/JetBrains/IntelliJIdea2025.2/vcs-log/proxy_743d0145_289ba3ea/index
+	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:108)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:114)
+	at java.base/sun.nio.fs.UnixFileSystem.move(UnixFileSystem.java:892)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.move(UnixFileSystemProvider.java:309)
+	at com.intellij.platform.core.nio.fs.DelegatingFileSystemProvider.move(DelegatingFileSystemProvider.java:211)
+	at java.base/java.nio.file.Files.move(Files.java:1431)
+	at com.intellij.vcs.log.util.StorageId.cleanupAllStorageFiles(PersistentUtil.kt:58)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.lambda$createStorageAndIndexBackend$4(VcsLogStorageImpl.java:375)
+	at com.intellij.util.io.IOUtil.openCleanOrResetBroken(IOUtil.java:310)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.createStorageAndIndexBackend(VcsLogStorageImpl.java:358)
+	at com.intellij.vcs.log.data.VcsLogData.createStorageAndIndex(VcsLogData.java:149)
+	at com.intellij.vcs.log.data.VcsLogData.<init>(VcsLogData.java:92)
+	at com.intellij.vcs.log.impl.VcsLogManager.<init>(VcsLogManager.kt:62)
+	at com.intellij.vcs.log.impl.IdeVcsLogManager.<init>(IdeVcsLogManager.kt:33)
+	at com.intellij.vcs.log.impl.IdeVcsProjectLog.createLogManager(IdeVcsProjectLog.kt:48)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.getOrCreateLogManager(VcsProjectLogBase.kt:221)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.access$getOrCreateLogManager(VcsProjectLogBase.kt:52)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$getOrCreateLogManager$2.invokeSuspend(VcsProjectLogBase.kt:209)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$getOrCreateLogManager$2.invoke(VcsProjectLogBase.kt)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$getOrCreateLogManager$2.invoke(VcsProjectLogBase.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invokeSuspend(PlatformActivityTrackerService.kt:72)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:44)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:166)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService.trackConfigurationActivity(PlatformActivityTrackerService.kt:71)
+	at com.intellij.platform.backend.observation.TrackingUtil.trackActivity(util.kt:23)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.getOrCreateLogManager(VcsProjectLogBase.kt:208)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.reinitUnsafe(VcsProjectLogBase.kt:188)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.access$reinitUnsafe(VcsProjectLogBase.kt:52)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$reinitAsync$1.invokeSuspend(VcsProjectLogBase.kt:182)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:613)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:1189)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
+2025-12-22 10:26:27,176 [  13659]   WARN - #c.i.o.a.i.ActionUpdater - 3069 ms total to grab EDT 5 times to expand ToolWindowHeader$2#expandGroup@ToolwindowTitle (com.intellij.toolWindow.ToolWindowHeader$2). Use `ActionUpdateThread.BGT`.
+2025-12-22 10:26:28,049 [  14532] SEVERE - #c.i.u.i.UnindexedFilesScanner - It should not happen that project has seen file id in orphan queue at index larger than number of files that orphan queue ever had. projectQueue.lastSeenIdsInOrphanQueue=79, orphanQueue.untrimmedSize=0, orphanQueue.fileIds.size=0, project=Project(name=backend, containerState=COMPONENT_CREATED, componentStore=/home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/backend), orphanQueueDiscardReason=com.intellij.util.indexing.OrphanDirtyFilesQueueDiscardReason@79903d24
+java.lang.Throwable: It should not happen that project has seen file id in orphan queue at index larger than number of files that orphan queue ever had. projectQueue.lastSeenIdsInOrphanQueue=79, orphanQueue.untrimmedSize=0, orphanQueue.fileIds.size=0, project=Project(name=backend, containerState=COMPONENT_CREATED, componentStore=/home/alma/0prog2/programacion-2-2025-trabajo-final-almaeq/backend), orphanQueueDiscardReason=com.intellij.util.indexing.OrphanDirtyFilesQueueDiscardReason@79903d24
+	at com.intellij.openapi.diagnostic.Logger.error(Logger.java:375)
+	at com.intellij.util.indexing.UnindexedFilesScannerStartupKt.getNotSeenIds(unindexedFilesScannerStartup.kt:207)
+	at com.intellij.util.indexing.UnindexedFilesScannerStartupKt.scanAndIndexProjectAfterOpen(unindexedFilesScannerStartup.kt:72)
+	at com.intellij.util.indexing.ProjectFileBasedIndexStartupActivity.runActivity(ProjectFileBasedIndexStartupActivity.kt:93)
+	at com.intellij.openapi.project.InitialDumbTaskRequiredForSmartMode.performInDumbMode(InitialDumbTaskRequiredForSmartMode.kt:22)
+	at com.intellij.openapi.project.DumbModeTask.perform(DumbModeTask.java:40)
+	at com.intellij.openapi.project.MergingTaskQueue$QueuedTask.executeTask(MergingTaskQueue.java:296)
+	at com.intellij.openapi.project.MergingTaskQueue$QueuedTask.executeTask(MergingTaskQueue.java:284)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runSingleTask$lambda$8(MergingQueueGuiExecutor.kt:255)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$1(CoreProgressManager.java:229)
+	at com.intellij.platform.diagnostic.telemetry.helpers.TraceKt.use(trace.kt:44)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:228)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$14(CoreProgressManager.java:681)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:756)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:712)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:680)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:78)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:209)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runSingleTask(MergingQueueGuiExecutor.kt:251)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.processTasksWithProgress$lambda$3(MergingQueueGuiExecutor.kt:126)
+	at com.intellij.openapi.project.MergingQueueGuiSuspender.setCurrentSuspenderAndSuspendIfRequested(MergingQueueGuiSuspender.kt:61)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.processTasksWithProgress(MergingQueueGuiExecutor.kt:110)
+	at com.intellij.openapi.project.DumbServiceGuiExecutor.processTasksWithProgress(DumbServiceGuiExecutor.kt:41)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runBackgroundProcessWithSuspender(MergingQueueGuiExecutor.kt:242)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.lambda$1$lambda$0(MergingQueueGuiExecutor.kt:102)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.runWithCallbacks(MergingQueueGuiExecutor.kt:226)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor._init_$lambda$1(MergingQueueGuiExecutor.kt:101)
+	at com.intellij.openapi.project.SingleTaskExecutor$StateAwareTask.run$lambda$0(SingleTaskExecutor.kt:37)
+	at com.intellij.openapi.project.SingleTaskExecutor.runWithStateHandling(SingleTaskExecutor.kt:63)
+	at com.intellij.openapi.project.SingleTaskExecutor.access$runWithStateHandling(SingleTaskExecutor.kt:22)
+	at com.intellij.openapi.project.SingleTaskExecutor$StateAwareTask.run(SingleTaskExecutor.kt:37)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor.startBackgroundProcess$lambda$6$lambda$5(MergingQueueGuiExecutor.kt:156)
+	at com.intellij.openapi.project.MergingQueueGuiExecutor$startInBackgroundWithVisibleOrInvisibleProgress$backgroundableTask$1.run(MergingQueueGuiExecutor.kt:197)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.startTask(CoreProgressManager.java:498)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.startTask(ProgressManagerImpl.java:119)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcessWithProgressAsynchronously$7(CoreProgressManager.java:549)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$submit$4(ProgressRunner.java:252)
+	at com.intellij.openapi.progress.ProgressManager.lambda$runProcess$0(ProgressManager.java:98)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$1(CoreProgressManager.java:229)
+	at com.intellij.platform.diagnostic.telemetry.helpers.TraceKt.use(trace.kt:44)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:228)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$14(CoreProgressManager.java:681)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:756)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:712)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:680)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:78)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:209)
+	at com.intellij.openapi.progress.ProgressManager.runProcess(ProgressManager.java:98)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$submit$5(ProgressRunner.java:252)
+	at com.intellij.openapi.progress.impl.ProgressRunner$ProgressRunnable.run(ProgressRunner.java:515)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$launchTask$18(ProgressRunner.java:480)
+	at com.intellij.util.concurrency.ChildContext$runInChildContext$1.invoke(propagation.kt:167)
+	at com.intellij.util.concurrency.ChildContext$runInChildContext$1.invoke(propagation.kt:167)
+	at com.intellij.util.concurrency.ChildContext.runInChildContext(propagation.kt:173)
+	at com.intellij.util.concurrency.ChildContext.runInChildContext(propagation.kt:167)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$launchTask$19(ProgressRunner.java:476)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:735)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:732)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:732)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-12-22 10:26:28,066 [  14549] SEVERE - #c.i.u.i.UnindexedFilesScanner - IntelliJ IDEA 2025.2.3  Build #IU-252.26830.84
+2025-12-22 10:26:28,067 [  14550] SEVERE - #c.i.u.i.UnindexedFilesScanner - JDK: 21.0.8; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2025-12-22 10:26:28,067 [  14550] SEVERE - #c.i.u.i.UnindexedFilesScanner - OS: Linux
+2025-12-22 10:26:28,067 [  14550] SEVERE - #c.i.u.i.UnindexedFilesScanner - Last Action: 
+2025-12-22 10:26:29,157 [  15640]   WARN - #c.i.p.j.n.WebTypesNpmLoader - Failed to fetch packages for '@web-types' (Full Text): Request failed with status code 429
+2025-12-22 10:26:30,604 [  17087]   WARN - #c.i.s.c.i.StationSocketConnectionLoop - Discovery connection failed with NoSuchFileException (/run/user/1000/jb.station.sock)
+2025-12-22 10:26:32,506 [  18989]   WARN - #c.i.v.l.u.StorageId$Directory - Failed to move /home/alma/.cache/JetBrains/IntelliJIdea2025.2/vcs-log/backend_56b8e3ab_289ba3ea/index to /home/alma/.cache/JetBrains/IntelliJIdea2025.2/vcs-log/backend_56b8e3ab_289ba3ea/index
+java.nio.file.NoSuchFileException: /home/alma/.cache/JetBrains/IntelliJIdea2025.2/vcs-log/backend_56b8e3ab_289ba3ea/index
+	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:94)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:108)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:114)
+	at java.base/sun.nio.fs.UnixFileSystem.move(UnixFileSystem.java:892)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.move(UnixFileSystemProvider.java:309)
+	at com.intellij.platform.core.nio.fs.DelegatingFileSystemProvider.move(DelegatingFileSystemProvider.java:211)
+	at java.base/java.nio.file.Files.move(Files.java:1431)
+	at com.intellij.vcs.log.util.StorageId.cleanupAllStorageFiles(PersistentUtil.kt:58)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.lambda$createStorageAndIndexBackend$4(VcsLogStorageImpl.java:375)
+	at com.intellij.util.io.IOUtil.openCleanOrResetBroken(IOUtil.java:310)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.createStorageAndIndexBackend(VcsLogStorageImpl.java:358)
+	at com.intellij.vcs.log.data.VcsLogData.createStorageAndIndex(VcsLogData.java:149)
+	at com.intellij.vcs.log.data.VcsLogData.<init>(VcsLogData.java:92)
+	at com.intellij.vcs.log.impl.VcsLogManager.<init>(VcsLogManager.kt:62)
+	at com.intellij.vcs.log.impl.IdeVcsLogManager.<init>(IdeVcsLogManager.kt:33)
+	at com.intellij.vcs.log.impl.IdeVcsProjectLog.createLogManager(IdeVcsProjectLog.kt:48)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.getOrCreateLogManager(VcsProjectLogBase.kt:221)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.access$getOrCreateLogManager(VcsProjectLogBase.kt:52)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$getOrCreateLogManager$2.invokeSuspend(VcsProjectLogBase.kt:209)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$getOrCreateLogManager$2.invoke(VcsProjectLogBase.kt)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$getOrCreateLogManager$2.invoke(VcsProjectLogBase.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invokeSuspend(PlatformActivityTrackerService.kt:72)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:44)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:166)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService.trackConfigurationActivity(PlatformActivityTrackerService.kt:71)
+	at com.intellij.platform.backend.observation.TrackingUtil.trackActivity(util.kt:23)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.getOrCreateLogManager(VcsProjectLogBase.kt:208)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.reinitUnsafe(VcsProjectLogBase.kt:188)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase.access$reinitUnsafe(VcsProjectLogBase.kt:52)
+	at com.intellij.vcs.log.impl.VcsProjectLogBase$reinitAsync$1.invokeSuspend(VcsProjectLogBase.kt:182)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:613)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:1189)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:778)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:765)
+2025-12-22 10:26:34,440 [  20923]   WARN - #o.j.k.i.s.r.KotlinCompilerReferenceIndexStorage - kotlin-data-container is not found
+2025-12-22 10:26:36,112 [  22595]   WARN - #c.i.p.j.n.WebTypesNpmLoader - Failed to fetch packages for '@web-types' (Full Text): Request failed with status code 429
+2025-12-22 10:41:14,563 [    765]   WARN - #c.i.o.v.n.p.FSRecords - Records storage [/home/alma/.cache/Google/AndroidStudio2025.1.4/caches/records.dat] was in use by process [OwnershipInfo{owner pid: 4602, acquired at: 1766349339838}] which is not exist now (wasn't closed properly/crashed?) -> re-acquiring forcibly
+2025-12-22 10:41:14,641 [    843]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: VFS wasn't safely shut down: records.wasClosedProperly is false
+2025-12-22 10:41:15,199 [   1401]   WARN - org.apache.lucene.internal.vectorization.VectorizationProvider - Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+2025-12-22 10:41:15,809 [   2011]   WARN - #com.android.studio.ml.enterprise.login.StudioModelsOnboardingController$Companion - Auth state changed from AuthState.Initializing(isAuthorized=false) to AuthState.LoggedOut(isAuthorized=false)
+2025-12-22 10:41:19,914 [   6116]   WARN - #c.i.o.v.n.p.PersistentFSLoader - [VFS load problem]: NOT_CLOSED_PROPERLY recovered, no problems remain
+2025-12-22 10:41:24,205 [  10407]   WARN - #c.i.u.j.JBCefApp - JCefAppConfig.class is not from a JBR module, url: jar:file:/opt/android-studio/lib/lib.jar!/com/jetbrains/cef/JCefAppConfig.class (Use JBR bundled with the IDE)
+2025-12-22 10:41:26,433 [  12635]   WARN - #com.android.tools.ndk.HotfixForOCInitialTablesBuildingActivity - Overriding OCInitialTablesBuildingActivity with HotfixForOCInitialTablesBuildingActivity
+2025-12-22 10:41:28,383 [  14585]   WARN - #c.i.c.navigation - Failed to move /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index to /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index
+java.nio.file.NoSuchFileException: /home/alma/.cache/Google/AndroidStudio2025.1.4/vcs-log/fronten_b7dd53db_289ba3ea/index
+	at java.base/sun.nio.fs.UnixException.translateToIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystem.move(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.move(Unknown Source)
+	at java.base/java.nio.file.Files.move(Unknown Source)
+	at com.intellij.vcs.log.util.StorageId.cleanupAllStorageFiles(PersistentUtil.kt:58)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.lambda$createStorageAndIndexBackend$4(VcsLogStorageImpl.java:341)
+	at com.intellij.util.io.IOUtil.openCleanOrResetBroken(IOUtil.java:310)
+	at com.intellij.vcs.log.data.VcsLogStorageImpl.createStorageAndIndexBackend(VcsLogStorageImpl.java:324)
+	at com.intellij.vcs.log.data.VcsLogData.createStorageAndIndex(VcsLogData.java:149)
+	at com.intellij.vcs.log.data.VcsLogData.<init>(VcsLogData.java:92)
+	at com.intellij.vcs.log.impl.VcsLogManager.<init>(VcsLogManager.java:81)
+	at com.intellij.vcs.log.impl.VcsProjectLogManager.<init>(VcsProjectLogManager.kt:17)
+	at com.intellij.vcs.log.impl.VcsProjectLog.getOrCreateLogManager(VcsProjectLog.kt:222)
+	at com.intellij.vcs.log.impl.VcsProjectLog.access$getOrCreateLogManager(VcsProjectLog.kt:59)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invokeSuspend(VcsProjectLog.kt:210)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invoke(VcsProjectLog.kt)
+	at com.intellij.vcs.log.impl.VcsProjectLog$createLogInternal$2.invoke(VcsProjectLog.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invokeSuspend(PlatformActivityTrackerService.kt:72)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService$trackConfigurationActivity$2$1.invoke(PlatformActivityTrackerService.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:62)
+	at kotlinx.coroutines.BuildersKt__Builders_commonKt.withContext(Builders.common.kt:163)
+	at kotlinx.coroutines.BuildersKt.withContext(Unknown Source)
+	at com.intellij.platform.backend.observation.PlatformActivityTrackerService.trackConfigurationActivity(PlatformActivityTrackerService.kt:71)
+	at com.intellij.platform.backend.observation.TrackingUtil.trackActivity(util.kt:23)
+	at com.intellij.vcs.log.impl.VcsProjectLog.createLogInternal(VcsProjectLog.kt:209)
+	at com.intellij.vcs.log.impl.VcsProjectLog.access$createLogInternal(VcsProjectLog.kt:59)
+	at com.intellij.vcs.log.impl.VcsProjectLog$launchRecreateLog$1.invokeSuspend(VcsProjectLog.kt:190)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:608)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:873)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:763)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:750)
+2025-12-22 10:41:52,164 [  38366]   WARN - Emulator: Pixel 8 Pro - Your GPU drivers may have a bug. Switching to software rendering.
+2025-12-22 10:41:52,609 [  38811]   WARN - Emulator: Pixel 8 Pro - Setting read-only feature 'GLAsyncSwap' to '0'
+2025-12-22 10:41:52,937 [  39139]   WARN - Emulator: Pixel 8 Pro - *** Basic token auth should only be used by android-studio ***
+2025-12-22 10:41:53,259 [  39461]   WARN - Emulator: Pixel 8 Pro - Error -1 from the snapshot callback
+2025-12-22 10:41:53,259 [  39461]   WARN - Emulator: Pixel 8 Pro - Failed to load snapshot 'default_boot'
+2025-12-22 10:42:13,296 [  59498]   WARN - #com.android.ddmlib - Failed to start Emulator console for 5554
+2025-12-22 10:42:13,850 [  60052]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:15,007 [  61209]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:16,081 [  62283]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:17,195 [  63397]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:18,313 [  64515]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:19,531 [  65733]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:20,822 [  67024]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:21,979 [  68181]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:23,166 [  69368]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:24,330 [  70532]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:25,450 [  71652]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:26,646 [  72848]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:27,918 [  74120]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:29,315 [  75517]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:30,663 [  76865]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:31,983 [  78185]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:33,194 [  79396]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:34,351 [  80553]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:35,568 [  81770]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:36,676 [  82878]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:37,876 [  84078]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:39,383 [  85585]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:40,810 [  87012]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:42,009 [  88211]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:43,398 [  89600]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:44,808 [  91010]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:46,140 [  92342]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:47,727 [  93929]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:49,262 [  95464]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:50,640 [  96842]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:51,895 [  98097]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:53,099 [  99301]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:54,317 [ 100519]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:55,700 [ 101902]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:57,703 [ 103905]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:42:59,294 [ 105496]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:00,699 [ 106901]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:01,783 [ 107985]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:03,051 [ 109253]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:04,187 [ 110389]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:05,470 [ 111672]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:07,267 [ 113469]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:08,549 [ 114751]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:09,692 [ 115894]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:11,054 [ 117256]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:12,337 [ 118539]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:13,594 [ 119796]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:14,970 [ 121172]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:16,182 [ 122384]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:17,778 [ 123980]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:19,070 [ 125272]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:20,263 [ 126465]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:21,393 [ 127595]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:22,539 [ 128741]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:23,791 [ 129993]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:25,308 [ 131510]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:26,509 [ 132711]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:27,883 [ 134085]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:29,050 [ 135252]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:30,175 [ 136377]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:31,351 [ 137553]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:32,592 [ 138794]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:34,445 [ 140647]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:35,763 [ 141965]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:36,951 [ 143153]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 10:43:38,113 [ 144315]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
