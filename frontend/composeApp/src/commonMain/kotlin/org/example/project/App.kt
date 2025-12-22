@@ -2,8 +2,11 @@ package org.example.project
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,6 +44,7 @@ fun App() {
             AppScreen.LOGIN -> {
                 LoginScreen(onLoginSuccess = { currentScreen = AppScreen.EVENTS_LIST })
             }
+
             AppScreen.EVENTS_LIST -> {
                 EventsListScreen(
                     onEventClick = { eventId ->
@@ -49,6 +53,7 @@ fun App() {
                     }
                 )
             }
+
             AppScreen.EVENT_DETAIL -> {
                 if (selectedEventId != null) {
                     EventDetailScreen(
@@ -60,6 +65,7 @@ fun App() {
                     )
                 }
             }
+
             AppScreen.SEAT_SELECTION -> {
                 if (selectedEventId != null) {
                     // Instanciamos lo necesario para bloquear
@@ -76,7 +82,8 @@ fun App() {
                                 scope.launch {
                                     isBlocking = true
                                     // 1. Intentamos bloquear en el servidor
-                                    val success = repository.blockSeats(selectedEventId!!, selectedSeats)
+                                    val success =
+                                        repository.blockSeats(selectedEventId!!, selectedSeats)
                                     isBlocking = false
 
                                     if (success) {
@@ -98,30 +105,79 @@ fun App() {
                     }
                 }
             }
-            AppScreen.PASSENGER_DATA -> {
-                // Verificamos que tengamos evento y asientos (por seguridad)
-                if (selectedEventId != null && seatsToBuy.isNotEmpty()) {
-                    PassengerDataScreen(
-                        selectedSeats = seatsToBuy,
-                        onBack = {
-                            // Si vuelve, regresa al mapa para cambiar selección
-                            currentScreen = AppScreen.SEAT_SELECTION
-                        },
-                        onConfirmPurchase = { names ->
-                            // --- AQUÍ SE HARÁ LA COMPRA REAL EN EL SIGUIENTE PASO ---
-                            println("Listo para comprar!")
-                            println("Evento: $selectedEventId")
-                            println("Asientos: $seatsToBuy")
-                            println("Pasajeros: $names")
 
-                            // Aquí llamarás al repository.buySeats(...) en el próximo issue
+            AppScreen.PASSENGER_DATA -> {
+                if (selectedEventId != null && seatsToBuy.isNotEmpty()) {
+                    // Estados para la carga y alertas
+                    val repository = remember { EventRepository() }
+                    val scope = rememberCoroutineScope()
+                    var isBuying by remember { mutableStateOf(false) }
+                    var showSuccessDialog by remember { mutableStateOf(false) }
+                    var showErrorDialog by remember { mutableStateOf(false) }
+
+                    Box(modifier = Modifier.fillMaxSize()) {
+                        PassengerDataScreen(
+                            selectedSeats = seatsToBuy,
+                            onBack = { currentScreen = AppScreen.SEAT_SELECTION },
+                            onConfirmPurchase = { names ->
+                                scope.launch {
+                                    isBuying = true
+                                    // LLAMADA AL REPOSITORIO
+                                    val success =
+                                        repository.buySeats(selectedEventId!!, seatsToBuy, names)
+                                    isBuying = false
+
+                                    if (success) {
+                                        showSuccessDialog = true
+                                    } else {
+                                        showErrorDialog = true
+                                    }
+                                }
+                            }
+                        )
+
+                        // Loading Indicator
+                        if (isBuying) {
+                            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
                         }
-                    )
+
+                        // Diálogo de Éxito
+                        if (showSuccessDialog) {
+                            AlertDialog(
+                                onDismissRequest = {}, // No permitir cerrar tocando afuera
+                                title = { Text("¡Compra Exitosa!") },
+                                text = { Text("Tus entradas han sido reservadas correctamente.") },
+                                confirmButton = {
+                                    Button(onClick = {
+                                        showSuccessDialog = false
+                                        // Volvemos al listado inicial limpiando todo
+                                        currentScreen = AppScreen.EVENTS_LIST
+                                    }) {
+                                        Text("Volver al Inicio")
+                                    }
+                                }
+                            )
+                        }
+
+                        // Diálogo de Error
+                        if (showErrorDialog) {
+                            AlertDialog(
+                                onDismissRequest = { showErrorDialog = false },
+                                title = { Text("Error") },
+                                text = { Text("No se pudo completar la compra. Es posible que los asientos ya no estén disponibles o el tiempo haya expirado.") },
+                                confirmButton = {
+                                    Button(onClick = { showErrorDialog = false }) {
+                                        Text("Entendido")
+                                    }
+                                }
+                            )
+                        }
+                    }
                 } else {
-                    // Si faltan datos, volver al inicio
                     currentScreen = AppScreen.EVENTS_LIST
                 }
             }
         }
+
     }
 }

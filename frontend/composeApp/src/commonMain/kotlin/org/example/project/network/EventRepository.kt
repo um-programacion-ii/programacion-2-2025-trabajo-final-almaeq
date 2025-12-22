@@ -12,6 +12,8 @@ import org.example.project.model.Event
 import org.example.project.model.Seat
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
+import org.example.project.model.Person
+import org.example.project.model.SaleRequest
 import org.example.project.model.SimpleSeat
 
 class EventRepository {
@@ -93,6 +95,51 @@ class EventRepository {
             }
         } catch (e: Exception) {
             println("ERROR DE RED AL BLOQUEAR: ${e.message}")
+            e.printStackTrace()
+            false
+        }
+    }
+
+    suspend fun buySeats(eventId: Long, seats: List<Seat>, names: List<String>): Boolean {
+        return try {
+            val token = TokenManager.jwtToken ?: return false
+
+            // 1. Transformar la lista de nombres (Strings) a objetos Person
+            // Asumimos que el primer espacio separa Nombre de Apellido
+            val peopleList = names.map { fullName ->
+                val parts = fullName.trim().split(" ", limit = 2)
+                val nombre = parts.getOrElse(0) { "" }
+                val apellido = parts.getOrElse(1) { "" } // Si no puso apellido, va vacío
+                Person(nombre, apellido)
+            }
+
+            // 2. Transformar asientos UI a SimpleSeat
+            val simpleSeats = seats.map { SimpleSeat(it.fila, it.columna) }
+
+            // 3. Crear el Request Body
+            val requestBody = SaleRequest(eventId, peopleList, simpleSeats)
+
+            println("Enviando compra: $requestBody")
+
+            // 4. Llamar al Backend
+            // IMPORTANTE: Verifica si tu ApiClient ya tiene "/api/" en la base url.
+            // Si "venta/bloquear" te funcionó antes, usa "venta/confirmar".
+            // Si tuviste que poner "api/venta/bloquear", usa "api/venta/confirmar" aquí.
+            val response = ApiClient.client.post("venta/confirmar") {
+                header("Authorization", "Bearer $token")
+                contentType(ContentType.Application.Json)
+                setBody(requestBody)
+            }
+
+            if (response.status == HttpStatusCode.OK) {
+                println("¡COMPRA EXITOSA!")
+                true
+            } else {
+                println("ERROR EN COMPRA: ${response.status}")
+                false
+            }
+        } catch (e: Exception) {
+            println("EXCEPCIÓN AL COMPRAR: ${e.message}")
             e.printStackTrace()
             false
         }
