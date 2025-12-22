@@ -3,8 +3,16 @@ package org.example.project.network
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.header
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.client.utils.EmptyContent.contentType
 import io.ktor.http.HttpStatusCode
+import org.example.project.model.BlockRequest
 import org.example.project.model.Event
+import org.example.project.model.Seat
+import io.ktor.http.ContentType
+import io.ktor.http.contentType
+import org.example.project.model.SimpleSeat
 
 class EventRepository {
     suspend fun getEvents(): List<Event> {
@@ -59,6 +67,34 @@ class EventRepository {
             println("Excepción Detalle: ${e.message}")
             e.printStackTrace()
             null
+        }
+    }
+
+    suspend fun blockSeats(eventId: Long, seats: List<Seat>): Boolean {
+        return try {
+            val token = TokenManager.jwtToken ?: return false
+
+            // Convertimos tus asientos UI (Seat) a los que pide el backend (SimpleSeat)
+            val simpleSeats = seats.map { SimpleSeat(it.fila, it.columna) }
+            val requestBody = BlockRequest(eventId, simpleSeats)
+
+            val response = ApiClient.client.post("venta/bloquear") { // Asegúrate que la ruta coincida con tu backend
+                header("Authorization", "Bearer $token")
+                contentType(ContentType.Application.Json)
+                setBody(requestBody)
+            }
+
+            if (response.status == HttpStatusCode.OK) {
+                println("BLOQUEO EXITOSO")
+                true
+            } else {
+                println("FALLO EL BLOQUEO: ${response.status}")
+                false
+            }
+        } catch (e: Exception) {
+            println("ERROR DE RED AL BLOQUEAR: ${e.message}")
+            e.printStackTrace()
+            false
         }
     }
 }
