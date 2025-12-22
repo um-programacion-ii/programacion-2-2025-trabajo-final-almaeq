@@ -3,7 +3,7 @@ package com.example.backend.event.infrastructure.web.controller;
 import com.example.backend.event.application.service.EventService;
 import com.example.backend.event.infrastructure.persistence.entity.Event;
 import com.example.backend.event.infrastructure.web.dto.EventDetailDto;
-import com.example.backend.event.infrastructure.web.dto.EventOverviewDto; // <--- IMPORTANTE: Importar el DTO resumido
+import com.example.backend.event.infrastructure.web.dto.EventOverviewDto;
 import com.example.backend.event.infrastructure.web.dto.SeatDto;
 import com.example.backend.proxy.application.service.ProxyClientService;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors; // <--- Necesario para convertir la lista
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/events")
@@ -29,10 +29,14 @@ public class EventController {
 
     @GetMapping
     public ResponseEntity<List<EventOverviewDto>> getAllEvents() {
-        // 1. Obtenemos las entidades completas
-        List<Event> events = eventService.getAllEvents();
+        // Intentamos sincronizar la lista general (opcional, pero recomendado)
+        try {
+            eventService.syncEvents();
+        } catch (Exception e) {
+            System.out.println("Aviso: No se pudo sincronizar el listado (posiblemente error de token o red).");
+        }
 
-        // 2. Las convertimos al DTO resumido usando Streams
+        List<Event> events = eventService.getAllEvents();
         List<EventOverviewDto> dtos = events.stream()
                 .map(event -> new EventOverviewDto(
                         event.getId(),
@@ -42,24 +46,28 @@ public class EventController {
                         event.getOrganizador()
                 ))
                 .collect(Collectors.toList());
-
         return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<EventDetailDto> getEventDetail(@PathVariable Long id) {
-        // 1. Buscar evento en DB local (MySQL) para saber dimensiones
+        // 1. IMPORTANTE: Forzar sincronización para traer filas/columnas REALES
+        try {
+            eventService.syncEventById(id);
+        } catch (Exception e) {
+            System.err.println("Error al sincronizar evento " + id + ": " + e.getMessage());
+        }
+
+        // 2. Buscar evento en DB local (ahora tendrá los datos correctos)
         Event event = eventService.getEventById(id);
         if (event == null) {
             return ResponseEntity.notFound().build();
         }
 
-        // 2. Consultar al Proxy (Redis) para saber cuáles están OCUPADOS
+        // 3. Consultar Redis (Estados ocupados)
         Map<String, Object> proxyResponse = proxyClientService.getSeatsStatus(id);
 
-        // Creamos un mapa rápido para buscar asientos ocupados: "fila-columna" -> "Estado"
         Map<String, String> ocupadosMap = new HashMap<>();
-
         if (proxyResponse != null && proxyResponse.containsKey("asientos")) {
             Object asientosObj = proxyResponse.get("asientos");
             if (asientosObj instanceof List) {
@@ -68,31 +76,28 @@ public class EventController {
                     int f = parseIntSafely(s.get("fila"));
                     int c = parseIntSafely(s.get("columna"));
                     String estado = (String) s.get("estado");
-                    // Guardamos ej: "1-1" -> "Vendido"
                     ocupadosMap.put(f + "-" + c, estado);
                 }
             }
         }
 
-        // 3. GENERAR LA MATRIZ COMPLETA (Libres + Ocupados)
+        // 4. Generar Matriz Completa
         List<SeatDto> todosLosAsientos = new ArrayList<>();
 
-        // Usamos las filas/columnas del evento. Si son nulos, asumimos 0.
-        int totalFilas = event.getFilas() != null ? event.getFilas() : 0;
-        int totalCols = event.getColumnas() != null ? event.getColumnas() : 0;
+        // Usar un fallback de 10 si viene 0 para evitar errores visuales,
+        // pero con la sync de arriba debería venir bien (ej: 20 y 8).
+        int totalFilas = (event.getFilas() != null && event.getFilas() > 0) ? event.getFilas() : 10;
+        int totalCols = (event.getColumnas() != null && event.getColumnas() > 0) ? event.getColumnas() : 10;
 
         for (int f = 1; f <= totalFilas; f++) {
             for (int c = 1; c <= totalCols; c++) {
                 String key = f + "-" + c;
-
-                // Si está en el mapa de ocupados, usamos ese estado. Si no, es "Libre".
                 String estado = ocupadosMap.getOrDefault(key, "Libre");
-
                 todosLosAsientos.add(new SeatDto(f, c, estado));
             }
         }
 
-        // 4. Retornar respuesta con la lista COMPLETA
+        // 5. Retornar DTO incluyendo filas y columnas
         EventDetailDto response = new EventDetailDto(
                 event.getId(),
                 event.getTitulo(),
@@ -102,25 +107,19 @@ public class EventController {
                 event.getDireccion(),
                 event.getFechaHora(),
                 event.getOrganizador(),
-                event.getFilas(),
-                event.getColumnas(),
-                todosLosAsientos     // <--- Aquí va la lista generada
+                totalFilas, // ¡Clave para el celular!
+                totalCols,  // ¡Clave para el celular!
+                todosLosAsientos
         );
 
         return ResponseEntity.ok(response);
     }
-    // Método auxiliar de seguridad
+
     private Integer parseIntSafely(Object value) {
         if (value == null) return 0;
-        if (value instanceof Number) {
-            return ((Number) value).intValue();
-        }
+        if (value instanceof Number) return ((Number) value).intValue();
         if (value instanceof String) {
-            try {
-                return Integer.parseInt((String) value);
-            } catch (NumberFormatException e) {
-                return 0;
-            }
+            try { return Integer.parseInt((String) value); } catch (Exception e) { return 0; }
         }
         return 0;
     }
