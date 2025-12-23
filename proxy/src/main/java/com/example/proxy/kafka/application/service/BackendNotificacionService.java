@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,14 +15,13 @@ public class BackendNotificacionService {
 
     private final RestTemplate restTemplate;
 
-    @Value("${backend.url}")
+    @Value("${backend.url:http://backend:8080}") // Valor por defecto por seguridad
     private String backendUrl;
 
     public BackendNotificacionService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    // CAMBIO: El método ahora lanza Exception si falla, NO la captura.
     public void notificarBackend(String mensaje) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -33,9 +31,9 @@ public class BackendNotificacionService {
 
         HttpEntity<Map<String, String>> request = new HttpEntity<>(body, headers);
 
-        // Si el backend está caído (ConnectionRefused) o da 500,
-        // RestTemplate lanzará una excepción automáticamente.
-        // Esto disparará el mecanismo de reintento en el KafkaConsumer.
+        // IMPORTANTE: No usar try-catch aquí.
+        // Si el backend falla (500 o timeout), RestTemplate lanza excepción.
+        // Esa excepción sube a KafkaConsumerService y activa el @RetryableTopic.
         restTemplate.postForEntity(backendUrl + "/api/internal/notificacion", request, String.class);
 
         System.out.println("Notificación enviada al backend correctamente: " + mensaje);
