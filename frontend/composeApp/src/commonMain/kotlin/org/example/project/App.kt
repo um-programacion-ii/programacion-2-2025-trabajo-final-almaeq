@@ -2,11 +2,7 @@ package org.example.project
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,18 +27,59 @@ fun App() {
     MaterialTheme {
         var currentScreen by remember { mutableStateOf(AppScreen.LOGIN) }
         var selectedEventId by remember { mutableStateOf<Long?>(null) }
-
-        // Variable para guardar los asientos elegidos temporalmente
         var seatsToBuy by remember { mutableStateOf<List<Seat>>(emptyList()) }
 
-        // Si ya tenemos token, saltamos el login (útil al recargar)
-        if (currentScreen == AppScreen.LOGIN && TokenManager.jwtToken != null) {
-            currentScreen = AppScreen.EVENTS_LIST
+        val scope = rememberCoroutineScope()
+        val repository = remember { EventRepository() }
+
+        // Si ya tenemos token al iniciar (recarga), intentamos recuperar sesión o ir a lista
+        LaunchedEffect(Unit) {
+            if (TokenManager.jwtToken != null && currentScreen == AppScreen.LOGIN) {
+                // Podrías replicar la lógica de onLoginSuccess aquí si quisieras autologin real
+                currentScreen = AppScreen.EVENTS_LIST
+            }
         }
 
         when (currentScreen) {
             AppScreen.LOGIN -> {
-                LoginScreen(onLoginSuccess = { currentScreen = AppScreen.EVENTS_LIST })
+                LoginScreen(onLoginSuccess = {
+                    // --- LÓGICA DE RECUPERACIÓN DE SESIÓN ---
+                    scope.launch {
+                        val state = repository.getSessionState()
+
+                        if (state != null && state.eventId != null) {
+                            println("Sesión recuperada: Paso ${state.currentStep}, Evento ${state.eventId}")
+
+                            // 1. Restaurar ID del evento
+                            selectedEventId = state.eventId
+
+                            // 2. Restaurar Asientos (String -> Seat)
+                            val restoredSeats = state.selectedSeats.mapNotNull { seatStr ->
+                                try {
+                                    // Formato esperado: "F1-A1"
+                                    val parts = seatStr.split("-")
+                                    val fila = parts[0].substring(1).toInt()
+                                    val col = parts[1].substring(1).toInt()
+                                    Seat(fila, col, "libre")
+                                } catch (e: Exception) {
+                                    println("Error parseando asiento: $seatStr")
+                                    null
+                                }
+                            }
+                            seatsToBuy = restoredSeats
+
+                            // 3. Navegar
+                            when (state.currentStep) {
+                                4 -> currentScreen = AppScreen.PASSENGER_DATA // "Cargando nombres"
+                                3 -> currentScreen = AppScreen.EVENT_DETAIL   // "Seleccionando asientos" -> Detalle (Requerimiento)
+                                else -> currentScreen = AppScreen.EVENTS_LIST
+                            }
+                        } else {
+                            // Sin sesión previa
+                            currentScreen = AppScreen.EVENTS_LIST
+                        }
+                    }
+                })
             }
 
             AppScreen.EVENTS_LIST -> {
@@ -50,6 +87,10 @@ fun App() {
                     onEventClick = { eventId ->
                         selectedEventId = eventId
                         currentScreen = AppScreen.EVENT_DETAIL
+                        // Guardar paso 2
+                        scope.launch {
+                            repository.saveSession(AppScreen.EVENT_DETAIL, eventId, emptyList())
+                        }
                     }
                 )
             }
@@ -58,9 +99,16 @@ fun App() {
                 if (selectedEventId != null) {
                     EventDetailScreen(
                         eventId = selectedEventId!!,
-                        onBack = { currentScreen = AppScreen.EVENTS_LIST },
+                        onBack = {
+                            currentScreen = AppScreen.EVENTS_LIST
+                            scope.launch { repository.saveSession(AppScreen.EVENTS_LIST, null, emptyList()) }
+                        },
                         onBuyClick = {
                             currentScreen = AppScreen.SEAT_SELECTION
+                            // Guardar paso 3
+                            scope.launch {
+                                repository.saveSession(AppScreen.SEAT_SELECTION, selectedEventId, emptyList())
+                            }
                         }
                     )
                 }
@@ -68,37 +116,32 @@ fun App() {
 
             AppScreen.SEAT_SELECTION -> {
                 if (selectedEventId != null) {
-                    // Instanciamos lo necesario para bloquear
-                    val repository = remember { EventRepository() }
-                    val scope = rememberCoroutineScope()
                     var isBlocking by remember { mutableStateOf(false) }
 
                     Box(modifier = Modifier.fillMaxSize()) {
                         SeatSelectionScreen(
                             eventId = selectedEventId!!,
-                            onBack = { currentScreen = AppScreen.EVENT_DETAIL },
+                            onBack = {
+                                currentScreen = AppScreen.EVENT_DETAIL
+                                scope.launch { repository.saveSession(AppScreen.EVENT_DETAIL, selectedEventId, emptyList()) }
+                            },
                             onContinue = { selectedSeats ->
-                                // --- LÓGICA DE BLOQUEO (Opción B) ---
                                 scope.launch {
                                     isBlocking = true
-                                    // 1. Intentamos bloquear en el servidor
-                                    val success =
-                                        repository.blockSeats(selectedEventId!!, selectedSeats)
+                                    val success = repository.blockSeats(selectedEventId!!, selectedSeats)
                                     isBlocking = false
 
                                     if (success) {
-                                        // 2. Si funcionó, guardamos y avanzamos
                                         seatsToBuy = selectedSeats
                                         currentScreen = AppScreen.PASSENGER_DATA
+                                        // Guardar paso 4 (con asientos)
+                                        repository.saveSession(AppScreen.PASSENGER_DATA, selectedEventId, selectedSeats)
                                     } else {
-                                        // 3. Si falló, imprimimos error (aquí podrías poner un Toast)
-                                        println("Error: No se pudieron bloquear los asientos (quizás ya están ocupados).")
+                                        println("Error: No se pudieron bloquear los asientos.")
                                     }
                                 }
                             }
                         )
-
-                        // Indicador de carga mientras se bloquea
                         if (isBlocking) {
                             CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
                         }
@@ -108,9 +151,6 @@ fun App() {
 
             AppScreen.PASSENGER_DATA -> {
                 if (selectedEventId != null && seatsToBuy.isNotEmpty()) {
-                    // Estados para la carga y alertas
-                    val repository = remember { EventRepository() }
-                    val scope = rememberCoroutineScope()
                     var isBuying by remember { mutableStateOf(false) }
                     var showSuccessDialog by remember { mutableStateOf(false) }
                     var showErrorDialog by remember { mutableStateOf(false) }
@@ -118,17 +158,21 @@ fun App() {
                     Box(modifier = Modifier.fillMaxSize()) {
                         PassengerDataScreen(
                             selectedSeats = seatsToBuy,
-                            onBack = { currentScreen = AppScreen.SEAT_SELECTION },
+                            onBack = {
+                                currentScreen = AppScreen.SEAT_SELECTION
+                                // Volver al paso 3
+                                scope.launch { repository.saveSession(AppScreen.SEAT_SELECTION, selectedEventId, emptyList()) }
+                            },
                             onConfirmPurchase = { names ->
                                 scope.launch {
                                     isBuying = true
-                                    // LLAMADA AL REPOSITORIO
-                                    val success =
-                                        repository.buySeats(selectedEventId!!, seatsToBuy, names)
+                                    val success = repository.buySeats(selectedEventId!!, seatsToBuy, names)
                                     isBuying = false
 
                                     if (success) {
                                         showSuccessDialog = true
+                                        // Borrar sesión al comprar
+                                        repository.clearSessionState()
                                     } else {
                                         showErrorDialog = true
                                     }
@@ -136,21 +180,20 @@ fun App() {
                             }
                         )
 
-                        // Loading Indicator
                         if (isBuying) {
                             CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
                         }
 
-                        // Diálogo de Éxito
                         if (showSuccessDialog) {
                             AlertDialog(
-                                onDismissRequest = {}, // No permitir cerrar tocando afuera
+                                onDismissRequest = {},
                                 title = { Text("¡Compra Exitosa!") },
                                 text = { Text("Tus entradas han sido reservadas correctamente.") },
                                 confirmButton = {
                                     Button(onClick = {
                                         showSuccessDialog = false
-                                        // Volvemos al listado inicial limpiando todo
+                                        seatsToBuy = emptyList()
+                                        selectedEventId = null
                                         currentScreen = AppScreen.EVENTS_LIST
                                     }) {
                                         Text("Volver al Inicio")
@@ -159,12 +202,11 @@ fun App() {
                             )
                         }
 
-                        // Diálogo de Error
                         if (showErrorDialog) {
                             AlertDialog(
                                 onDismissRequest = { showErrorDialog = false },
                                 title = { Text("Error") },
-                                text = { Text("No se pudo completar la compra. Es posible que los asientos ya no estén disponibles o el tiempo haya expirado.") },
+                                text = { Text("No se pudo completar la compra.") },
                                 confirmButton = {
                                     Button(onClick = { showErrorDialog = false }) {
                                         Text("Entendido")
@@ -178,6 +220,5 @@ fun App() {
                 }
             }
         }
-
     }
 }

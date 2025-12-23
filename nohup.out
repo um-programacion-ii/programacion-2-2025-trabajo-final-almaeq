@@ -2585,3 +2585,84 @@ java.nio.file.NoSuchFileException: /home/alma/.cache/Google/AndroidStudio2025.1.
 2025-12-22 10:43:35,763 [ 141965]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
 2025-12-22 10:43:36,951 [ 143153]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
 2025-12-22 10:43:38,113 [ 144315]   WARN - #com.android.tools.idea.avdmanager.EmulatorConnectionListener - Emulator not ready yet, dev.bootcomplete = null
+2025-12-22 19:14:32,923 [   1031]   WARN - org.apache.lucene.internal.vectorization.VectorizationProvider - Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+2025-12-22 19:14:33,876 [   1984]   WARN - #com.android.studio.ml.enterprise.login.StudioModelsOnboardingController$Companion - Auth state changed from AuthState.Initializing(isAuthorized=false) to AuthState.LoggedOut(isAuthorized=false)
+2025-12-22 19:14:39,415 [   7523]   WARN - #c.i.o.a.i.ActionUpdater - 4399 ms total to grab EDT 5 times to expand ToolWindowHeader$2#expandGroup@ToolwindowTitle (com.intellij.toolWindow.ToolWindowHeader$2). Use `ActionUpdateThread.BGT`.
+2025-12-22 19:14:39,832 [   7940]   WARN - #c.i.u.j.JBCefApp - JCefAppConfig.class is not from a JBR module, url: jar:file:/opt/android-studio/lib/lib.jar!/com/jetbrains/cef/JCefAppConfig.class (Use JBR bundled with the IDE)
+2025-12-22 19:14:40,341 [   8449]   WARN - #com.android.tools.ndk.HotfixForOCInitialTablesBuildingActivity - Overriding OCInitialTablesBuildingActivity with HotfixForOCInitialTablesBuildingActivity
+2025-12-22 19:14:44,283 [  12391]   WARN - #c.i.o.a.i.ActionUpdater - 4012 ms total to grab EDT 5 times to expand ToolWindowHeader$2#expandGroup@ToolwindowTitle (com.intellij.toolWindow.ToolWindowHeader$2). Use `ActionUpdateThread.BGT`.
+2025-12-22 19:19:48,293 [ 316401]   WARN - #git4idea.statistics.GitAvailabilityChecker - Connect to github.com:443 [github.com/140.82.112.4] failed: Read timed out
+org.apache.http.conn.ConnectTimeoutException: Connect to github.com:443 [github.com/140.82.112.4] failed: Read timed out
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:151)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
+	at git4idea.statistics.GitAvailabilityChecker.sendHeadRequest(GitAvailabilityChecker.kt:42)
+	at git4idea.statistics.GitAvailabilityChecker.checkRemoteStatus(GitAvailabilityChecker.kt:34)
+	at git4idea.statistics.GitAvailabilityChecker.checkRepoStatus(GitAvailabilityChecker.kt:22)
+	at git4idea.GitStatisticsCollector.getMetrics(GitStatisticsCollector.kt:92)
+	at com.intellij.internal.statistic.service.fus.collectors.ProjectUsagesCollector.collect$lambda$2(ProjectUsagesCollector.kt:81)
+	at com.intellij.openapi.progress.CoroutinesKt.blockingContextInner(coroutines.kt:345)
+	at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invokeSuspend(coroutines.kt:237)
+	at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+	at com.intellij.openapi.progress.CoroutinesKt$blockingContext$2.invoke(coroutines.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:62)
+	at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:261)
+	at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:236)
+	at com.intellij.internal.statistic.service.fus.collectors.ProjectUsagesCollector.collect$suspendImpl(ProjectUsagesCollector.kt:80)
+	at com.intellij.internal.statistic.service.fus.collectors.ProjectUsagesCollector.collect(ProjectUsagesCollector.kt)
+	at com.intellij.internal.statistic.service.fus.collectors.ProjectFUStateUsagesLogger$logProjectState$2$1$1.invokeSuspend(FUStateUsagesLogger.kt:236)
+	at com.intellij.internal.statistic.service.fus.collectors.ProjectFUStateUsagesLogger$logProjectState$2$1$1.invoke(FUStateUsagesLogger.kt)
+	at com.intellij.internal.statistic.service.fus.collectors.ProjectFUStateUsagesLogger$logProjectState$2$1$1.invoke(FUStateUsagesLogger.kt)
+	at com.intellij.internal.statistic.service.fus.collectors.FUStateUsagesLogger$Companion.logMetricsOrError$intellij_platform_statistics(FUStateUsagesLogger.kt:80)
+	at com.intellij.internal.statistic.service.fus.collectors.ProjectFUStateUsagesLogger$logProjectState$2$1.invokeSuspend(FUStateUsagesLogger.kt:232)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:608)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:873)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:763)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:750)
+Caused by: java.net.SocketTimeoutException: Read timed out
+	at java.base/sun.nio.ch.NioSocketImpl.timedRead(Unknown Source)
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(Unknown Source)
+	at java.base/sun.nio.ch.NioSocketImpl.read(Unknown Source)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(Unknown Source)
+	at java.base/java.net.Socket$SocketInputStream.read(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.read(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.readHeader(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketInputRecord.decode(Unknown Source)
+	at java.base/sun.security.ssl.SSLTransport.decode(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketImpl.decode(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(Unknown Source)
+	at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(Unknown Source)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.createLayeredSocket(SSLConnectionSocketFactory.java:436)
+	at org.apache.http.conn.ssl.SSLConnectionSocketFactory.connectSocket(SSLConnectionSocketFactory.java:384)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142)
+	... 34 more
+2025-12-22 20:32:26,437 [4674545]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-22 20:32:29,495 [4677603]   WARN - org.apache.velocity.deprecation - configuration key 'resource.loader' has been deprecated in favor of 'resource.loaders'
+2025-12-22 20:32:29,497 [4677605]   WARN - org.apache.velocity.deprecation - configuration key 'includes.resource.loader.instance' has been deprecated in favor of 'resource.loader.includes.instance'
+2025-12-22 20:34:39,295 [4807403]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-22 20:35:13,455 [4841563]   WARN - #c.i.i.a.CopyTBXReferenceAction - Cannot find TBX tool for IDE: AndroidStudio
+2025-12-22 20:36:39,884 [4927992]   WARN - Emulator: Pixel 8 Pro - Your GPU drivers may have a bug. Switching to software rendering.
+2025-12-22 20:36:40,065 [4928173]   WARN - Emulator: Pixel 8 Pro - Setting read-only feature 'GLAsyncSwap' to '0'
+2025-12-22 20:36:40,151 [4928259]   WARN - Emulator: Pixel 8 Pro - *** Basic token auth should only be used by android-studio ***
+2025-12-22 20:36:40,357 [4928465]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-22 20:36:40,357 [4928465]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-22 20:36:40,357 [4928465]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-22 20:36:40,357 [4928465]   WARN - Emulator: Pixel 8 Pro - Unknown XR viewport mode requested: 0, ignored.
+2025-12-22 20:36:40,357 [4928465]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-22 20:36:40,357 [4928465]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-22 20:36:40,357 [4928465]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-22 20:36:40,357 [4928465]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-22 20:36:40,357 [4928465]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-22 20:36:41,902 [4930010]   WARN - #com.android.ddmlib - Failed to start Emulator console for 5554
+2025-12-22 20:50:57,985 [5786093]   WARN - TestScenarioGeneration - Destination folder is not a valid test source folder
+2025-12-22 20:50:57,985 [5786093]   WARN - TestScenarioGeneration - Did not find any test type or no TestScenarioPromptBuilder token is loaded.
