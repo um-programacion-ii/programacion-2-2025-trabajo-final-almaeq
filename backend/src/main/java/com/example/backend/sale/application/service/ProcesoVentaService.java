@@ -2,6 +2,8 @@ package com.example.backend.sale.application.service;
 
 import com.example.backend.event.infrastructure.persistence.entity.Event;
 import com.example.backend.event.infrastructure.persistence.repository.EventRepository;
+import com.example.backend.sale.exception.AsientoNoDisponibleException;
+import com.example.backend.sale.exception.VentaFallidaException;
 import com.example.backend.sale.infrastructure.client.CatedraApiClient;
 import com.example.backend.sale.infrastructure.persistence.entity.Sale;
 import com.example.backend.sale.infrastructure.persistence.repository.SaleRepository;
@@ -46,82 +48,91 @@ public class ProcesoVentaService {
     }
 
 
-    // CAMBIAR: De boolean a Map<String, Object>
     public Map<String, Object> bloquearAsientos(BlockRequestDto request) {
+        // Validaciones básicas locales
         if (request.getEventoId() == null) {
-            return Map.of("resultado", false, "descripcion", "Error: eventoId es nulo");
+            throw new IllegalArgumentException("Error: eventoId es nulo");
         }
-
         if (!eventRepository.existsById(request.getEventoId())) {
-            return Map.of("resultado", false, "descripcion", "Evento no encontrado localmente");
+            throw new RuntimeException("Evento no encontrado localmente");
         }
 
-        return proxyClientService.bloquearAsientos(request);
+        // Llamada al Proxy
+        Map<String, Object> respuesta = proxyClientService.bloquearAsientos(request);
+
+        // VALIDACIÓN DEL ISSUE: Si resultado es false, lanzamos excepción
+        if (Boolean.FALSE.equals(respuesta.get("resultado"))) {
+            String motivo = (String) respuesta.getOrDefault("descripcion", "No se pudieron bloquear los asientos");
+            throw new AsientoNoDisponibleException(motivo);
+        }
+
+        // Si llegó acá, es true. Retornamos la respuesta exitosa.
+        return respuesta;
     }
+
 
     @Transactional
     public Map<String, Object> confirmarVenta(SaleRequestDto request, String username) {
-        // 1. Obtener Entidades Locales (Igual que antes)
+        // 1. Obtener Entidades Locales
         Event evento = eventRepository.findById(request.getEventoId())
                 .orElseThrow(() -> new RuntimeException("Evento no encontrado"));
 
         User usuario = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-        // CALCULAR PRECIO TOTAL
-        // Si el precio es null (por datos viejos), usamos 0.0 para evitar error
+        // 2. Calcular Precio
         double precioUnitario = (evento.getPrecio() != null) ? evento.getPrecio() : 0.0;
         double precioTotal = precioUnitario * request.getAsientos().size();
 
-        // 2. Preparar Payload
+        // 3. Preparar Payload para Cátedra
         Map<String, Object> payloadCatedra = new HashMap<>();
         payloadCatedra.put("eventoId", evento.getId());
         payloadCatedra.put("fecha", Instant.now().toString());
         payloadCatedra.put("precioVenta", precioTotal);
 
         List<Map<String, Object>> listaAsientosCatedra = new ArrayList<>();
-
         for (int i = 0; i < request.getAsientos().size(); i++) {
-            // CORRECCIÓN: Usamos el objeto directo, sin parsear strings
             SimpleSeatDto asientoDto = request.getAsientos().get(i);
             PersonDto persona = request.getPersonas().get(i);
 
             Map<String, Object> asientoMap = new HashMap<>();
-            asientoMap.put("fila", asientoDto.getFila());       // Usar el entero real
-            asientoMap.put("columna", asientoDto.getColumna()); // Usar el entero real
+            asientoMap.put("fila", asientoDto.getFila());
+            asientoMap.put("columna", asientoDto.getColumna());
             asientoMap.put("persona", persona.getNombre() + " " + persona.getApellido());
 
             listaAsientosCatedra.add(asientoMap);
         }
         payloadCatedra.put("asientos", listaAsientosCatedra);
 
-        // 3. Llamar a la Cátedra (Igual que antes)
+        // 4. Llamar a la Cátedra
         Map<String, Object> respuestaCatedra = catedraApiClient.realizarVenta(payloadCatedra);
-        boolean resultado = (boolean) respuestaCatedra.getOrDefault("resultado", false);
 
-        // 4. Si es exitoso, guardar en Base de Datos Local
-        if (resultado) {
-            Sale venta = new Sale();
-            venta.setEvento(evento);
-            venta.setUser(usuario);
-            venta.setFechaVenta(LocalDateTime.now());
-            venta.setEstado("CONFIRMADA");
+        // VALIDACIÓN DEL ISSUE: Si resultado es false, lanzamos excepción
+        if (Boolean.FALSE.equals(respuestaCatedra.get("resultado"))) {
+            String motivo = (String) respuestaCatedra.getOrDefault("descripcion", "La venta fue rechazada por la cátedra");
+            throw new VentaFallidaException(motivo);
+        }
 
-            Sale ventaGuardada = saleRepository.save(venta);
+        // 5. Si pasamos la validación (es exitoso), guardamos en BD Local
+        Sale venta = new Sale();
+        venta.setEvento(evento);
+        venta.setUser(usuario);
+        venta.setFechaVenta(LocalDateTime.now());
+        venta.setEstado("CONFIRMADA");
 
-            for (int i = 0; i < request.getAsientos().size(); i++) {
-                SimpleSeatDto asientoDto = request.getAsientos().get(i);
-                PersonDto persona = request.getPersonas().get(i);
+        Sale ventaGuardada = saleRepository.save(venta);
 
-                SeatSold asientoVendido = new SeatSold();
-                asientoVendido.setVenta(ventaGuardada);
-                // Guardamos como texto "F5-C19" o JSON, según prefieras en tu DB
-                asientoVendido.setUbicacion("F" + asientoDto.getFila() + "-C" + asientoDto.getColumna());
-                asientoVendido.setNombrePersona(persona.getNombre());
-                asientoVendido.setApellidoPersona(persona.getApellido());
+        for (int i = 0; i < request.getAsientos().size(); i++) {
+            SimpleSeatDto asientoDto = request.getAsientos().get(i);
+            PersonDto persona = request.getPersonas().get(i);
 
-                seatSoldRepository.save(asientoVendido);
-            }
+            SeatSold asientoVendido = new SeatSold();
+            asientoVendido.setVenta(ventaGuardada);
+            asientoVendido.setUbicacion("F" + asientoDto.getFila() + "-C" + asientoDto.getColumna());
+            asientoVendido.setNombrePersona(persona.getNombre());
+            asientoVendido.setApellidoPersona(persona.getApellido());
+
+            seatSoldRepository.save(asientoVendido);
         }
 
         return respuestaCatedra;
