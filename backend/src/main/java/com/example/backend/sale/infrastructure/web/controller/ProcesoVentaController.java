@@ -25,47 +25,15 @@ public class ProcesoVentaController {
 
     @PostMapping("/bloquear")
     public ResponseEntity<Map<String, Object>> bloquearAsientos(@RequestBody BlockRequestDto request) {
-        // Llamamos al servicio que ahora devuelve el Mapa completo
-        Map<String, Object> respuestaCatedra = procesoVentaService.bloquearAsientos(request);
-
-        // Verificamos si la operación fue exitosa según el campo "resultado"
-        boolean exito = (boolean) respuestaCatedra.getOrDefault("resultado", false);
-
-        if (exito) {
-            // Devolvemos Payload 6 completo con status 200 OK
-            return ResponseEntity.ok(respuestaCatedra);
-        } else {
-            // Devolvemos Payload 6 completo con status 400 Bad Request (o el que prefieras)
-            // Es importante devolver el cuerpo "respuestaCatedra" para ver POR QUÉ falló (ej: "Ocupado")
-            return ResponseEntity.badRequest().body(respuestaCatedra);
-        }
+        // Si falla, el servicio lanza excepción y salta al ControllerAdvice.
+        // Si llega aquí, es que fue éxito.
+        return ResponseEntity.ok(procesoVentaService.bloquearAsientos(request));
     }
 
     @PostMapping("/confirmar")
     public ResponseEntity<Map<String, Object>> confirmarVenta(@RequestBody SaleRequestDto request) {
-
-        // 1. Obtener el usuario real del Token JWT
-        // Spring Security ya validó el token en el filtro y guardó al usuario aquí.
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-
-        try {
-            // 2. Pasar ese username real al servicio
-            Map<String, Object> respuesta = procesoVentaService.confirmarVenta(request, username);
-
-            boolean exito = (boolean) respuesta.getOrDefault("resultado", false);
-
-            if (exito) {
-                return ResponseEntity.ok(respuesta);
-            } else {
-                return ResponseEntity.badRequest().body(respuesta);
-            }
-        } catch (Exception e) {
-            // Si el usuario del token no está en la BD, saltará aquí (Usuario no encontrado)
-            return ResponseEntity.internalServerError().body(Map.of(
-                    "resultado", false,
-                    "descripcion", "Error interno: " + e.getMessage()
-            ));
-        }
+        return ResponseEntity.ok(procesoVentaService.confirmarVenta(request, username));
     }
 
     @GetMapping("/historial")
