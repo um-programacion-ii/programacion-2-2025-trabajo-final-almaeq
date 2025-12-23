@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,37 +16,28 @@ public class BackendNotificacionService {
 
     private final RestTemplate restTemplate;
 
-    @Value("${backend.service.url}")
+    @Value("${backend.url}")
     private String backendUrl;
-
-    @Value("${internal.api.secret}")
-    private String internalSecret;
 
     public BackendNotificacionService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    public void notificarCambio(String mensaje) {
-        try {
-            String url = backendUrl + "/api/internal/notificacion/evento";
+    // CAMBIO: El método ahora lanza Exception si falla, NO la captura.
+    public void notificarBackend(String mensaje) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
 
-            // Headers
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.set("X-Internal-Secret", internalSecret);
+        Map<String, String> body = new HashMap<>();
+        body.put("mensaje", mensaje);
 
-            // Body
-            Map<String, Object> body = new HashMap<>();
-            body.put("eventoId", 0);
-            body.put("tipoDeCambio", mensaje);
+        HttpEntity<Map<String, String>> request = new HttpEntity<>(body, headers);
 
-            HttpEntity<Map<String, Object>> request = new HttpEntity<>(body, headers);
+        // Si el backend está caído (ConnectionRefused) o da 500,
+        // RestTemplate lanzará una excepción automáticamente.
+        // Esto disparará el mecanismo de reintento en el KafkaConsumer.
+        restTemplate.postForEntity(backendUrl + "/api/internal/notificacion", request, String.class);
 
-            restTemplate.postForObject(url, request, Void.class);
-            System.out.println("✅ (Service) Notificación enviada al Backend.");
-
-        } catch (Exception e) {
-            System.err.println("❌ Error notificando al Backend: " + e.getMessage());
-        }
+        System.out.println("Notificación enviada al backend correctamente: " + mensaje);
     }
 }

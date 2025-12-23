@@ -1,22 +1,43 @@
 package com.example.proxy.kafka.application.service;
 
+import org.springframework.kafka.annotation.DltHandler;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.annotation.RetryableTopic;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.handler.annotation.Header;
+import org.springframework.retry.annotation.Backoff;
 import org.springframework.stereotype.Service;
 
 @Service
 public class KafkaConsumerService {
 
-    private final BackendNotificacionService notificacionService;
+    private final BackendNotificacionService backendNotificacionService;
 
-    public KafkaConsumerService(BackendNotificacionService notificacionService) {
-        this.notificacionService = notificacionService;
+    public KafkaConsumerService(BackendNotificacionService backendNotificacionService) {
+        this.backendNotificacionService = backendNotificacionService;
     }
 
-    @KafkaListener(topics = "eventos-actualizacion", groupId = "${spring.kafka.consumer.group-id}")
-    public void consumirMensaje(String mensajeKafka) {
-        System.out.println("⚠️ Cambio detectado en Kafka Cátedra: " + mensajeKafka);
+    // 1. attempts = "4": Intentará 1 vez normal + 3 reintentos.
+    // 2. backoff: Espera 1s, luego 2s, luego 4s (exponencial) entre intentos.
+    // 3. Si falla todo, envía el mensaje al tópico "eventos-dlt" (Dead Letter Topic).
+    @RetryableTopic(
+            attempts = "4",
+            backoff = @Backoff(delay = 1000, multiplier = 2.0),
+            autoCreateTopics = "true" // Crea el tópico de error automático si no existe
+    )
+    @KafkaListener(topics = "eventos", groupId = "proxy-group")
+    public void consumirEventos(String mensaje, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
+        System.out.println("Recibido en Kafka (" + topic + "): " + mensaje);
 
-        // Delegamos la tarea al servicio específico como pide el enunciado
-        notificacionService.notificarCambio(mensajeKafka);
+        // Llamamos al servicio. Si falla (lanza excepción), @RetryableTopic toma el control.
+        backendNotificacionService.notificarBackend(mensaje);
+    }
+
+    // MÉTODO QUE SE EJECUTA SI FALLAN TODOS LOS REINTENTOS (DLQ Handler)
+    @DltHandler
+    public void listenDlt(String mensaje, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
+        System.err.println("!!! ERROR CRÍTICO: Mensaje enviado a DLQ (Dead Letter Queue): " + topic);
+        System.err.println("Contenido del mensaje perdido: " + mensaje);
+
     }
 }
