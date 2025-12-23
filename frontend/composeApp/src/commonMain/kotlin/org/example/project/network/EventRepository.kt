@@ -1,9 +1,11 @@
 package org.example.project.network
 
 import io.ktor.client.call.body
+import io.ktor.client.request.delete
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.post
+import io.ktor.client.request.put
 import io.ktor.client.request.setBody
 import io.ktor.client.utils.EmptyContent.contentType
 import io.ktor.http.HttpStatusCode
@@ -12,11 +14,24 @@ import org.example.project.model.Event
 import org.example.project.model.Seat
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
+import org.example.project.AppScreen
 import org.example.project.model.Person
+import org.example.project.model.PurchaseState
 import org.example.project.model.SaleRequest
 import org.example.project.model.SimpleSeat
 
 class EventRepository {
+
+    // --- HELPER: Convierte la Pantalla (Enum) a Número (Int) para el Backend ---
+    private fun screenToStep(screen: AppScreen): Int {
+        return when (screen) {
+            AppScreen.EVENTS_LIST -> 1
+            AppScreen.EVENT_DETAIL -> 2
+            AppScreen.SEAT_SELECTION -> 3
+            AppScreen.PASSENGER_DATA -> 4
+            else -> 0
+        }
+    }
     suspend fun getEvents(): List<Event> {
         return try {
             // 1. Verificamos si tenemos token
@@ -142,6 +157,61 @@ class EventRepository {
             println("EXCEPCIÓN AL COMPRAR: ${e.message}")
             e.printStackTrace()
             false
+        }
+    }
+
+    // 1. OBTENER SESIÓN (GET) - Esto estaba bien, pero retornará Strings en los asientos
+    suspend fun getSessionState(): PurchaseState? {
+        return try {
+            val token = TokenManager.jwtToken ?: return null
+            val response = ApiClient.client.get("session/state") {
+                header("Authorization", "Bearer $token")
+            }
+            if (response.status == HttpStatusCode.OK) {
+                response.body()
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            println("No hay sesión activa o error: ${e.message}")
+            null
+        }
+    }
+
+    // 2. GUARDAR SESIÓN (PUT) - CORREGIDO
+    suspend fun saveSession(screen: AppScreen, eventId: Long?, seats: List<Seat>) {
+        try {
+            val token = TokenManager.jwtToken ?: return
+
+            val step = screenToStep(screen)
+
+            // CORRECCIÓN: Convertir objetos Seat a Strings formato "F{fila}-A{columna}"
+            // Esto coincide con el comentario del backend: // Ej: ["F1-A1", "F1-A2"]
+            val seatStrings = seats.map { "F${it.fila}-A${it.columna}" }
+
+            val state = PurchaseState(step, eventId, seatStrings)
+
+            // CORRECCIÓN URL y MÉTODO: El backend usa @PutMapping("/api/session/state")
+            ApiClient.client.put("session/state") {
+                header("Authorization", "Bearer $token")
+                contentType(ContentType.Application.Json)
+                setBody(state)
+            }
+        } catch (e: Exception) {
+            println("Error guardando sesión: ${e.message}")
+        }
+    }
+
+    // 3. BORRAR SESIÓN (LOGOUT) - CORREGIDO
+    suspend fun clearSessionState() {
+        try {
+            val token = TokenManager.jwtToken ?: return
+            // CORRECCIÓN URL y MÉTODO: El backend usa @PostMapping("/api/session/logout")
+            ApiClient.client.post("session/logout") {
+                header("Authorization", "Bearer $token")
+            }
+        } catch (e: Exception) {
+            println("Error borrando sesión: ${e.message}")
         }
     }
 }
