@@ -1,28 +1,21 @@
 package org.example.project.network
 
 import io.ktor.client.call.body
-import io.ktor.client.request.delete
+import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.post
 import io.ktor.client.request.put
 import io.ktor.client.request.setBody
-import io.ktor.client.utils.EmptyContent.contentType
-import io.ktor.http.HttpStatusCode
-import org.example.project.model.BlockRequest
-import org.example.project.model.Event
-import org.example.project.model.Seat
 import io.ktor.http.ContentType
+import io.ktor.http.HttpStatusCode
 import io.ktor.http.contentType
+import io.ktor.utils.io.errors.IOException
 import org.example.project.AppScreen
-import org.example.project.model.Person
-import org.example.project.model.PurchaseState
-import org.example.project.model.SaleRequest
-import org.example.project.model.SimpleSeat
+import org.example.project.model.*
 
 class EventRepository {
 
-    // --- HELPER: Convierte la Pantalla (Enum) a Número (Int) para el Backend ---
     private fun screenToStep(screen: AppScreen): Int {
         return when (screen) {
             AppScreen.EVENTS_LIST -> 1
@@ -32,35 +25,16 @@ class EventRepository {
             else -> 0
         }
     }
+
     suspend fun getEvents(): List<Event> {
         return try {
-            // 1. Verificamos si tenemos token
-            val token = TokenManager.jwtToken
-            if (token == null) {
-                println("ERROR: El token es NULO. El login no guardó el token.")
-                return emptyList()
-            }
-
-            println("Enviando petición con Token: Bearer ${token.take(10)}...")
-
+            val token = TokenManager.jwtToken ?: return emptyList()
             val response = ApiClient.client.get("events") {
                 header("Authorization", "Bearer $token")
             }
-
-            if (response.status == HttpStatusCode.OK) {
-                // 2. Intentamos leer el cuerpo. Si falla aquí, es formato de JSON/Datos
-                val listaEventos = response.body<List<Event>>()
-                println("ÉXITO: Se recibieron ${listaEventos.size} eventos.")
-                listaEventos
-            } else {
-                println("ERROR API: Código ${response.status}")
-                // Si es 401/403, el token está mal o expiró.
-                emptyList()
-            }
+            if (response.status == HttpStatusCode.OK) response.body() else emptyList()
         } catch (e: Exception) {
-            // 3. AQUÍ ESTÁ LA CLAVE. Mira este mensaje en el Logcat.
-            println("EXCEPCIÓN CRÍTICA: ${e.message}")
-            e.printStackTrace()
+            println("Error obteniendo eventos: ${e.message}")
             emptyList()
         }
     }
@@ -68,78 +42,74 @@ class EventRepository {
     suspend fun getEventDetail(id: Long): Event? {
         return try {
             val token = TokenManager.jwtToken ?: return null
-
-            // Llama a /api/events/{id}
             val response = ApiClient.client.get("events/$id") {
                 header("Authorization", "Bearer $token")
             }
-
-            if (response.status == HttpStatusCode.OK) {
-                response.body<Event>()
-            } else {
-                println("Error Detalle: ${response.status}")
-                null
-            }
+            if (response.status == HttpStatusCode.OK) response.body() else null
         } catch (e: Exception) {
-            println("Excepción Detalle: ${e.message}")
-            e.printStackTrace()
+            println("Error detalle evento: ${e.message}")
             null
         }
     }
 
-    suspend fun blockSeats(eventId: Long, seats: List<Seat>): Boolean {
+    // --- BLOQUEAR ASIENTOS (Con detección de 401) ---
+    suspend fun blockSeats(eventId: Long, seats: List<Seat>): Resource<Boolean> {
         return try {
-            val token = TokenManager.jwtToken ?: return false
+            val token = TokenManager.jwtToken ?: return Resource.SessionExpired // Si no hay token, fuera
 
-            // Convertimos tus asientos UI (Seat) a los que pide el backend (SimpleSeat)
             val simpleSeats = seats.map { SimpleSeat(it.fila, it.columna) }
             val requestBody = BlockRequest(eventId, simpleSeats)
 
-            val response = ApiClient.client.post("venta/bloquear") { // Asegúrate que la ruta coincida con tu backend
+            val response = ApiClient.client.post("venta/bloquear") {
                 header("Authorization", "Bearer $token")
                 contentType(ContentType.Application.Json)
                 setBody(requestBody)
             }
 
             if (response.status == HttpStatusCode.OK) {
-                println("BLOQUEO EXITOSO")
-                true
+                Resource.Success(true)
             } else {
-                println("FALLO EL BLOQUEO: ${response.status}")
-                false
+                try {
+                    val errorMap = response.body<Map<String, Any>>()
+                    val msg = errorMap["descripcion"]?.toString() ?: "Error al bloquear"
+                    Resource.Error(msg)
+                } catch (e: Exception) {
+                    Resource.Error("No se pudieron bloquear los asientos")
+                }
             }
+        } catch (e: ClientRequestException) {
+            // DETECCIÓN DE TOKEN VENCIDO
+            if (e.response.status == HttpStatusCode.Unauthorized) {
+                Resource.SessionExpired
+            } else {
+                // Otros errores (400, 409, etc.)
+                try {
+                    val errorMap = e.response.body<Map<String, Any>>()
+                    val msg = errorMap["descripcion"]?.toString() ?: "Error en la solicitud"
+                    Resource.Error(msg)
+                } catch (ex: Exception) {
+                    Resource.Error("Error del servidor: ${e.response.status.value}")
+                }
+            }
+        } catch (e: IOException) {
+            Resource.Error("No hay conexión. Revisa tu internet")
         } catch (e: Exception) {
-            println("ERROR DE RED AL BLOQUEAR: ${e.message}")
-            e.printStackTrace()
-            false
+            Resource.Error("Error inesperado: ${e.message}")
         }
     }
 
-    suspend fun buySeats(eventId: Long, seats: List<Seat>, names: List<String>): Boolean {
+    // --- COMPRAR ASIENTOS (Con detección de 401) ---
+    suspend fun buySeats(eventId: Long, seats: List<Seat>, names: List<String>): Resource<Boolean> {
         return try {
-            val token = TokenManager.jwtToken ?: return false
+            val token = TokenManager.jwtToken ?: return Resource.SessionExpired
 
-            // 1. Transformar la lista de nombres (Strings) a objetos Person
-            // Asumimos que el primer espacio separa Nombre de Apellido
             val peopleList = names.map { fullName ->
                 val parts = fullName.trim().split(" ", limit = 2)
-                val nombre = parts.getOrElse(0) { "" }
-                val apellido = parts.getOrElse(1) { "" } // Si no puso apellido, va vacío
-                Person(nombre, apellido)
+                Person(parts.getOrElse(0) { "" }, parts.getOrElse(1) { "" })
             }
-
-            // 2. Transformar asientos UI a SimpleSeat
             val simpleSeats = seats.map { SimpleSeat(it.fila, it.columna) }
-
-            // 3. Crear el Request Body
             val requestBody = SaleRequest(eventId, peopleList, simpleSeats)
 
-            println("Enviando compra: $requestBody")
-
-            // 4. Llamar al Backend
-            // IMPORTANTE: Verifica si tu ApiClient ya tiene "/api/" en la base url.
-            // Si "venta/bloquear" te funcionó antes, usa "venta/confirmar".
-            // Si tuviste que poner "api/venta/bloquear", usa "api/venta/confirmar" aquí.
             val response = ApiClient.client.post("venta/confirmar") {
                 header("Authorization", "Bearer $token")
                 contentType(ContentType.Application.Json)
@@ -147,51 +117,55 @@ class EventRepository {
             }
 
             if (response.status == HttpStatusCode.OK) {
-                println("¡COMPRA EXITOSA!")
-                true
+                Resource.Success(true)
             } else {
-                println("ERROR EN COMPRA: ${response.status}")
-                false
+                try {
+                    val errorMap = response.body<Map<String, Any>>()
+                    val msg = errorMap["descripcion"]?.toString() ?: "Error en la venta"
+                    Resource.Error(msg)
+                } catch (e: Exception) {
+                    Resource.Error("La venta fue rechazada")
+                }
             }
+        } catch (e: ClientRequestException) {
+            // DETECCIÓN DE TOKEN VENCIDO
+            if (e.response.status == HttpStatusCode.Unauthorized) {
+                Resource.SessionExpired
+            } else {
+                try {
+                    val errorMap = e.response.body<Map<String, Any>>()
+                    val msg = errorMap["descripcion"]?.toString() ?: "Error en la venta"
+                    Resource.Error(msg)
+                } catch (ex: Exception) {
+                    Resource.Error("Error en la venta (Código ${e.response.status.value})")
+                }
+            }
+        } catch (e: IOException) {
+            Resource.Error("No hay conexión. Revisa tu internet")
         } catch (e: Exception) {
-            println("EXCEPCIÓN AL COMPRAR: ${e.message}")
-            e.printStackTrace()
-            false
+            Resource.Error("Error inesperado: ${e.message}")
         }
     }
 
-    // 1. OBTENER SESIÓN (GET) - Esto estaba bien, pero retornará Strings en los asientos
     suspend fun getSessionState(): PurchaseState? {
         return try {
             val token = TokenManager.jwtToken ?: return null
             val response = ApiClient.client.get("session/state") {
                 header("Authorization", "Bearer $token")
             }
-            if (response.status == HttpStatusCode.OK) {
-                response.body()
-            } else {
-                null
-            }
+            if (response.status == HttpStatusCode.OK) response.body() else null
         } catch (e: Exception) {
-            println("No hay sesión activa o error: ${e.message}")
             null
         }
     }
 
-    // 2. GUARDAR SESIÓN (PUT) - CORREGIDO
     suspend fun saveSession(screen: AppScreen, eventId: Long?, seats: List<Seat>) {
         try {
             val token = TokenManager.jwtToken ?: return
-
             val step = screenToStep(screen)
-
-            // CORRECCIÓN: Convertir objetos Seat a Strings formato "F{fila}-A{columna}"
-            // Esto coincide con el comentario del backend: // Ej: ["F1-A1", "F1-A2"]
             val seatStrings = seats.map { "F${it.fila}-A${it.columna}" }
-
             val state = PurchaseState(step, eventId, seatStrings)
 
-            // CORRECCIÓN URL y MÉTODO: El backend usa @PutMapping("/api/session/state")
             ApiClient.client.put("session/state") {
                 header("Authorization", "Bearer $token")
                 contentType(ContentType.Application.Json)
@@ -202,16 +176,14 @@ class EventRepository {
         }
     }
 
-    // 3. BORRAR SESIÓN (LOGOUT) - CORREGIDO
     suspend fun clearSessionState() {
         try {
             val token = TokenManager.jwtToken ?: return
-            // CORRECCIÓN URL y MÉTODO: El backend usa @PostMapping("/api/session/logout")
             ApiClient.client.post("session/logout") {
                 header("Authorization", "Bearer $token")
             }
         } catch (e: Exception) {
-            println("Error borrando sesión: ${e.message}")
+            println("Error limpiando sesión")
         }
     }
 }
