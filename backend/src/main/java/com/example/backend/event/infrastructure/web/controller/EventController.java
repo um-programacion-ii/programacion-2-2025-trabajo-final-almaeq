@@ -6,6 +6,10 @@ import com.example.backend.event.infrastructure.web.dto.EventDetailDto;
 import com.example.backend.event.infrastructure.web.dto.EventOverviewDto;
 import com.example.backend.event.infrastructure.web.dto.SeatDto;
 import com.example.backend.proxy.application.service.ProxyClientService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +21,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/events")
+@Tag(name = "Eventos", description = "Endpoints para la consulta y detalle de eventos.")
 public class EventController {
 
     private final EventService eventService;
@@ -27,6 +32,10 @@ public class EventController {
         this.proxyClientService = proxyClientService;
     }
 
+    @Operation(summary = "Listar Eventos", description = "Devuelve el listado general de todos los eventos disponibles. Intenta sincronizar con la Cátedra antes de responder.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Lista de eventos recuperada correctamente")
+    })
     @GetMapping
     public ResponseEntity<List<EventOverviewDto>> getAllEvents() {
         // Intentamos sincronizar la lista general (opcional, pero recomendado)
@@ -49,6 +58,11 @@ public class EventController {
         return ResponseEntity.ok(dtos);
     }
 
+    @Operation(summary = "Detalle de Evento", description = "Obtiene toda la información de un evento, incluyendo la matriz de asientos con su estado (Libre/Ocupado) obtenido en tiempo real desde el Proxy (Redis).")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Detalle del evento y asientos encontrado"),
+            @ApiResponse(responseCode = "404", description = "Evento no encontrado en la base de datos local")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<EventDetailDto> getEventDetail(@PathVariable Long id) {
         // 1. IMPORTANTE: Forzar sincronización para traer filas/columnas REALES

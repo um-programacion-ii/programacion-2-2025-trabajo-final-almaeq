@@ -5,6 +5,9 @@ import com.example.backend.user.application.service.UserService;
 import com.example.backend.user.infrastructure.web.dto.LoginRequestDto;
 import com.example.backend.user.infrastructure.web.dto.LoginResponseDto;
 import com.example.backend.user.infrastructure.web.dto.RegisterRequestDto;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
+@Tag(name = "Usuarios", description = "Autenticación y Registro")
 public class UserController {
 
     private final AuthenticationManager authenticationManager;
@@ -31,6 +35,7 @@ public class UserController {
         this.userService = userService;
     }
 
+    @Operation(summary = "Iniciar Sesión", description = "Devuelve un JWT si las credenciales son correctas")
     @PostMapping("/authenticate")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequestDto loginRequest, HttpServletRequest request) {
 
@@ -47,7 +52,6 @@ public class UserController {
         String jwt = tokenProvider.generateToken(authentication);
 
         // CREAR SESIÓN SPRING SESSION
-        // Esto disparará la creación de la clave en Redis automáticamente
         HttpSession session = request.getSession(true);
         session.setAttribute("usuario", authentication.getName());
 
@@ -57,6 +61,9 @@ public class UserController {
         return ResponseEntity.ok(loginResponse);
     }
 
+    @Operation(summary = "Registrar Usuario", description = "Crea un nuevo usuario con rol USER por defecto")
+    @ApiResponse(responseCode = "200", description = "Usuario registrado exitosamente")
+    @ApiResponse(responseCode = "400", description = "Datos inválidos o usuario ya existe")
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody RegisterRequestDto registerRequest) {
         try {

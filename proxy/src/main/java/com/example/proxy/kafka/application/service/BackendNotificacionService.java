@@ -15,7 +15,7 @@ public class BackendNotificacionService {
 
     private final RestTemplate restTemplate;
 
-    @Value("${backend.url:http://backend:8080}") // Valor por defecto por seguridad
+    @Value("${backend.url:http://backend:8080}")
     private String backendUrl;
 
     public BackendNotificacionService(RestTemplate restTemplate) {
