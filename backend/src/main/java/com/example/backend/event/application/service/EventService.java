@@ -123,4 +123,5 @@ public class EventService {
     public Event getEventById(Long id) {
         return eventRepository.findById(id).orElse(null);
     }
+
 }

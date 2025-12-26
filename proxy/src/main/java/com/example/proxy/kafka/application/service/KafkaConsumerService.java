@@ -30,6 +30,7 @@ public class KafkaConsumerService {
         System.out.println("Recibido en Kafka (" + topic + "): " + mensaje);
 
         // Llamamos al servicio. Si falla (lanza excepción), @RetryableTopic toma el control.
+
         backendNotificacionService.notificarBackend(mensaje);
     }
 

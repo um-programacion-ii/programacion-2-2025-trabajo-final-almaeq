@@ -30,10 +30,8 @@ public class BackendNotificacionService {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("X-Internal-Secret", internalSecret);
 
-        // --- CORRECCIÓN CLAVE AQUÍ ---
         // El mensaje de Kafka es solo texto ("Cambios en los datos...").
         // El Backend espera un JSON (EventNotificationDto).
-        // Vamos a construir ese JSON manualmente usando un Map.
 
         Map<String, Object> body = new HashMap<>();
         body.put("eventoId", null); // Null para forzar actualización completa
