@@ -1,4 +1,4 @@
-package com.example.backend.event.application.service;
+ package com.example.backend.event.application.service;
 
 import com.example.backend.event.infrastructure.persistence.entity.Event;
 import com.example.backend.event.infrastructure.persistence.repository.EventRepository;

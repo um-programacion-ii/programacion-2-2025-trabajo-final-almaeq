@@ -25,7 +25,7 @@ public class KafkaConsumerService {
             backoff = @Backoff(delay = 1000, multiplier = 2.0),
             autoCreateTopics = "true" // Crea el tópico de error automático si no existe
     )
-    @KafkaListener(topics = "eventos", groupId = "proxy-group")
+    @KafkaListener(topics = "eventos-actualizacion", groupId = "proxy-group-almaeq")
     public void consumirEventos(String mensaje, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
         System.out.println("Recibido en Kafka (" + topic + "): " + mensaje);
 
