@@ -4090,3 +4090,21 @@ JCEF_V(05:42:641): Java is started via native launcher. Found cef_server path /o
 2025-12-25 20:17:28,872 [ 710449]   WARN - #o.j.i.maven - updateAllMavenProjects started: incremental=true, MavenProjectAware.reloadProject, sync all proxy
 2025-12-25 20:17:31,099 [ 712676]   WARN - #o.j.i.maven - updateAllMavenProjects finished: incremental=true, MavenProjectAware.reloadProject, sync all proxy
 2025-12-25 20:24:22,238 [1123815]   WARN - #c.i.p.j.n.WebTypesNpmLoader - Failed to fetch packages for '@web-types' (Full Text): Request failed with status code 429
+2025-12-25 22:05:18,669 [   1272]   WARN - org.apache.lucene.internal.vectorization.VectorizationProvider - Java vector incubator module is not readable. For optimal vector performance, pass '--add-modules jdk.incubator.vector' to enable Vector API.
+2025-12-25 22:05:19,248 [   1851]   WARN - #com.android.studio.ml.enterprise.login.StudioModelsOnboardingController$Companion - Auth state changed from AuthState.Initializing(isAuthorized=false) to AuthState.LoggedOut(isAuthorized=false)
+2025-12-25 22:05:21,122 [   3725]   WARN - #c.i.o.v.n.p.PersistentFSImpl - Can't find root[#165419] in persistence
+2025-12-25 22:05:23,797 [   6400]   WARN - #c.i.u.j.JBCefApp - JCefAppConfig.class is not from a JBR module, url: jar:file:/opt/android-studio/lib/lib.jar!/com/jetbrains/cef/JCefAppConfig.class (Use JBR bundled with the IDE)
+2025-12-25 22:05:24,367 [   6970]   WARN - #com.android.tools.ndk.HotfixForOCInitialTablesBuildingActivity - Overriding OCInitialTablesBuildingActivity with HotfixForOCInitialTablesBuildingActivity
+2025-12-25 22:05:48,748 [  31351]   WARN - Emulator: Pixel 8 Pro - Your GPU drivers may have a bug. Switching to software rendering.
+2025-12-25 22:05:48,953 [  31556]   WARN - Emulator: Pixel 8 Pro - Setting read-only feature 'GLAsyncSwap' to '0'
+2025-12-25 22:05:49,055 [  31658]   WARN - Emulator: Pixel 8 Pro - *** Basic token auth should only be used by android-studio ***
+2025-12-25 22:05:49,211 [  31814]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-25 22:05:49,211 [  31814]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-25 22:05:49,211 [  31814]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-25 22:05:49,211 [  31814]   WARN - Emulator: Pixel 8 Pro - Unknown XR viewport mode requested: 0, ignored.
+2025-12-25 22:05:49,211 [  31814]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-25 22:05:49,211 [  31814]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-25 22:05:49,211 [  31814]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-25 22:05:49,212 [  31815]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-25 22:05:49,212 [  31815]   WARN - Emulator: Pixel 8 Pro - Client not connected yet. Ignoring message!
+2025-12-25 22:05:51,736 [  34339]   WARN - #com.android.ddmlib - Failed to start Emulator console for 5554
