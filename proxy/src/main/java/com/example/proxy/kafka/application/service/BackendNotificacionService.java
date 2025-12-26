@@ -15,27 +15,36 @@ public class BackendNotificacionService {
 
     private final RestTemplate restTemplate;
 
-    @Value("${backend.url:http://backend:8080}") // Valor por defecto por seguridad
+    @Value("${backend.url:http://backend:8080}")
     private String backendUrl;
+
+    @Value("${internal.api.secret}")
+    private String internalSecret;
 
     public BackendNotificacionService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    public void notificarBackend(String mensaje) {
+    public void notificarBackend(String mensajeKafka) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.set("X-Internal-Secret", internalSecret);
 
-        Map<String, String> body = new HashMap<>();
-        body.put("mensaje", mensaje);
+        // El mensaje de Kafka es solo texto ("Cambios en los datos...").
+        // El Backend espera un JSON (EventNotificationDto).
 
-        HttpEntity<Map<String, String>> request = new HttpEntity<>(body, headers);
+        Map<String, Object> body = new HashMap<>();
+        body.put("eventoId", null); // Null para forzar actualización completa
+        body.put("tipoDeCambio", mensajeKafka); // Ponemos el mensaje aquí
 
-        // IMPORTANTE: No usar try-catch aquí.
-        // Si el backend falla (500 o timeout), RestTemplate lanza excepción.
-        // Esa excepción sube a KafkaConsumerService y activa el @RetryableTopic.
-        restTemplate.postForEntity(backendUrl + "/api/internal/notificacion", request, String.class);
+        // Enviamos el Map, y RestTemplate lo convertirá a JSON: {"eventoId":null, "tipoDeCambio":"..."}
+        HttpEntity<Map<String, Object>> request = new HttpEntity<>(body, headers);
 
-        System.out.println("Notificación enviada al backend correctamente: " + mensaje);
+        String url = backendUrl + "/api/internal/notificacion/evento";
+
+        // Enviamos la petición
+        restTemplate.postForEntity(url, request, Void.class);
+
+        System.out.println("✅ Notificación transformada y enviada al backend: " + url);
     }
 }

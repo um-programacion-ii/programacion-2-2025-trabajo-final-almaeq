@@ -5,6 +5,12 @@ import com.example.proxy.redis.application.service.RedisAsientosService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.lettuce.core.RedisConnectionException;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.redis.RedisConnectionFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +20,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/proxy")
+@Tag(name = "Proxy de Asientos (Redis & Cátedra)", description = "Intermediario para la gestión de asientos. Consulta la caché de Redis para lectura rápida y comunica los bloqueos a la Cátedra.")
 public class AsientosProxyController {
 
     private final RedisAsientosService redisAsientosService;
@@ -31,6 +38,17 @@ public class AsientosProxyController {
     // ==========================================
     // GET: obtener asientos desde Redis (para el backend)
     // ==========================================
+    @Operation(summary = "Obtener Estado de Asientos (Redis)", description = "Consulta el estado actual de los asientos de un evento directamente desde la caché de Redis mantenida por el Proxy. Esto evita saturar la API de la Cátedra.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Mapa de asientos recuperado exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"asientos\": [{\"fila\": 1, \"columna\": 1, \"estado\": \"Ocupado\"}, {\"fila\": 1, \"columna\": 2, \"estado\": \"Libre\"}]}"))),
+            @ApiResponse(responseCode = "204", description = "No hay información de asientos para este evento en Redis (aún no sincronizado)"),
+            @ApiResponse(responseCode = "503", description = "Servicio No Disponible: No se pudo conectar con Redis para leer los datos",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"error\": \"El servicio de asientos (Redis) no está disponible temporalmente.\"}"))),
+            @ApiResponse(responseCode = "500", description = "Error interno al procesar los datos JSON")
+    })
     @GetMapping("/seats/{eventoId}")
     public ResponseEntity<?> obtenerAsientos(@PathVariable Long eventoId) {
         try {
@@ -65,6 +83,13 @@ public class AsientosProxyController {
     // ==========================================
     // POST: bloquear asientos (backend -> proxy -> cátedra + Redis)
     // ==========================================
+    @Operation(summary = "Solicitar Bloqueo de Asientos", description = "Envía una solicitud de bloqueo a la API de la Cátedra. Si la respuesta es exitosa, actualiza inmediatamente la caché de Redis local.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Solicitud procesada por la Cátedra (puede ser exitosa o fallida según disponibilidad)",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"resultado\": true, \"descripcion\": \"Asientos bloqueados correctamente\"}"))),
+            @ApiResponse(responseCode = "500", description = "Error interno en el Proxy al comunicarse con la Cátedra o actualizar Redis")
+    })
     @PostMapping("/seats/bloquear")
     public ResponseEntity<?> bloquearAsientos(@RequestBody Map<String, Object> request) {
         try {
